@@ -1,7 +1,7 @@
 export interface BingoEvent {
     id: number;
     title: string;
-    date: string;
+    date: Date;
     description: string;
     expectedResult: string;
     result: string | null;
@@ -11,9 +11,28 @@ interface BingoCardProps {
     nCols: number;
     nRows: number;
     events: BingoEvent[];
+    selectedEvent: BingoEvent | null;
+    setSelectedEvent: (event: BingoEvent) => void;
+    setEvents: (events: BingoEvent[]) => void;
 }
 
-function Card({ nCols, nRows, events }: BingoCardProps) {
+function BingoCard({ nCols, nRows, events, selectedEvent, setSelectedEvent, setEvents }: BingoCardProps) {
+
+    const reorderEvents = (fromEvent: BingoEvent, toEvent: BingoEvent) => {
+        const updatedEvents = Array.from(events);
+        const fromIndex = updatedEvents.indexOf(fromEvent);
+        const toIndex = updatedEvents.indexOf(toEvent);
+        const [removed] = updatedEvents.splice(fromIndex, 1);
+        updatedEvents.splice(toIndex, 0, removed);
+        setEvents(updatedEvents);
+    };
+    
+    const onDrop = (toEvent: BingoEvent)=>{
+        if (selectedEvent){
+            reorderEvents(selectedEvent, toEvent);
+        }
+    }
+
 
     const rows: BingoEvent[][] = [];
     for (let i = 0; i < events.length; i += nCols) {
@@ -25,8 +44,8 @@ function Card({ nCols, nRows, events }: BingoCardProps) {
         //placeItems: "center",
         gridTemplateColumns: `repeat(${nCols}, 1fr)`,
         gridTemplateRows: `repeat(${nRows}, 1fr)`,
+        backgroundColor: '#f0f0f0', 
         borderRadius: '16px',       // Rounded corners for the container
-        backgroundColor: '#f0f0f0', // Background to show the rounded corners
         overflow: 'hidden',         // Ensures children are clipped to the rounded corners
     };
 
@@ -38,7 +57,6 @@ function Card({ nCols, nRows, events }: BingoCardProps) {
                 justifyContent: 'center',
                 alignItems: 'center',
                 
-                //height: '100%', // Adjust this if you want vertical centering relative to a container
                 }}>
                 <section style={gridStyle}>
                     {Array.from(events, (event, index)=>(
@@ -49,13 +67,18 @@ function Card({ nCols, nRows, events }: BingoCardProps) {
                                 alignItems: "center",
                                 justifyContent: "center",
                             }}
-                            className="card bg-info text-black rounded-0 p-3 table-bordered" 
+                            className={`card ${selectedEvent==event?'bg-danger':'bg-info'} text-black rounded-0 p-3 table-bordered`}
                             draggable={true}
-                            onClick={()=>console.log(event.id)}>
+                            onDragStart={()=>setSelectedEvent(event)}
+                            onDragOver={(e)=>{
+                                e.preventDefault();
+                            }}
+                            onDrop={()=>onDrop(event)}
+                            onClick={()=>setSelectedEvent(event)}>
                             
                             <p className="text-success">{event.title}</p>
                             <p className="text-muted">{event.description}</p>
-                            <p>{event.date}</p>
+                            <p>{event.date.toLocaleString()}</p>
                             <p className="text-start">{event.expectedResult}</p>
                         </div>
                     )
@@ -68,4 +91,4 @@ function Card({ nCols, nRows, events }: BingoCardProps) {
     
 };
 
-export default Card;
+export default BingoCard;
