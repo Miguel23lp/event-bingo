@@ -53,11 +53,8 @@ function CardEditor({selectedEvent, updateEvent}: CardEditorProps) {
                         className="form-control"
                         type="datetime-local"
                         value={selectedEvent.date.toISOString().slice(0, 16)}
-                        onChange={(e) =>{
-                                const newValue = e.target.valueAsDate ?? new Date();
-                                e.target.value = newValue.toISOString().slice(0, 16);
-                                updateEvent(selectedEvent, { date: newValue })
-                            }
+                        onChange={(e) =>
+                            updateEvent(selectedEvent, { date: new Date(e.target.value) })
                         }
                         style={{ marginLeft: '5px' }}
                         />

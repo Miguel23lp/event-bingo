@@ -50,7 +50,7 @@ function App() {
       <div style={{ display: 'flex', padding: '20px', gap: '20px' }}>
         
         {/* Bingo card left */}
-        <div style={{maxWidth: '1000px'}}>
+        <div style={{width: '80%'}}>
           <BingoCard nCols={nCols} nRows={nRows} events={events} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} setEvents={setEvents}></BingoCard>
         </div>
         

@@ -56,7 +56,7 @@ function BingoCard({ nCols, nRows, events, selectedEvent, setSelectedEvent, setE
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                
+                position: "relative", // 👈 Needed for overlay
                 }}>
                 <section style={gridStyle}>
                     {Array.from(events, (event, index)=>(
@@ -66,20 +66,63 @@ function BingoCard({ nCols, nRows, events, selectedEvent, setSelectedEvent, setE
                                 aspectRatio: "1",
                                 alignItems: "center",
                                 justifyContent: "center",
+                                width: "200px", 
+                                height: "200px",
+                                background: "rgb(255, 204, 0)",
+                                cursor: "grab",
                             }}
-                            className={`card ${selectedEvent==event?'bg-danger':'bg-info'} text-black rounded-0 p-3 table-bordered`}
+                            className={`card ${''/*selectedEvent==event?'bg-danger':'bg-info'*/} text-black rounded-0 p-3 table-bordered`}
                             draggable={true}
-                            onDragStart={()=>setSelectedEvent(event)}
+                            
+                            onDragExit={(e)=>{
+                                e.currentTarget.style.color = "black";
+                            }}
+                            onDragStart={()=>{
+                                // set cursor to grabbing
+                                document.body.style.cursor = "grabbing";
+                                setSelectedEvent(event)
+                            }}
                             onDragOver={(e)=>{
+                                // set cursor to normal cursor
+                                
+                                e.currentTarget.style.color = "red";
+                                document.body.style.cursor = "grab";
                                 e.preventDefault();
                             }}
                             onDrop={()=>onDrop(event)}
-                            onClick={()=>setSelectedEvent(event)}>
-                            
-                            <p className="text-success">{event.title}</p>
-                            <p className="text-muted">{event.description}</p>
-                            <p>{event.date.toLocaleString()}</p>
-                            <p className="text-start">{event.expectedResult}</p>
+                            onClick={()=>setSelectedEvent(event)}
+                            >
+
+                            {/* Overlay when selected */}
+                            {selectedEvent === event && (
+                                <div
+                                style={{
+                                    position: "absolute",
+                                    top: 0,
+                                    left: 0,
+                                    width: "100%",
+                                    height: "100%",
+                                    backgroundColor: "rgba(0, 0, 0, 0.2)", // semi-transparent overlay
+                                    border: "5px solid #FB8500", // border to highlight
+                                    zIndex: 1,
+                                    pointerEvents: "none", // allow clicks to pass through
+                                }}
+                                />
+                            )}
+                            <div style={{
+                                
+                                position: 'relative',
+                                zIndex: 2 }}>
+                                <p style={{
+                                    textWrap: "nowrap",
+                                    color: "rgb(0, 0, 0)", 
+                                    fontFamily: "Roboto",
+                                    fontWeight: "bold"
+                                    }}>{event.title}</p>
+                                <p className="" style={{fontFamily: "Arial", color: "#023047"}}>{event.description}</p>
+                                <p>{event.date.toLocaleString()}</p>
+                                <p className="text-start">{event.expectedResult}</p>
+                            </div>
                         </div>
                     )
 
