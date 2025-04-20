@@ -21,11 +21,12 @@ const testEvents: BingoEvent[] =
   ];
 
 function App() {
-  const [nCols, setNCols] = useState<number>(3);
-  const [nRows, setNRows] = useState<number>(2);
+  const [nCols, setNCols] = useState<number>(5);
+  const [nRows, setNRows] = useState<number>(3);
   const [events, setEvents] = useState<BingoEvent[]>(testEvents);
   const [selectedEvent, setSelectedEvent] = useState<BingoEvent | null>(null);
   
+  const isGridTooSmall = nRows * nCols <= events.length;
 
   const updateEvent = (event: BingoEvent, data: Partial<BingoEvent>) => {
     setEvents((prevEvents)=>{
@@ -40,7 +41,15 @@ function App() {
         setSelectedEvent(newEvents[index]);
       }
       return newEvents;
-    })
+    });
+  }
+
+  const deleteEvent = (event: BingoEvent) => {
+    setSelectedEvent(null);
+    setEvents((prevEvents) => {
+      const newEvents = prevEvents.filter(e=>e!=event);
+      return newEvents;
+    });
   }
 
   return (
@@ -50,43 +59,56 @@ function App() {
       <div style={{ display: 'flex', padding: '20px', gap: '20px' }}>
         
         {/* Bingo card left */}
-        <div style={{width: '80%'}}>
+        <div style={{flex: '1'}}>
           <BingoCard nCols={nCols} nRows={nRows} events={events} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} setEvents={setEvents}></BingoCard>
         </div>
         
         {/* Card settings right */}
         <div>
-          <div className="d-flex justify-content-center mb-4">
+          <div className="d-flex justify-content-center">
             <div className="me-3">
               <label className="form-label">Colunas:</label>
               <input
-                className="form-control"
+                className={`form-control ${isGridTooSmall&&"is-invalid"}`}
                 type="number"
                 min="1"
+                step="2"
                 value={nCols}
                 onChange={(e) => {
-                  e.target.value = Math.max(Number(e.target.value), 1).toString();
-                  setNCols(Number(e.target.value))
+                  let value = isNaN(e.target.valueAsNumber)?1:e.target.valueAsNumber;
+                  value = Math.max(value, 1);
+                  value = value % 2 == 0 ? value + 1 : value;
+                  setNCols(value);
                 }}
-                />
+              />
+              
             </div>
           
             <div>
               <label className="form-label">Linhas:</label>
               <input
-                className="form-control"
+                className={`form-control ${isGridTooSmall&&"is-invalid"}`}
                 type="number"
                 min="1"
+                step="2"
                 value={nRows}
                 onChange={(e) => {
-                  e.target.value = Math.max(Number(e.target.value), 1).toString();
-                  setNRows(Number(e.target.value))
+                  if (isNaN(e.target.valueAsNumber)){
+                    e.target.valueAsNumber=1;
+                  }
+                  const valor = Math.max(e.target.valueAsNumber, 1);
+                  const impar = valor % 2 === 0 ? valor + 1 : valor;
+                  setNRows(impar);
                   }
                 }
               />
+              
             </div>
-
-
+          </div>
+          <div>
+            {isGridTooSmall && 
+              <div className="invalid-feedback d-block text-center mb-1">Grelha muito pequena para número de eventos!</div>
+            }
           </div>
           <div style={{
             display: 'flex',
@@ -94,8 +116,20 @@ function App() {
             justifyContent: 'center',
             }}>
             <CardEditor selectedEvent={selectedEvent} updateEvent={updateEvent}></CardEditor>
-
+            
           </div>
+          {selectedEvent && (
+              // button to delete event
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                }} 
+                className='btn btn-danger'
+                onClick={()=>deleteEvent(selectedEvent)}
+                >Apagar evento</div>
+
+            )}
 
         </div>
       </div>
