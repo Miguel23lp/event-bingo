@@ -1,0 +1,294 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "SL Benfica x Porto FC",
+      "description": "Futebol Liga Betclic",
+      "date": "01/04/2025",
+      "expectedResult": "SL Benfica",
+      "result": null
+    },
+    {
+      "id": 2,
+      "title": "Evento 2",
+      "description": "'Desporto' Liga 'Xxxx'",
+      "date": "05/04/2025",
+      "expectedResult": "Expected",
+      "result": null
+    },
+    {
+      "id": 3,
+      "title": "Evento 3",
+      "description": "'Desporto' Liga 'Xxxx'",
+      "date": "01/04/2025",
+      "expectedResult": "Expected",
+      "result": null
+    },
+    {
+      "id": 4,
+      "title": "Evento 4",
+      "description": "'Desporto' Liga 'Xxxx'",
+      "date": "02/04/2025",
+      "expectedResult": "Expected",
+      "result": null
+    },
+    {
+      "id": 5,
+      "title": "Evento 5",
+      "description": "'Desporto' Liga 'Xxxx'",
+      "date": "03/04/2025",
+      "expectedResult": "Expected",
+      "result": null
+    },
+    {
+      "id": 6,
+      "title": "Evento 6",
+      "description": "'Desporto' Liga 'Xxxx'",
+      "date": "04/04/2025",
+      "expectedResult": "Expected",
+      "result": null
+    },
+    {
+      "id": 7,
+      "title": "Evento 7",
+      "description": "'Desporto' Liga 'Xxxx'",
+      "date": "06/04/2025",
+      "expectedResult": "Expected",
+      "result": null
+    },
+    {
+      "id": 8,
+      "title": "Evento 8",
+      "description": "'Desporto' Liga 'Xxxx'",
+      "date": "07/04/2025",
+      "expectedResult": "Expected",
+      "result": null
+    },
+    {
+      "id": 9,
+      "title": "Evento 9",
+      "description": "'Desporto' Liga 'Xxxx'",
+      "date": "08/04/2025",
+      "expectedResult": "Expected",
+      "result": null
+    },
+    {
+      "id": 10,
+      "title": "Evento 10",
+      "description": "'Desporto' Liga 'Xxxx'",
+      "date": "08/04/2025",
+      "expectedResult": "Expected",
+      "result": null
+    },
+    {
+      "id": 11,
+      "title": "Evento 11",
+      "description": "'Desporto' Liga 'Xxxx'",
+      "date": "09/04/2025",
+      "expectedResult": "Expected",
+      "result": null
+    },
+    {
+      "id": 12,
+      "title": "Evento 12",
+      "description": "'Desporto' Liga 'Xxxx'",
+      "date": "10/05/2025",
+      "expectedResult": "Expected",
+      "result": null
+    }
+  ],
+  "cards": [
+    {
+      "id": 1951361447435338,
+      "nCols": 5,
+      "nRows": 3,
+      "events": [
+        {
+          "id": 1,
+          "title": "SL Benfica x Porto FC",
+          "description": "Futebol Liga Betclic",
+          "date": "2025-01-04T00:00:00.000Z",
+          "expectedResult": "SL Benfica",
+          "result": null
+        },
+        {
+          "id": 2,
+          "title": "Evento 2",
+          "description": "'Desporto' Liga 'Xxxx'",
+          "date": "2025-05-03T23:00:00.000Z",
+          "expectedResult": "Expected",
+          "result": null
+        },
+        {
+          "id": 3,
+          "title": "Evento 3",
+          "description": "'Desporto' Liga 'Xxxx'",
+          "date": "2025-01-04T00:00:00.000Z",
+          "expectedResult": "Expected",
+          "result": null
+        },
+        {
+          "id": 4,
+          "title": "Evento 4",
+          "description": "'Desporto' Liga 'Xxxx'",
+          "date": "2025-02-04T00:00:00.000Z",
+          "expectedResult": "Expected",
+          "result": null
+        },
+        {
+          "id": 5,
+          "title": "Evento 5",
+          "description": "'Desporto' Liga 'Xxxx'",
+          "date": "2025-03-04T00:00:00.000Z",
+          "expectedResult": "Expected",
+          "result": null
+        },
+        {
+          "id": 6,
+          "title": "Evento 6",
+          "description": "'Desporto' Liga 'Xxxx'",
+          "date": "2025-04-03T23:00:00.000Z",
+          "expectedResult": "Expected",
+          "result": null
+        },
+        {
+          "id": 7,
+          "title": "Evento 7",
+          "description": "'Desporto' Liga 'Xxxx'",
+          "date": "2025-06-03T23:00:00.000Z",
+          "expectedResult": "Expected",
+          "result": null
+        },
+        {
+          "id": 8,
+          "title": "Evento 8",
+          "description": "'Desporto' Liga 'Xxxx'",
+          "date": "2025-07-03T23:00:00.000Z",
+          "expectedResult": "Expected",
+          "result": null
+        },
+        {
+          "id": 9,
+          "title": "Evento 9",
+          "description": "'Desporto' Liga 'Xxxx'",
+          "date": "2025-08-03T23:00:00.000Z",
+          "expectedResult": "Expected",
+          "result": null
+        },
+        {
+          "id": 10,
+          "title": "Evento 10",
+          "description": "'Desporto' Liga 'Xxxx'",
+          "date": "2025-08-03T23:00:00.000Z",
+          "expectedResult": "Expected",
+          "result": null
+        },
+        {
+          "id": 11,
+          "title": "Evento 11",
+          "description": "'Desporto' Liga 'Xxxx'",
+          "date": "2025-09-03T23:00:00.000Z",
+          "expectedResult": "Expected",
+          "result": null
+        },
+        {
+          "id": 12,
+          "title": "Evento 12",
+          "description": "'Desporto' Liga 'Xxxx'",
+          "date": "2025-10-04T23:00:00.000Z",
+          "expectedResult": "Expected",
+          "result": null
+        },
+        {
+          "id": 18447530916597896,
+          "title": "Novo evento (13)",
+          "date": "2025-04-22T11:36:36.629Z",
+          "description": "Descrição",
+          "expectedResult": "Resultado",
+          "result": null
+        },
+        {
+          "id": 5047237107649694,
+          "title": "Novo evento (14)",
+          "date": "2025-04-22T11:36:37.529Z",
+          "description": "Descrição",
+          "expectedResult": "Resultado",
+          "result": null
+        }
+      ],
+      "creationDate": "2025-04-22T11:36:38.649Z"
+    },
+    {
+      "id": 884713449859527,
+      "nCols": 3,
+      "nRows": 3,
+      "events": [
+        {
+          "id": 1,
+          "title": "SL Benfica x Porto FC",
+          "description": "Futebol Liga Betclic",
+          "date": "2025-01-04T00:00:00.000Z",
+          "expectedResult": "SL Benfica",
+          "result": null
+        },
+        {
+          "id": 2,
+          "title": "Evento 2",
+          "description": "'Desporto' Liga 'Xxxx'",
+          "date": "2025-05-03T23:00:00.000Z",
+          "expectedResult": "Expected",
+          "result": null
+        },
+        {
+          "id": 3,
+          "title": "Evento 3",
+          "description": "'Desporto' Liga 'Xxxx'",
+          "date": "2025-01-04T00:00:00.000Z",
+          "expectedResult": "Expected",
+          "result": null
+        },
+        {
+          "id": 4,
+          "title": "Evento 4",
+          "description": "'Desporto' Liga 'Xxxx'",
+          "date": "2025-02-04T00:00:00.000Z",
+          "expectedResult": "Expected",
+          "result": null
+        },
+        {
+          "id": 11,
+          "title": "Casados contra Solteiros",
+          "description": "Liga dos Reformados",
+          "date": "2025-09-03T23:00:00.000Z",
+          "expectedResult": "Expected",
+          "result": null
+        },
+        {
+          "id": 12,
+          "title": "Evento 12",
+          "description": "'Desporto' Liga 'Xxxx'",
+          "date": "2025-10-04T23:00:00.000Z",
+          "expectedResult": "Expected",
+          "result": null
+        },
+        {
+          "id": 18447530916597896,
+          "title": "Novo evento (13)",
+          "date": "2025-04-22T11:36:36.629Z",
+          "description": "Descrição",
+          "expectedResult": "Resultado",
+          "result": null
+        },
+        {
+          "id": 5047237107649694,
+          "title": "Novo evento (14)",
+          "date": "2025-04-22T11:36:37.529Z",
+          "description": "Descrição",
+          "expectedResult": "Resultado",
+          "result": null
+        }
+      ],
+      "creationDate": "2025-04-22T11:37:20.880Z"
+    }
+  ]
+}

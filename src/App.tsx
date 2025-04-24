@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { BingoCardData, BingoEventData } from './BingoCard.tsx';
 import Header from './Header.tsx'
-import BingoCard from './BingoCard.tsx'
-import { BingoEvent } from './BingoCard.tsx'
+import BingoCardCreate from './BingoCardCreate.tsx'
 import CardEditor from './CardEditor.tsx';
 
-const testEvents: BingoEvent[] =
+const testEvents: BingoEventData[] =
   [
     { id: 1, title: "SL Benfica x Porto FC", description: "Futebol Liga Betclic", date: new Date("01/04/2025"), expectedResult: "SL Benfica", result: null },
     { id: 2, title: "Evento 2", description: "'Desporto' Liga 'Xxxx'", date: new Date("05/04/2025"), expectedResult: "Expected", result: null },
@@ -20,15 +20,24 @@ const testEvents: BingoEvent[] =
     { id: 12, title: "Evento 12", description: "'Desporto' Liga 'Xxxx'", date: new Date("10/05/2025"), expectedResult: "Expected", result: null },
   ];
 
+
 function App() {
   const [nCols, setNCols] = useState<number>(5);
   const [nRows, setNRows] = useState<number>(3);
-  const [events, setEvents] = useState<BingoEvent[]>(testEvents);
-  const [selectedEvent, setSelectedEvent] = useState<BingoEvent | null>(null);
+  
+  const [events, setEvents] = useState<BingoEventData[]>(testEvents);
+  const [selectedEvent, setSelectedEvent] = useState<BingoEventData | null>(null);
+  
+  useEffect(()=>{
+      fetch('http://localhost:3000/events')
+      .then(response => response.text())
+      .then(data => JSON.parse(data, (key, value) => key == "date"? new Date(Date.parse(value)) : value))
+      .then(list => setEvents(list));
+    }, []);
   
   const isGridTooSmall = nRows * nCols <= events.length;
 
-  const updateEvent = (event: BingoEvent, data: Partial<BingoEvent>) => {
+  const updateEvent = (event: BingoEventData, data: Partial<BingoEventData>) => {
     setEvents((prevEvents)=>{
       const newEvents = [...prevEvents];
       const index = newEvents.findIndex((e) => e.id === event.id);
@@ -44,7 +53,8 @@ function App() {
     });
   }
 
-  const deleteEvent = (event: BingoEvent) => {
+  const deleteEvent = (event: BingoEventData) => {
+    if (!selectedEvent) return;
     setSelectedEvent(null);
     setEvents((prevEvents) => {
       const newEvents = prevEvents.filter(e=>e!=event);
@@ -52,15 +62,44 @@ function App() {
     });
   }
 
+  const handleUploadCard = ()=>{
+    const newId = Number(Math.random().toString().slice(2));
+    let card: BingoCardData = {id: newId, nCols: nCols, nRows: nRows, events: events, creationDate: new Date(Date.now())};
+    // check if grid is too small
+    if (isGridTooSmall){
+      alert("Grelha muito pequena para número de eventos!");
+      return;
+    }
+    // check if number of events matches grid size
+    if (events.length != nCols*nRows-1){
+      alert("Número de eventos não corresponde ao tamanho da grelha!");
+      return;
+    }
+    // check if events are unique
+    const uniqueEvents = new Set(events.map(event => event.id));
+    if (uniqueEvents.size != events.length){
+      alert("Eventos não são únicos!");
+      return;
+    }
+    fetch("http://localhost:3000/cards", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(card)
+    }).then(()=>alert("Cartão adicionado com sucesso!"))
+    .catch((res)=>alert(`Erro a adicionar cartão: ${res}`));
+  }
+
   return (
     <>
-      <Header></Header>
+      <Header/>
 
       <div style={{ display: 'flex', padding: '20px', gap: '20px' }}>
         
         {/* Bingo card left */}
         <div style={{flex: '1'}}>
-          <BingoCard nCols={nCols} nRows={nRows} events={events} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} setEvents={setEvents}></BingoCard>
+          <BingoCardCreate nCols={nCols} nRows={nRows} events={events} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} setEvents={setEvents}></BingoCardCreate>
         </div>
         
         {/* Card settings right */}
@@ -132,6 +171,16 @@ function App() {
             )}
 
         </div>
+      </div>
+      
+      {isGridTooSmall && 
+        <div className="invalid-feedback d-block text-center mb-1">Grelha muito pequena para número de eventos!</div>
+      }
+      <div className={`btn btn-primary ${isGridTooSmall&&"disabled"} `}
+          onClick={handleUploadCard}
+      >
+          Adicionar Cartão
+
       </div>
     </>
   )

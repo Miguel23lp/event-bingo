@@ -1,8 +1,8 @@
-import { BingoEvent } from "./BingoCard";
+import { BingoCardData, BingoEventData } from "./BingoCard";
 
 interface CardEditorProps {
-    selectedEvent: BingoEvent | null;
-    updateEvent: (event: BingoEvent, data: Partial<BingoEvent>) => void
+    selectedEvent: BingoEventData | null;
+    updateEvent: (event: BingoEventData, data: Partial<BingoEventData>) => void
 }
 
 function CardEditor({selectedEvent, updateEvent}: CardEditorProps) {
