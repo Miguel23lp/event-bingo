@@ -13,4 +13,8 @@ export interface BingoCardData {
     nCols: number;
     creationDate: Date;
     events: BingoEventData[];
+    price: number;
+    bingoPrize: number;
+    maxPrize: number;
+    
 }

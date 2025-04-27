@@ -11,6 +11,9 @@ function CardEditor({selectedEvent, updateEvent}: CardEditorProps) {
         <>
             {/* Right side: Editor for selected card */}
             <div style={{ minWidth: '250px' }}>
+                
+                
+
                 {selectedEvent? (
                 <div style={{ width: '100%'}}>
                     <h2>Editar evento {selectedEvent.id}</h2>
@@ -67,6 +70,7 @@ function CardEditor({selectedEvent, updateEvent}: CardEditorProps) {
                 <p>Selecione um evento para editar.</p>
                 )}
             </div>
+
 
         </>
     );

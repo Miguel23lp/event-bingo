@@ -14,8 +14,6 @@ interface BingoCardCreateProps {
 
 
 function BingoCardCreate({ nCols, nRows, events, selectedEvent, setSelectedEvent, setEvents }: BingoCardCreateProps) {
-
-    
     const reorderEvents = (fromEvent: BingoEventData, toEvent: BingoEventData) => {
         const updatedEvents = Array.from(events);
         const fromIndex = updatedEvents.indexOf(fromEvent);

@@ -15,12 +15,12 @@ app.use(cors());
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// GET endpoint to retrieve all pets
+// GET endpoint to retrieve all events
 app.get('/events', (req, res) => {
     res.json(db.data.events);
 });
 
-// POST endpoint to add a new pet
+// POST endpoint to add a new event
 app.post('/events', async (req, res) => {
     const event = req.body;
     db.data.events.push(event);
