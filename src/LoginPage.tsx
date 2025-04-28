@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 
 interface LoginPageProps {
-    login: (username: string, password: string) => boolean;
+    login: (username: string, password: string) => Promise<boolean>;
 }
 
 function LoginPage({ login }: LoginPageProps) {
@@ -17,16 +17,21 @@ function LoginPage({ login }: LoginPageProps) {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        const valid = login(username, password);
-        setInvalidLogin(!valid);
         
-        if (invalidLogin) {
-            setUsername("");
-            setPassword("");
-        }
-        else {
-            navigate(from, { replace: true });
-        }
+        login(username, password).then(
+            (valid)=>{
+                setInvalidLogin(!valid);
+                if (valid) {
+                    navigate(from, { replace: true });
+                }
+                else {
+                    setUsername("");
+                    setPassword("");
+                }
+            }
+        );
+        
+        
     };
 
     return (

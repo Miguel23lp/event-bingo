@@ -28,6 +28,21 @@ app.post('/events', async (req, res) => {
     res.status(201).json(event);
 });
 
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+    const user = db.data.users.find(u => u.username === username && u.password === password);
+
+    if (!user) {
+        return res.status(401).json({ message: 'Credenciais invalidas!' });
+    }
+
+    return res.json({
+        id: user.id,
+        username: user.username,
+        role: user.role
+    });
+})
+
 app.get('/cards', (req, res) => {
     res.json(db.data.cards);
 });
