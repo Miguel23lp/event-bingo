@@ -14,7 +14,7 @@ function LoginIcon({ user, logout } : { user: User | null, logout: ()=>void }) {
             </a>
         </li>
         <li className="nav-item">
-            <a className="nav-link link-danger" onClick={logout}>
+            <a style={{cursor:"pointer"}} className="nav-link link-danger" onClick={logout}>
                 Logout
             </a>
         </li>

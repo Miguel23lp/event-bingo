@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { BingoCardData, BingoEventData } from './BingoCard.tsx';
-import Header from './Header.tsx'
 import BingoCardCreate from './BingoCardCreate.tsx'
 import CardEditor from './CardEditor.tsx';
 
@@ -79,6 +78,10 @@ function CreateBingoCardPage() {
     // check if number of events matches grid size
     if (events.length != nCols*nRows-1){
       alert("Número de eventos não corresponde ao tamanho da grelha!");
+      return;
+    }
+    if (events.length < 1){
+      alert("O cartão tem de conter pelo menos 1 evento!");
       return;
     }
     // check if events are unique
@@ -216,7 +219,7 @@ function CreateBingoCardPage() {
             }
           </div>
           <div className="d-flex m-3 justify-content-end">
-            <div className={`btn btn-primary ${events.length !== nCols * nRows - 1 ? "disabled" : ""} `}
+            <div className={`btn btn-primary ${events.length !== nCols * nRows - 1 || events.length<1 ? "disabled" : ""} `}
               onClick={handleUploadCard}
               >
               Adicionar Cartão

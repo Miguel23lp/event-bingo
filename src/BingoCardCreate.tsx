@@ -1,7 +1,7 @@
 import { Fragment } from "react/jsx-runtime";
 import addIcon from "./assets/addIcon.png"
 import starIcon from "./assets/star.svg"
-import { BingoEventData, BingoCardData } from "./BingoCard";
+import { BingoEventData } from "./BingoCard";
 
 interface BingoCardCreateProps {
     nCols: number;

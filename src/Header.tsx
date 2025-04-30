@@ -12,7 +12,7 @@ export default function Header({user, logout}: {user: User | null, logout: ()=>v
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item"><a className="nav-link" href="/">Início</a></li>
-            <li className="nav-item"><a className="nav-link" href="/admin">Admin</a></li>
+            {user?.role=="admin"&&<li className="nav-item"><a className="nav-link" href="/criar_cartao">Criar cartão</a></li>}
             <LoginIcon user={user} logout={logout}></LoginIcon>
           </ul>
         </div>

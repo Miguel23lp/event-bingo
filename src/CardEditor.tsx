@@ -1,4 +1,4 @@
-import { BingoCardData, BingoEventData } from "./BingoCard";
+import { BingoEventData } from "./BingoCard";
 
 interface CardEditorProps {
     selectedEvent: BingoEventData | null;

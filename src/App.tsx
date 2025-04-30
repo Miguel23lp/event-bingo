@@ -5,12 +5,18 @@ import Home from "./Home.tsx";
 import LoginPage from "./LoginPage.tsx";
 import CreateBingoCardPage from "./CreateBingoCardPage.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
+import LoginIcon from "./LoginIcon.tsx";
 
 
 export interface User {
     id: string;
     username: string;
     role: 'user' | 'admin';
+}
+
+export interface BingoUser extends User {
+    money: number;
+    bingoCardIds: number[];
 }
 
 function App() {
@@ -66,8 +72,8 @@ return loading ? (
             <Routes>
                 <Route index element={<Home />} />
                 <Route path="/login" element={<LoginPage login={login} />} />
-                <Route path="/admin" element={
-                    <ProtectedRoute user={currentUser} role="admin">
+                <Route path="/criar_cartao" element={
+                    <ProtectedRoute user={currentUser} admin>
                         <CreateBingoCardPage />
                     </ProtectedRoute>
                 } />
