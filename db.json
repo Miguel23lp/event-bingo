@@ -36,7 +36,7 @@
           "description": "Futebol Liga Betclic",
           "date": "2025-01-04T00:00:00.000Z",
           "expectedResult": "SL Benfica",
-          "result": null
+          "result": "win"
         },
         {
           "id": 2,
@@ -44,7 +44,7 @@
           "description": "'Desporto' Liga 'Xxxx'",
           "date": "2025-05-03T23:00:00.000Z",
           "expectedResult": "Expected",
-          "result": null
+          "result": "lose"
         },
         {
           "id": 3,
@@ -52,7 +52,7 @@
           "description": "'Desporto' Liga 'Xxxx'",
           "date": "2025-01-04T00:00:00.000Z",
           "expectedResult": "Expected",
-          "result": null
+          "result": "win"
         },
         {
           "id": 4,
@@ -60,7 +60,7 @@
           "description": "'Desporto' Liga 'Xxxx'",
           "date": "2025-02-04T00:00:00.000Z",
           "expectedResult": "Expected",
-          "result": null
+          "result": "win"
         },
         {
           "id": 5,
@@ -68,7 +68,7 @@
           "description": "'Desporto' Liga 'Xxxx'",
           "date": "2025-03-04T00:00:00.000Z",
           "expectedResult": "Expected",
-          "result": null
+          "result": "win"
         },
         {
           "id": 6,
@@ -76,7 +76,7 @@
           "description": "'Desporto' Liga 'Xxxx'",
           "date": "2025-04-03T23:00:00.000Z",
           "expectedResult": "Expected",
-          "result": null
+          "result": "win"
         },
         {
           "id": 7,
@@ -84,7 +84,7 @@
           "description": "'Desporto' Liga 'Xxxx'",
           "date": "2025-06-03T23:00:00.000Z",
           "expectedResult": "Expected",
-          "result": null
+          "result": "win"
         },
         {
           "id": 8,
@@ -92,7 +92,7 @@
           "description": "'Desporto' Liga 'Xxxx'",
           "date": "2025-07-03T23:00:00.000Z",
           "expectedResult": "Expected",
-          "result": null
+          "result": "lose"
         },
         {
           "id": 9,
@@ -100,7 +100,7 @@
           "description": "'Desporto' Liga 'Xxxx'",
           "date": "2025-08-03T23:00:00.000Z",
           "expectedResult": "Expected",
-          "result": null
+          "result": "win"
         },
         {
           "id": 10,
@@ -108,7 +108,7 @@
           "description": "'Desporto' Liga 'Xxxx'",
           "date": "2025-08-03T23:00:00.000Z",
           "expectedResult": "Expected",
-          "result": null
+          "result": "win"
         },
         {
           "id": 11,
@@ -116,7 +116,7 @@
           "description": "'Desporto' Liga 'Xxxx'",
           "date": "2025-09-03T23:00:00.000Z",
           "expectedResult": "Expected",
-          "result": null
+          "result": "win"
         },
         {
           "id": 12,
@@ -124,7 +124,7 @@
           "description": "'Desporto' Liga 'Xxxx'",
           "date": "2025-10-04T23:00:00.000Z",
           "expectedResult": "Expected",
-          "result": null
+          "result": "lose"
         },
         {
           "id": 18447530916597896,
@@ -132,7 +132,7 @@
           "date": "2025-04-22T11:36:36.629Z",
           "description": "Descrição",
           "expectedResult": "Resultado",
-          "result": null
+          "result": "win"
         },
         {
           "id": 5047237107649694,
@@ -140,7 +140,7 @@
           "date": "2025-04-22T11:36:37.529Z",
           "description": "Descrição",
           "expectedResult": "Resultado",
-          "result": null
+          "result": "lose"
         }
       ],
       "creationDate": "2025-04-22T11:36:38.649Z"

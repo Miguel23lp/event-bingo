@@ -5,7 +5,8 @@ import Home from "./Home.tsx";
 import LoginPage from "./LoginPage.tsx";
 import CreateBingoCardPage from "./CreateBingoCardPage.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
-
+import UpdateBingoCardPage from "./UpdateBingoCardPage.tsx";
+import { useNavigate } from "react-router";
 
 export interface User {
     id: string;
@@ -20,7 +21,6 @@ export interface User {
 function App() {
     const [currentUser, setCurrentUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
         if (storedUser) {
@@ -46,7 +46,9 @@ function App() {
     };
 
     const buyCard = async (cardId: number) => {
-        if (!currentUser) return;
+        if (!currentUser) {
+            return;
+        }
         const response = await fetch(`http://localhost:3000/cards/${cardId}/buy`, {
             method: 'POST',
             headers: {
@@ -85,8 +87,10 @@ function App() {
     };
 
     const logout = () => {
-        setCurrentUser(null);
         localStorage.removeItem('user');
+        const navigate = useNavigate();
+        navigate('/');
+        setCurrentUser(null);
     };
 
     return loading ? (
@@ -101,11 +105,16 @@ function App() {
                     </div>
                 )}
                 <Routes>
-                    <Route index element={<Home buyCard={buyCard}/>} />
+                    <Route index element={<Home user={currentUser} buyCard={buyCard}/>} />
                     <Route path="/login" element={<LoginPage login={login} />} />
                     <Route path="/criar_cartao" element={
                         <ProtectedRoute user={currentUser} admin>
                             <CreateBingoCardPage />
+                        </ProtectedRoute>
+                    } />
+                    <Route path="/atualizar_cartao/:id" element={
+                        <ProtectedRoute user={currentUser} admin>
+                            <UpdateBingoCardPage />
                         </ProtectedRoute>
                     } />
                 </Routes>

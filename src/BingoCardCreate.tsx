@@ -40,10 +40,11 @@ function BingoCardCreate({ nCols, nRows, events, selectedEvent, setSelectedEvent
     const getCellProps = (event: BingoEventData, index: number): React.HtmlHTMLAttributes<HTMLDivElement> => {
         return {
             className: [
-                //'bingo-cell',
-                //index%2== ((index<nCols*nRows/2-1)?0:1) && 'bingo-cell--odd',
                 index > nRows * nCols - 2 && 'bg-danger',
             ].filter(Boolean).join(' '),
+            style: {
+                cursor: "grab",
+            },
             draggable: true,
             onClick: () => setSelectedEvent(event),
             
@@ -69,19 +70,7 @@ function BingoCardCreate({ nCols, nRows, events, selectedEvent, setSelectedEvent
         {/* Overlay when selected */}
         if (selectedEvent?.id === event.id) {
             return (
-                <div
-                    style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        backgroundColor: "rgba(0, 0, 0, 0.2)", // semi-transparent overlay
-                        border: "5px solid #FB8500", // border to highlight
-                        zIndex: 1,
-                        pointerEvents: "none", // allow clicks to pass through
-                    }}
-                />
+                <div className="bingo-cell-overlay"/>
             );
         }
         return null;
@@ -89,7 +78,7 @@ function BingoCardCreate({ nCols, nRows, events, selectedEvent, setSelectedEvent
 
     return (
         <>
-            <section className="p-5">
+            <section>
                 <UnifiedBingoCard nCols={nCols} nRows={nRows} events={events}
                   onAddEvent={addEvent} getCellProps={getCellProps} renderCell={renderCell}/>
             </section>

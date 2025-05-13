@@ -1,7 +1,7 @@
 import addIcon from './assets/addIcon.png';
 import starIcon from './assets/star.svg';
 import { BingoEventData } from './BingoCard';
-import './UnifiedBingoCard.scss';
+import './BingoCard.scss';
 
 interface UnifiedBingoCardProps {
     nCols: number;
@@ -26,13 +26,22 @@ const UnifiedBingoCard = ({
         gridTemplateRows: `repeat(${nRows}, 1fr)`,
     };
 
+    const getBingoCellClassName = (event: BingoEventData, index: number, nCols: number, nRows: number): string => {
+        let classes = "bingo-cell";
+        if (!(index % 2 == ((index < nCols * nRows / 2 - 1)? 0 : 1))) {
+            classes += " bingo-cell--odd";
+        }
+        if (event.result) {
+            classes += " bingo-cell--" + event.result;
+        }
+        return classes;
+    }
+
     return (
         <section className="p-5">
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <section className="bingo-grid" style={gridStyle}>
                     {Array.from(events, (event, index) => {
-
-
                         const extra = getCellProps?.(event, index) ?? {};
                         // display event cell
                         return (
@@ -46,14 +55,10 @@ const UnifiedBingoCard = ({
                                 <div
                                     key={event!.id}
                                     {...extra}
-                                    className={`bingo-cell 
-                                        ${index%2==(
-                                            (index<nCols*nRows/2-1)?0:1)?
-                                            "":"bingo-cell--odd"} 
-                                        ${extra.className ?? ""}`}
+                                    className={getBingoCellClassName(event, index, nCols, nRows) + (extra.className ?? "")}
                                 >
                                     {renderCell?.(event, index)}
-                                    
+
                                     <div
                                         style={{
                                             position: 'relative',

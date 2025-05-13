@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { BingoCardData } from "./BingoCard.tsx";
 import BingoCardDisplay from "./BingoCardDisplay";
+import { User } from "./App.tsx";
+import { useNavigate } from "react-router";
 
 
-function Home({buyCard: buyCard}: {buyCard: (cardId: number) => void}) {
+function Home({user, buyCard}: {user: User | null, buyCard: (cardId: number) => void}) {
+    const navigate = useNavigate();
     const [bingoCards, setBingoCards] = useState<BingoCardData[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -36,7 +39,12 @@ function Home({buyCard: buyCard}: {buyCard: (cardId: number) => void}) {
                 <h2 className="text-center">Eventos por coluna: {card.nCols}</h2>
                 
                 <div className="d-flex justify-content-center">
-                    <div className="btn btn-success p-4 mt-4" onClick={()=>buyCard(card.id)}>{`Comprar cartão ${card.price}€`}</div>
+                    {user && user.role == "admin" && 
+                    <div className="btn btn-warning" onClick={()=>{
+                        navigate(`/atualizar_cartao/${card.id}`);
+                    }}>Editar cartão</div>
+                    }
+                    <div className="btn btn-success p-auto" onClick={()=>buyCard(card.id)}>{`Comprar cartão ${card.price}€`}</div>
                 </div>
                 <BingoCardDisplay bingoCard={card} />
             </div>

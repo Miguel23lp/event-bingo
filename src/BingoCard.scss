@@ -30,12 +30,18 @@
   }
 
   &--free {
-    background: rgba(255, 204, 0, 0.6);
+    background: rgba(123, 255, 0, 0.6);
     cursor: default;
   }
 
   &--odd {
     background: rgb(255, 219, 76)
+  }
+  &--win {
+    background: rgb(0, 255, 0);
+  }
+  &--lose {
+    background: rgb(255, 0, 0);
   }
 }
 

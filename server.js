@@ -112,6 +112,31 @@ app.get('/cards/:id', (req, res) => {
     res.json(card);
 });
 
+// PUT endpoint to update a card (admin only)
+app.put('/cards/:id', async (req, res) => {
+    const { card, username, password } = req.body;
+    const user = getUser(username, password);
+
+    if (!user) {
+        return res.status(401).json({ message: 'Credenciais invalidas!' });
+    }
+
+    if (user.role !== 'admin') {
+        return res.status(403).json({ message: 'Acesso negado!' });
+    }
+
+    const cardId = parseInt(req.params.id);
+    const existingCard = db.data.cards.find(e => e.id === cardId);
+
+    if (!existingCard) {
+        return res.status(404).json({ message: 'Cartão não encontrado!' });
+    }
+
+    Object.assign(existingCard, card);
+    await db.write();
+    res.json(existingCard);
+});
+
 // POST endpoint for user to buy a card
 app.post('/cards/:id/buy', async (req, res) => {
     const { username, password } = req.body;

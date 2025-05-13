@@ -5,7 +5,7 @@ function BingoCardDisplay( { bingoCard }: { bingoCard: BingoCardData }) {
 
     return (
         <>
-            <section className="p-5">
+            <section>
                 <UnifiedBingoCard nCols={bingoCard.nCols} nRows={bingoCard.nRows} events={bingoCard.events} />
             </section>
         </>
