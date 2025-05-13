@@ -2,6 +2,7 @@ import { Fragment } from "react/jsx-runtime";
 import addIcon from "./assets/addIcon.png"
 import starIcon from "./assets/star.svg"
 import { BingoEventData } from "./BingoCard";
+import UnifiedBingoCard from "./UnifiedBingoCard";
 
 interface BingoCardCreateProps {
     nCols: number;
@@ -36,16 +37,64 @@ function BingoCardCreate({ nCols, nRows, events, selectedEvent, setSelectedEvent
         setEvents(newEvents);
     }
 
-    const gridStyle: React.CSSProperties = {
-        display: "grid",
-        //placeItems: "center",
-        gridTemplateColumns: `repeat(${nCols}, 1fr)`,
-        gridTemplateRows: `repeat(${nRows}, 1fr)`,
-        backgroundColor: '#f0f0f0', 
-        borderRadius: '16px',       // Rounded corners for the container
-        overflow: 'hidden',         // Ensures children are clipped to the rounded corners
-    };
+    const getCellProps = (event: BingoEventData, index: number): React.HtmlHTMLAttributes<HTMLDivElement> => {
+        return {
+            className: [
+                //'bingo-cell',
+                //index%2== ((index<nCols*nRows/2-1)?0:1) && 'bingo-cell--odd',
+                index > nRows * nCols - 2 && 'bg-danger',
+            ].filter(Boolean).join(' '),
+            draggable: true,
+            onClick: () => setSelectedEvent(event),
+            
+            onDragStart: () => {
+                document.body.style.cursor = "grabbing";
+                setSelectedEvent(event);
+            },
+            onDragEnter: () => {
+                document.body.style.cursor = "drop";
+            },
+            onDragOver: (e) => {
+                document.body.style.cursor = "default";
+                e.preventDefault();
+            },
+            onDragExit: () => {
+                document.body.style.cursor = "pointer";
+            },
+            onDrop: () => onDrop(event),
+        }
+    }
 
+    const renderCell = (event: BingoEventData, _: number) => {
+        {/* Overlay when selected */}
+        if (selectedEvent?.id === event.id) {
+            return (
+                <div
+                    style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        backgroundColor: "rgba(0, 0, 0, 0.2)", // semi-transparent overlay
+                        border: "5px solid #FB8500", // border to highlight
+                        zIndex: 1,
+                        pointerEvents: "none", // allow clicks to pass through
+                    }}
+                />
+            );
+        }
+        return null;
+    }
+
+    return (
+        <>
+            <section className="p-5">
+                <UnifiedBingoCard nCols={nCols} nRows={nRows} events={events}
+                  onAddEvent={addEvent} getCellProps={getCellProps} renderCell={renderCell}/>
+            </section>
+        </>
+    );
     return (
         <>
             <section className="p-5">
@@ -56,7 +105,7 @@ function BingoCardCreate({ nCols, nRows, events, selectedEvent, setSelectedEvent
                     alignItems: 'center',
                     position: "relative",
                     }}>
-                    <section style={gridStyle}>
+                    <section style={{/*gridStyle*/}}>
                         {Array.from(events, (event, index)=>
                             <Fragment key={event.id}>
                                 {(index == Math.floor(nCols*nRows/2))&&
