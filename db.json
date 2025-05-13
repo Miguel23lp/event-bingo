@@ -4,13 +4,21 @@
       "id": 1,
       "username": "adm",
       "password": "1234",
-      "role": "admin"
+      "role": "admin",
+      "money": 957.5,
+      "purchases": [
+        1951361447435338,
+        884713449859527,
+        7790820972835486
+      ]
     },
     {
       "id": 2,
       "username": "joao",
       "password": "1234",
-      "role": "user"
+      "role": "user",
+      "money": 100,
+      "purchases": []
     }
   ],
   "cards": [
@@ -18,6 +26,9 @@
       "id": 1951361447435338,
       "nCols": 5,
       "nRows": 3,
+      "price": 1.5,
+      "bingoPrize": 10,
+      "maxPrize": 50,
       "events": [
         {
           "id": 1,
@@ -138,6 +149,9 @@
       "id": 884713449859527,
       "nCols": 3,
       "nRows": 3,
+      "price": 1.5,
+      "bingoPrize": 10,
+      "maxPrize": 50,
       "events": [
         {
           "id": 1,
@@ -210,6 +224,9 @@
       "id": 7790820972835486,
       "nCols": 3,
       "nRows": 3,
+      "price": 10,
+      "bingoPrize": 50,
+      "maxPrize": 100,
       "events": [
         {
           "id": 1,
@@ -282,6 +299,9 @@
       "id": 10517157539903964,
       "nCols": 5,
       "nRows": 11,
+      "price": 15,
+      "bingoPrize": 10,
+      "maxPrize": 50,
       "events": [
         {
           "id": 1,
@@ -722,6 +742,9 @@
       "id": 23583980114324896,
       "nCols": 5,
       "nRows": 5,
+      "price": 8,
+      "bingoPrize": 10,
+      "maxPrize": 50,
       "events": [
         {
           "id": 1,

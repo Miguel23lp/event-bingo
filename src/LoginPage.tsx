@@ -30,8 +30,6 @@ function LoginPage({ login }: LoginPageProps) {
                 }
             }
         );
-        
-        
     };
 
     return (

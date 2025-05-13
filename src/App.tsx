@@ -5,19 +5,17 @@ import Home from "./Home.tsx";
 import LoginPage from "./LoginPage.tsx";
 import CreateBingoCardPage from "./CreateBingoCardPage.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
-import LoginIcon from "./LoginIcon.tsx";
 
 
 export interface User {
     id: string;
     username: string;
+    password: string;
     role: 'user' | 'admin';
+    money: number;
+    purchases: number[];
 }
 
-export interface BingoUser extends User {
-    money: number;
-    bingoCardIds: number[];
-}
 
 function App() {
     const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -26,61 +24,94 @@ function App() {
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
         if (storedUser) {
-            setCurrentUser(JSON.parse(storedUser));
+            login(JSON.parse(storedUser).username, JSON.parse(storedUser).password).then((valid) => {
+                if (!valid) {
+                    localStorage.removeItem('user');
+                }
+                setLoading(false);
+            });
         }
-        setLoading(false);
+        else {
+            setLoading(false);
+        }
     }, []);
 
-async function login(username: string, password: string) {
-    const response = await fetch('http://localhost:3000/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-    });
+    const setUserMoney = (money: number) => {
+        setCurrentUser((prevUser) => {
+            if (prevUser) {
+                return { ...prevUser, money };
+            }
+            return prevUser;
+        });
+    };
 
-    if (response.ok) {
-        const found = await response.json();
+    const buyCard = async (cardId: number) => {
+        if (!currentUser) return;
+        const response = await fetch(`http://localhost:3000/cards/${cardId}/buy`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username: currentUser.username, password: currentUser.password }),
+        });
 
-        const user = { id: found.id, username: found.username, role: found.role as 'user' | 'admin' };
-        setCurrentUser(user);
-        localStorage.setItem('user', JSON.stringify(user));
-        return true;
-    } else {
-        alert('Credenciais inválidas');
-        return false;
-    }
-};
+        const data = await response.json();
+        if (response.ok) {
+            alert(`Cartão comprado com sucesso! ID: ${cardId}`);
+        } else {
+            alert(data.message);
+        }
+    };
 
-const logout = () => {
-    setCurrentUser(null);
-    localStorage.removeItem('user');
-};
 
-return loading ? (
-    <p>Loading</p>
-) : (
-    <Router>
-        <Header user={currentUser} logout={logout} />
-        <div className="p-4">
-            {currentUser && (
-                <div>
-                    <p>Bem-vindo, {currentUser.username} ({currentUser.role})</p>
-                </div>
-            )}
-            <Routes>
-                <Route index element={<Home />} />
-                <Route path="/login" element={<LoginPage login={login} />} />
-                <Route path="/criar_cartao" element={
-                    <ProtectedRoute user={currentUser} admin>
-                        <CreateBingoCardPage />
-                    </ProtectedRoute>
-                } />
-            </Routes>
-        </div>
-    </Router>
-);
+    async function login(username: string, password: string) {
+        const response = await fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+        });
+
+        if (response.ok) {
+            const user = await response.json() as User;
+            setCurrentUser(user);
+            localStorage.setItem('user', JSON.stringify({username: username, password: password}));
+            return true;
+        } else {
+            console.log('Credenciais inválidas!');
+            return false;
+        }
+    };
+
+    const logout = () => {
+        setCurrentUser(null);
+        localStorage.removeItem('user');
+    };
+
+    return loading ? (
+        <h1>Loading...</h1>
+    ) : (
+        <Router>
+            <Header user={currentUser} setUserMoney={setUserMoney} logout={logout} />
+            <div className="p-4">
+                {currentUser && (
+                    <div>
+                        <p>Bem-vindo, {currentUser.username} ({currentUser.role})</p>
+                    </div>
+                )}
+                <Routes>
+                    <Route index element={<Home buyCard={buyCard}/>} />
+                    <Route path="/login" element={<LoginPage login={login} />} />
+                    <Route path="/criar_cartao" element={
+                        <ProtectedRoute user={currentUser} admin>
+                            <CreateBingoCardPage />
+                        </ProtectedRoute>
+                    } />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;

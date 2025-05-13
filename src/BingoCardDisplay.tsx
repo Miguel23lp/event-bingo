@@ -1,6 +1,6 @@
 import { Fragment } from "react/jsx-runtime";
 import starIcon from "./assets/star.svg"
-import { BingoEventData, BingoCardData } from "./BingoCard";
+import { BingoCardData } from "./BingoCard";
 
 function BingoCardDisplay( { bingoCard }: { bingoCard: BingoCardData }) {
 
@@ -16,15 +16,6 @@ function BingoCardDisplay( { bingoCard }: { bingoCard: BingoCardData }) {
 
     return (
         <>
-            <h1 className="text-center">Cartão de Bingo</h1>
-            <h2 className="text-center">ID: {bingoCard.id}</h2>
-            <h2 className="text-center">Data de Criação: {bingoCard.creationDate.toLocaleString()}</h2>
-            <h2 className="text-center">Preço: {bingoCard.price}€</h2>
-            <h2 className="text-center">Prémio: {bingoCard.bingoPrize}€</h2>
-            <h2 className="text-center">Prémio máximo: {bingoCard.maxPrize}€</h2>
-            <h2 className="text-center">Eventos: {bingoCard.events.length}</h2>
-            <h2 className="text-center">Eventos por linha: {bingoCard.nRows}</h2>
-            <h2 className="text-center">Eventos por coluna: {bingoCard.nCols}</h2>
             <section className="p-5">
                 <div
                     style={{
