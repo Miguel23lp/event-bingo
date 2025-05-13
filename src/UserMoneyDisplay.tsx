@@ -21,7 +21,9 @@ function UserMoneyDisplay({ user, setUserMoney }: { user: User, setUserMoney: (m
         };
 
         return () => {
-            ws.close();
+            if (ws.readyState === WebSocket.OPEN) {
+                ws.close();
+            }
         };
     }, [user]);
 

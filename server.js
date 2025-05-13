@@ -2,7 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import { JSONFilePreset } from 'lowdb/node';
 import { WebSocketServer } from 'ws';
-import http from 'http';
+import http, { STATUS_CODES } from 'http';
+import { exitCode } from 'process';
 
 const app = express();
 const defaultData = { events: [] }
@@ -86,7 +87,14 @@ app.post('/cards', async (req, res) => {
     if (user.role !== 'admin') {
         return res.status(403).json({ message: 'Acesso negado!' });
     }
-
+    if (!(card.id && card.price && card.bingoPrize && card.maxPrize)) {
+        return res.status(400).json({ message: 'Dados do cartão inválidos!' });
+    }
+    const existingCard = db.data.cards.find(e => e.id === card.id);
+    if (existingCard) {
+        return res.status(400).json({ message: 'Cartão já existe!' });
+    }
+    
     db.data.cards.push(card);
     await db.write();
     res.status(201).json(card);
@@ -171,7 +179,7 @@ app.post('/users/:id/money', async (req, res) => {
         return res.status(404).json({ message: 'Usuário não encontrado!' });
     }
 
-    targetUser.money += amount; // Add money to user's account
+    updateUserMoney(targetUser, targetUser.money + amount);
     await db.write(); // Save changes to the database
 
     res.json({ message: 'Dinheiro adicionado com sucesso!', user: targetUser });
