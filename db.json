@@ -17,8 +17,11 @@
       "username": "joao",
       "password": "1234",
       "role": "user",
-      "money": 100,
-      "purchases": []
+      "money": 88.5,
+      "purchases": [
+        884713449859527,
+        7790820972835486
+      ]
     }
   ],
   "cards": [

@@ -16,5 +16,5 @@ export interface BingoCardData {
     price: number;
     bingoPrize: number;
     maxPrize: number;
-    
+    result: "win" | "lose" | null;
 }

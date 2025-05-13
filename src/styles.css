@@ -1,0 +1,73 @@
+body {
+    background-color: #e4e6ea;  /* Slightly darker light gray */
+    min-height: 100vh;  /* Ensure the background covers the full viewport height */
+    color: #212529;  /* Dark gray text for good contrast */
+}
+
+/* Apply the background color to the root div as well */
+#root {
+    min-height: 100vh;
+    background-color: #e4e6ea;
+}
+
+/* Ensure good contrast for text in cards and other light backgrounds */
+.card {
+    color: #333333;  /* Dark text for light backgrounds */
+}
+
+/* Adjust link colors for better visibility */
+a {
+    color: #9fdfff;  /* Light blue for links */
+}
+
+a:hover {
+    color: #ffffff;  /* White on hover */
+}
+
+/* Header styling */
+.navbar {
+    background-color: #ffffff !important;  /* White background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);  /* Subtle shadow for depth */
+    padding: 0.75rem 0 !important;  /* Reduced padding for smaller text */
+    min-height: 60px !important;  /* Adjusted minimum height for smaller text */
+}
+
+/* More specific selector for navbar brand */
+.navbar .navbar-brand {
+    color: rgb(255, 204, 0) !important;  /* Same golden yellow as bingo cells */
+    font-weight: 700 !important;
+    text-shadow: 
+        2px 2px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        2px 2px 0 #000;
+    font-size: 2rem !important;     /* Reduced text size */
+    line-height: 1 !important;      /* Prevent line height from squishing text */
+    letter-spacing: 0.5px !important; /* Slightly reduced spacing for smaller text */
+    padding: 0.25rem 0 !important;   /* Reduced padding for smaller text */
+    transition: all 0.2s ease;  /* Smooth transition for hover effect */
+    display: inline-block !important;  /* Ensure proper sizing */
+    margin: 0 !important;  /* Remove any margin that might affect size */
+}
+
+.navbar .navbar-brand:hover {
+    transform: translate(-1px, -1px);
+    text-shadow: 
+        3px 3px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        2px 2px 0 #000,
+        3px 3px 0 #000;
+}
+
+.nav-link {
+    color: #3c4043 !important;  /* Dark gray for nav links */
+}
+
+.nav-link:hover {
+    color: rgb(255, 204, 0) !important;  /* Golden yellow on hover to match brand */
+} 

@@ -6,6 +6,7 @@ import LoginPage from "./LoginPage.tsx";
 import CreateBingoCardPage from "./CreateBingoCardPage.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
 import UpdateBingoCardPage from "./UpdateBingoCardPage.tsx";
+import PurchasedCardsPage from "./PurchasedCardsPage.tsx";
 import { useNavigate } from "react-router";
 
 export interface User {
@@ -88,8 +89,6 @@ function App() {
 
     const logout = () => {
         localStorage.removeItem('user');
-        const navigate = useNavigate();
-        navigate('/');
         setCurrentUser(null);
     };
 
@@ -107,6 +106,11 @@ function App() {
                 <Routes>
                     <Route index element={<Home user={currentUser} buyCard={buyCard}/>} />
                     <Route path="/login" element={<LoginPage login={login} />} />
+                    <Route path="/meus_cartoes" element={
+                        <ProtectedRoute user={currentUser}>
+                            <PurchasedCardsPage user={currentUser} />
+                        </ProtectedRoute>
+                    } />
                     <Route path="/criar_cartao" element={
                         <ProtectedRoute user={currentUser} admin>
                             <CreateBingoCardPage />

@@ -11,7 +11,7 @@ function Home({user, buyCard}: {user: User | null, buyCard: (cardId: number) => 
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(()=>{
-        fetch('http://localhost:3000/cards')
+        fetch('http://localhost:3000/cards/available')
             .then(response => response.json())
             .then(data => setBingoCards(data))
             .then(() => setLoading(false));

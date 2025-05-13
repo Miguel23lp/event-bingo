@@ -75,6 +75,14 @@ app.get('/cards', (req, res) => {
     res.json(db.data.cards);
 });
 
+// GET endpoint to retrieve all available cards
+app.get('/cards/available', (req, res) => {
+    const availableCards = db.data.cards.filter(card => 
+        card.events.every(event => event.result === null)
+    );
+    res.json(availableCards);
+});
+
 // POST endpoint to create a new card (admin only)
 app.post('/cards', async (req, res) => {
     const { card, username, password } = req.body;
@@ -210,6 +218,18 @@ app.post('/users/:id/money', async (req, res) => {
     res.json({ message: 'Dinheiro adicionado com sucesso!', user: targetUser });
 });
 
+// POST endpoint to get user's purchased cards
+app.post('/users/cards', (req, res) => {
+    const { username, password } = req.body;
+    const user = getUser(username, password);
+
+    if (!user) {
+        return res.status(401).json({ message: 'Credenciais invalidas!' });
+    }
+
+    const purchasedCards = db.data.cards.filter(card => user.purchases.includes(card.id));
+    res.json(purchasedCards);
+});
 
 // Start the server
 server.listen(port, () => {

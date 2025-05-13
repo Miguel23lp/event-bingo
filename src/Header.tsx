@@ -13,6 +13,7 @@ export default function Header({ user, setUserMoney, logout }: { user: User | nu
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item"><a className="nav-link" href="/">Início</a></li>
+                        {user && <li className="nav-item"><a className="nav-link" href="/meus_cartoes">Meus Cartões</a></li>}
                         {user?.role == "admin" && <li className="nav-item"><a className="nav-link" href="/criar_cartao">Criar cartão</a></li>}
                         <LoginIcon user={user} logout={logout}></LoginIcon>
                         {user && <li className="nav-item"><UserMoneyDisplay user={user} setUserMoney={setUserMoney} /></li>}

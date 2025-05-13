@@ -62,7 +62,7 @@ function CreateBingoCardPage() {
 		let card: BingoCardData = {
 			id: newId, nCols: nCols, nRows: nRows, events: events,
 			creationDate: new Date(Date.now()), price: price,
-			bingoPrize: bingoPrize, maxPrize: maxPrize
+			bingoPrize: bingoPrize, maxPrize: maxPrize, result: null,
 		};
 
 		// check if grid is too small
