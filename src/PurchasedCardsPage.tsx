@@ -28,12 +28,20 @@ function PurchasedCardsPage({ user }: { user: User | null }) {
                 username: user.username, 
                 password: user.password 
             }),
+        }).then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return response.json().then(errData => {
+                    throw new Error(errData.message || response.statusText);
+                });
+            }
         })
-            .then(response => response.json())
             .then(data => setPurchasedCards(data))
             .then(() => setLoading(false))
             .catch(error => {
-                console.error('Error fetching purchased cards:', error);
+                console.error('Error fetching purchased cards:', error.message);
+                alert('Erro a carregar cartões: ' + error.message);
                 setLoading(false);
             });
     }, [user]);

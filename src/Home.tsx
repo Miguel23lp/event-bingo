@@ -12,9 +12,21 @@ function Home({user, buyCard}: {user: User | null, buyCard: (cardId: number) => 
 
     useEffect(()=>{
         fetch('http://localhost:3000/cards/available')
-            .then(response => response.json())
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    return response.json().then(errData => {
+                        throw new Error(errData.message || response.statusText);
+                    });
+                }
+            })
             .then(data => setBingoCards(data))
-            .then(() => setLoading(false));
+            .then(() => setLoading(false))
+            .catch(error => {
+                console.error('Error fetching available cards:', error);
+                setLoading(false);
+            });
     }, []);
 
     if (loading) return (
@@ -27,7 +39,7 @@ function Home({user, buyCard}: {user: User | null, buyCard: (cardId: number) => 
         {bingoCards.length > 0 && <h1>Cartões disponíveis</h1>}
 
         {bingoCards.map(card => 
-            <div key={card.id}>
+            <div key={card.id} className="card mb-5 p-4">
                 <h1 className="text-center">Cartão de Bingo</h1>
                 <h2 className="text-center">ID: {card.id}</h2>
                 <h2 className="text-center">Data de Criação: {card.creationDate.toLocaleString()}</h2>
@@ -40,11 +52,21 @@ function Home({user, buyCard}: {user: User | null, buyCard: (cardId: number) => 
                 
                 <div className="d-flex justify-content-center">
                     {user && user.role == "admin" && 
-                    <div className="btn btn-warning" onClick={()=>{
+                    <button className="btn btn-warning" onClick={()=>{
                         navigate(`/atualizar_cartao/${card.id}`);
-                    }}>Editar cartão</div>
+                    }}>
+                        <i className="bi bi-pencil-square me-2"></i>
+                        Editar cartão
+                    </button>
                     }
-                    <div className="btn btn-success p-auto" onClick={()=>buyCard(card.id)}>{`Comprar cartão ${card.price}€`}</div>
+                    <button 
+                        className="btn btn-success w-auto d-flex align-items-center gap-2" 
+                        onClick={()=>buyCard(card.id)}
+                    >
+                        <i className="bi bi-cart-plus"></i>
+                        <span>Comprar cartão</span>
+                        <span className="border-start ps-2">{card.price}€</span>
+                    </button>
                 </div>
                 <BingoCardDisplay bingoCard={card} />
             </div>

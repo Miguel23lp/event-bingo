@@ -3,9 +3,13 @@
 
 .bingo-grid {
   display: grid;
-  background-color: #f0f0f0;
-  border-radius: 16px;
+  background-color: #ffffff;
+  border-radius: 24px;
   overflow: hidden;
+  gap: 1px;
+  padding: 1px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .bingo-cell {
@@ -13,35 +17,155 @@
   @extend .text-black;
   @extend .rounded-0;
   @extend .p-3;
-  @extend .table-bordered;
   width: 200px;
   aspect-ratio: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  background: rgb(255, 204, 0);«
+  position: relative;
+  background: rgb(255, 204, 0);
+  
+  .drag-handle {
+    display: none;
+  }
+  
+  &--selectable {
+    cursor: pointer;    
+    &:hover {
+      background: rgba(255, 204, 0, 0.6);
+      border-color: rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &--draggable {
+    cursor: grab;
+    
+    .drag-handle {
+      display: block;
+    }
+    
+    .bi-grip-vertical {
+      transition: all 0.2s ease;
+    }
+    
+    &:hover .bi-grip-vertical {
+      opacity: 0.8 !important;
+    }
+    
+    &:active {
+      cursor: grabbing;
+      
+      .bi-grip-vertical {
+        opacity: 1 !important;
+      }
+    }
+  }
   
   &--add {
     background: rgba(255, 204, 0, 0.4);
     cursor: pointer;
+    border: 3px dashed rgba(0, 0, 0, 0.2);
+    
+    &:hover {
+      background: rgba(255, 204, 0, 0.6);
+      border-color: rgba(0, 0, 0, 0.3);
+    }
+    
+    span {
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.7);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    
+    img {
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+    
+    &:hover img {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
   }
 
   &--free {
-    background: rgba(123, 255, 0, 0.6);
+    background: linear-gradient(135deg, rgba(123, 255, 0, 0.6), rgba(123, 255, 0, 0.8));
     cursor: default;
+    
+    span {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      color: rgba(0, 0, 0, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    img {
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      transition: all 0.3s ease;
+    }
+    
   }
 
   &--odd {
-    background: rgb(255, 219, 76)
+    background: rgb(255, 219, 76);
   }
+  
   &--win {
-    background: rgb(0, 255, 0);
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.9), rgba(40, 167, 69, 0.7));
+    
+    p {
+      color: white !important;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
   }
+  
   &--lose {
-    background: rgb(255, 0, 0);
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.9), rgba(220, 53, 69, 0.7));
+    
+    p {
+      color: white !important;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  // Cell content styling
+  p {
+    margin: 0.25rem 0;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-height: 1.2;
+    
+    &.title {
+      font-size: 1rem;
+      font-weight: 600;
+      -webkit-line-clamp: 3;
+      margin-bottom: 0.25rem;
+      min-height: 3.6rem; // 3 lines * 1.2 line-height
+    }
+    
+    &.description {
+      font-size: 0.85rem;
+      opacity: 0.9;
+      -webkit-line-clamp: 2;
+      min-height: 2.04rem; // 2 lines * 1.2 line-height
+    }
+    
+    &.date, &.expected-result {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      -webkit-line-clamp: 1;
+      min-height: 0.96rem; // 1 line * 1.2 line-height
+    }
   }
 }
 
@@ -51,9 +175,50 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  border: 5px solid #FB8500;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 4px solid #FB8500;
+  box-shadow: inset 0 0 20px rgba(251, 133, 0, 0.2);
   z-index: 1;
   pointer-events: none;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: inset 0 0 20px rgba(251, 133, 0, 0.2);
+  }
+  50% {
+    box-shadow: inset 0 0 30px rgba(251, 133, 0, 0.4);
+  }
+  100% {
+    box-shadow: inset 0 0 20px rgba(251, 133, 0, 0.2);
+  }
+}
+
+.btn {
+  &-success, &-danger {
+    width: 100%;
+    padding: 1rem !important;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+    
+    i {
+      font-size: 1.2rem;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+  }
 }
 

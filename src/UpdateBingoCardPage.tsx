@@ -10,9 +10,9 @@ function UpdateBingoCardPage() {
 
     const getCellProps = (event: BingoEventData, _: number): React.HtmlHTMLAttributes<HTMLDivElement> => {
         return {
-            style: {
-                cursor: event.result?"cursor":"pointer",
-            },
+            className: [
+                event.result==null && 'bingo-cell--selectable',
+            ].filter(Boolean).join(' '),
             onClick: () => {
                 if (!event.result) {
                     setSelectedEvent(event);
@@ -55,10 +55,12 @@ function UpdateBingoCardPage() {
             if (response.ok) {
                 return response.json();
             } else {
-                alert("Erro a atualizar cartão bingo: " + response.statusText);
+                return response.json().then(errData => {
+                    throw new Error(errData.message || response.statusText);
+                });
             }
-        }
-        ).then((data) => {
+        })
+        .then((data) => {
             if (data) {
                 updatedEvent.result = state;
                 setBingoCard(data);
@@ -66,12 +68,11 @@ function UpdateBingoCardPage() {
                 setSelectedEvent(null);
                 alert("Cartão bingo atualizado com sucesso!");
             }
-        }
-        ).catch((error) => {
-            alert("Erro a atualizar cartão bingo: " + error);
+        })
+        .catch((error) => {
+            alert("Erro a atualizar cartão bingo: " + error.message);
             setUpdating(false);
-        }
-        );
+        });
     };
 
     // get bingo card id from url
@@ -79,9 +80,17 @@ function UpdateBingoCardPage() {
     // fetch bingo card data from server using bingoCardId
     useEffect(() => {
         fetch("http://localhost:3000/cards/" + bingoCardId)
-            .then(response => response.json())
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    return response.json().then(errData => {
+                        throw new Error(errData.message || response.statusText);
+                    });
+                }
+            })
             .then(data => setBingoCard(data as BingoCardData))
-            .catch(error => alert('Erro a procurar cartão bingo : ' + error));
+            .catch(error => alert('Erro a carregar cartão bingo: ' + error.message));
     }, []);
 
 
@@ -116,10 +125,16 @@ function UpdateBingoCardPage() {
                             <h2>Editar evento {selectedEvent.id}</h2>
                             <div className="d-flex justify-content-end">
                                 <div className="m-5" style={{ width: '100%' }}>
-                                    <div className='btn btn-success' onClick={()=>handleUpdate(bingoCard, selectedEvent, "win")}>Marcar como ganho</div>
+                                    <button className='btn btn-success' onClick={()=>handleUpdate(bingoCard, selectedEvent, "win")}>
+                                        <i className="bi bi-check-circle-fill"></i>
+                                        Marcar como ganho
+                                    </button>
                                 </div>
                                 <div className="m-5" style={{ width: '100%' }}>
-                                    <div className='btn btn-danger' onClick={()=>handleUpdate(bingoCard, selectedEvent, "lose")}>Marcar como perdido</div>
+                                    <button className='btn btn-danger' onClick={()=>handleUpdate(bingoCard, selectedEvent, "lose")}>
+                                        <i className="bi bi-x-circle-fill"></i>
+                                        Marcar como perdido
+                                    </button>
                                 </div>
                             </div>
                         </div>

@@ -70,4 +70,59 @@ a:hover {
 
 .nav-link:hover {
     color: rgb(255, 204, 0) !important;  /* Golden yellow on hover to match brand */
+}
+
+/* Card action buttons styling */
+.d-flex.justify-content-center {
+    gap: 1rem;  /* Space between buttons */
+    margin: 1.5rem 0;  /* Vertical spacing */
+}
+
+.btn.btn-warning, .btn.btn-success {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn.btn-warning {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.btn.btn-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn.btn-warning:hover, .btn.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn.btn-warning:active, .btn.btn-success:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the price within the buy button */
+.btn.btn-success {
+    position: relative;
+    padding-right: 4rem;  /* Space for price */
+}
+
+.btn.btn-success::after {
+    content: attr(data-price);
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(255, 255, 255, 0.3);
+    font-weight: 700;
 } 

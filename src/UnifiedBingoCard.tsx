@@ -24,6 +24,7 @@ const UnifiedBingoCard = ({
     const gridStyle: React.CSSProperties = {
         gridTemplateColumns: `repeat(${nCols}, 1fr)`,
         gridTemplateRows: `repeat(${nRows}, 1fr)`,
+        gap: 0,
     };
 
     const getBingoCellClassName = (event: BingoEventData, index: number, nCols: number, nRows: number): string => {
@@ -34,58 +35,63 @@ const UnifiedBingoCard = ({
         if (event.result) {
             classes += " bingo-cell--" + event.result;
         }
-        return classes;
+        return classes + " ";
+    }
+
+    const formatDate = (date: Date) => {
+        return new Date(date).toLocaleDateString('pt-PT', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+        });
     }
 
     return (
-        <section className="p-5">
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <section className="bingo-grid" style={gridStyle}>
-                    {Array.from(events, (event, index) => {
-                        const extra = getCellProps?.(event, index) ?? {};
-                        // display event cell
-                        return (
-                            <>
-                                {index === centerIndex &&
-                                    <div key="free" className="bingo-cell bingo-cell--free">
-                                        <img src={starIcon} alt="Free" style={{ width: 150, height: 150 }} draggable={false} />
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <section className="bingo-grid" style={gridStyle}>
+                {Array.from(events, (event, index) => {
+                    const extra = getCellProps?.(event, index) ?? {};
+                    
+                    return (
+                        <>
+                            {
+                                (index === centerIndex) && (
+                                <div key="free" className="bingo-cell bingo-cell--free">
+                                    <img src={starIcon} alt="Free" style={{ width: 100, height: 100 }} draggable={false} />
                                         <span>GRATIS</span>
                                     </div>
-                                }
-                                <div
-                                    key={event!.id}
-                                    {...extra}
-                                    className={getBingoCellClassName(event, index, nCols, nRows) + (extra.className ?? "")}
-                                >
-                                    {renderCell?.(event, index)}
+                                )
+                            }
+                        
+                            <div
+                                key={event.id}
+                                {...extra}
+                                className={getBingoCellClassName(event, index, nCols, nRows) + (extra.className ?? "")}
+                            >
+                                {renderCell?.(event, index)}
 
-                                    <div
-                                        style={{
-                                            position: 'relative',
-                                            zIndex: 2
-                                        }}>
-                                        <p style={{
-                                            color: "rgb(0, 0, 0)",
-                                            fontFamily: "Roboto",
-                                            fontWeight: "bold"
-                                        }}>{event.title}</p>
-                                        <p className="" style={{ fontFamily: "Arial", color: "#023047" }}>{event.description}</p>
-                                        <p>{event.date.toLocaleString()}</p>
-                                        <p className="text-start">{event.expectedResult}</p>
+                                <div className="position-relative w-100 h-100 d-flex flex-column justify-content-between align-items-center">
+                                    {/* Content */}
+                                    <div className="text-center w-100 px-2">
+                                        <p className="title">{event.title}</p>
+                                        <p className="description">{event.description}</p>
+                                        <p className="date">{formatDate(event.date)}</p>
+                                        <p className="expected-result">{event.expectedResult}</p>
                                     </div>
                                 </div>
-                            </>
-                        );
-                    })}
-                    {(events.length < nCols * nRows - 1) && (
-                        <div key={"add"} className="bingo-cell bingo-cell--add" onClick={onAddEvent}>
-                            <span style={{ marginBottom: 8 }}>Adicionar evento</span>
-                            <img src={addIcon} alt="Add" style={{ width: 150, height: 150 }} draggable={false} />
-                        </div>
-                    )}
-                </section>
-            </div>
-        </section>
+                            </div>
+                        </>
+                    )
+                })}
+                
+                {(events.length < nCols * nRows - 1) && (
+                    <div key="add" className="bingo-cell bingo-cell--add" onClick={onAddEvent}>
+                        <span>Adicionar evento</span>
+                        <img src={addIcon} alt="Add" style={{ width: 80, height: 80 }} draggable={false} />
+                    </div>
+                )}
+            </section>
+        </div>
     );
 };
 

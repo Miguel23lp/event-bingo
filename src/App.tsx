@@ -7,7 +7,6 @@ import CreateBingoCardPage from "./CreateBingoCardPage.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
 import UpdateBingoCardPage from "./UpdateBingoCardPage.tsx";
 import PurchasedCardsPage from "./PurchasedCardsPage.tsx";
-import { useNavigate } from "react-router";
 
 export interface User {
     id: string;
@@ -50,39 +49,48 @@ function App() {
         if (!currentUser) {
             return;
         }
-        const response = await fetch(`http://localhost:3000/cards/${cardId}/buy`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username: currentUser.username, password: currentUser.password }),
-        });
+        try {
+            const response = await fetch(`http://localhost:3000/cards/${cardId}/buy`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username: currentUser.username, password: currentUser.password }),
+            });
 
-        const data = await response.json();
-        if (response.ok) {
-            alert(`Cartão comprado com sucesso! ID: ${cardId}`);
-        } else {
-            alert(data.message);
+            const data = await response.json();
+            if (response.ok) {
+                alert(`Cartão comprado com sucesso! ID: ${cardId}`);
+            } else {
+                alert(data.message || response.statusText);
+            }
+        } catch (error) {
+            alert('Erro ao comprar cartão: ' + (error instanceof Error ? error.message : 'Erro desconhecido'));
         }
     };
 
 
     async function login(username: string, password: string) {
-        const response = await fetch('http://localhost:3000/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, password }),
-        });
+        try {
+            const response = await fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            });
 
-        if (response.ok) {
-            const user = await response.json() as User;
-            setCurrentUser(user);
-            localStorage.setItem('user', JSON.stringify({username: username, password: password}));
-            return true;
-        } else {
-            console.log('Credenciais inválidas!');
+            const data = await response.json();
+            if (response.ok) {
+                setCurrentUser(data);
+                localStorage.setItem('user', JSON.stringify({username: username, password: password}));
+                return true;
+            } else {
+                console.log(data.message || 'Credenciais inválidas!');
+                return false;
+            }
+        } catch (error) {
+            console.error('Error during login:', error instanceof Error ? error.message : 'Unknown error');
             return false;
         }
     };

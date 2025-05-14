@@ -92,7 +92,16 @@ function CreateBingoCardPage() {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({ card: card, username: user.username, password: user.password })
-		}).then(() => {
+		}).then(response => {
+			if (response.ok) {
+				return response.json();
+			} else {
+				return response.json().then(errData => {
+					throw new Error(errData.message || response.statusText);
+				});
+			}
+		})
+		.then(() => {
 			alert("Cartão adicionado com sucesso!");
 			setEvents([]);
 			setNCols(5);
@@ -101,7 +110,8 @@ function CreateBingoCardPage() {
 			setPrice(0);
 			setBingoPrize(0);
 			setMaxPrize(0);
-		}).catch((res) => alert(`Erro a adicionar cartão: ${res}`));
+		})
+		.catch((error) => alert(`Erro a adicionar cartão: ${error.message}`));
 	}
 
 	return (
