@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router";
 import Header from "./Header.tsx";
 import Home from "./Home.tsx";
 import LoginPage from "./LoginPage.tsx";
@@ -21,6 +21,8 @@ export interface User {
 function App() {
     const [currentUser, setCurrentUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
+
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
         if (storedUser) {
@@ -47,6 +49,7 @@ function App() {
 
     const buyCard = async (cardId: number) => {
         if (!currentUser) {
+            navigate("/Login");
             return;
         }
         try {
@@ -102,8 +105,7 @@ function App() {
 
     return loading ? (
         <h1>Loading...</h1>
-    ) : (
-        <Router>
+    ) : (<>
             <Header user={currentUser} setUserMoney={setUserMoney} logout={logout} />
             <div className="p-4">
                 {currentUser && (
@@ -131,7 +133,7 @@ function App() {
                     } />
                 </Routes>
             </div>
-        </Router>
+        </>
     );
 }
 

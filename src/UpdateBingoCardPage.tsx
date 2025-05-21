@@ -1,28 +1,31 @@
 import { useState, useEffect } from 'react';
-import { BingoCardData, BingoEventData } from './BingoCard.tsx';
-import UnifiedBingoCard from './UnifiedBingoCard.tsx';
+import { BingoCardData, BingoCellData } from './BingoCard.tsx';
+// import UnifiedBingoCard from "./UnifiedBingoCard";
+import { BingoCardDisplay } from "./BingoCardDisplay" ;
+import { useNavigate } from 'react-router';
 
 
 function UpdateBingoCardPage() {
     const [bingoCard, setBingoCard] = useState<BingoCardData | null>(null);
     const [updating, setUpdating] = useState(false);
-    const [selectedEvent, setSelectedEvent] = useState<BingoEventData | null>(null);
+    const [selectedCell, setSelectedCell] = useState<BingoCellData | null>(null);
+    const navigate = useNavigate();
 
-    const getCellProps = (event: BingoEventData, _: number): React.HtmlHTMLAttributes<HTMLDivElement> => {
+    const getCellProps = (cell: BingoCellData, _: number): React.HtmlHTMLAttributes<HTMLDivElement> => {
         return {
             className: [
-                event.result==null && 'bingo-cell--selectable',
+                !cell.won && 'bingo-cell--selectable',
             ].filter(Boolean).join(' '),
             onClick: () => {
-                if (!event.result) {
-                    setSelectedEvent(event);
+                if (!cell.won) {
+                    setSelectedCell(cell);
                 }
             },
         }
     }
-    const renderCell = (event: BingoEventData, _: number) => {
+    const renderCell = (cell: BingoCellData, _: number) => {
         {/* Overlay when selected */ }
-        if (selectedEvent?.id === event.id) {
+        if (selectedCell?.id === cell.id) {
             return (
                 <div className="bingo-cell-overlay" />
             );
@@ -30,27 +33,21 @@ function UpdateBingoCardPage() {
         return null;
     }
 
-    const handleUpdate = (updatedBingoCard: BingoCardData, updatedEvent: BingoEventData, state: "win" | "lose") => {
+    const setCellWon = (updatedBingoCard: BingoCardData, updatedCell: BingoCellData) => {
         setUpdating(true);
-        if (updatedEvent.result != null) {
-            alert("Evento já atualizado");
+        if (updatedCell.won) {
+            alert("Celula já foi marcada!");
             setUpdating(false);
             return;
         }
-        updatedBingoCard.events = updatedBingoCard.events.map((event) => {
-            if (event.id === updatedEvent.id) {
-                return { ...event, result: state };
-            }
-            return event;
-        });
 
         let user = JSON.parse(localStorage.getItem('user') || '{}');
-        fetch("http://localhost:3000/cards/" + updatedBingoCard.id, {
+        fetch(`http://localhost:3000/cards/${updatedBingoCard.id}/cellWon/${updatedCell.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ card: updatedBingoCard, username: user.username, password: user.password }),
+            body: JSON.stringify({ username: user.username, password: user.password }),
         }).then((response) => {
             if (response.ok) {
                 return response.json();
@@ -60,14 +57,50 @@ function UpdateBingoCardPage() {
                 });
             }
         })
-        .then((data) => {
-            if (data) {
-                updatedEvent.result = state;
-                setBingoCard(data);
-                setUpdating(false);
-                setSelectedEvent(null);
-                alert("Cartão bingo atualizado com sucesso!");
+        .then(() => {
+            console.log("Cell updated");
+            updatedBingoCard.cells = updatedBingoCard.cells.map((cell) => {
+                if (cell.id === updatedCell.id) {
+                    return { ...cell, won: true };
+                }
+                return cell;
+            });
+                
+            setBingoCard(updatedBingoCard);
+            setUpdating(false);
+            setSelectedCell(null);
+            //alert("Cartão bingo atualizado com sucesso!");
+        })
+        .catch((error) => {
+            alert("Erro a atualizar cartão bingo: " + error.message);
+            setUpdating(false);
+        });
+    };
+
+    const setCardFinished = (updatedBingoCard: BingoCardData) => {
+        setUpdating(true);
+        let user = JSON.parse(localStorage.getItem('user') || '{}');
+        fetch(`http://localhost:3000/cards/${updatedBingoCard.id}/finish`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username: user.username, password: user.password }),
+        }).then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return response.json().then(errData => {
+                    throw new Error(errData.message || response.statusText);
+                });
             }
+        })
+        .then(() => {
+            console.log("Card updated");
+            updatedBingoCard.finished = true;
+            setBingoCard(null);
+            navigate(-1);
+            //alert("Cartão bingo atualizado com sucesso!");
         })
         .catch((error) => {
             alert("Erro a atualizar cartão bingo: " + error.message);
@@ -94,12 +127,8 @@ function UpdateBingoCardPage() {
     }, []);
 
 
-    if (!bingoCard) return (
-        <div className="text-center">
-            <div className="spinner-border" role="status" />
-        </div>
-    );
-    if (updating) return (
+    
+    if (updating || !bingoCard) return (
         <div className="text-center">
             <div className="spinner-border" role="status" />
         </div>
@@ -110,7 +139,7 @@ function UpdateBingoCardPage() {
             {/* Bingo card left */}
             <div style={{ flex: '1' }}>
                 <section>
-                    <UnifiedBingoCard nCols={bingoCard.nCols} nRows={bingoCard.nRows} events={bingoCard.events}
+                    <BingoCardDisplay nCols={bingoCard.nCols} nRows={bingoCard.nRows} cells={bingoCard.cells}
                         getCellProps={getCellProps} renderCell={renderCell} />
                 </section>
             </div>
@@ -118,31 +147,30 @@ function UpdateBingoCardPage() {
             {/* Card settings right */}
             <div>
                 <h2>Editor de evento</h2>
-                <p>Selecione eventos e os marque como ganhos ou perdidos</p>
+                <div>
+                    <div className='btn btn-danger' onClick={()=>setCardFinished(bingoCard)}>
+                        <i className="bi bi-x-circle-fill"></i>
+                        Marcar evento como concluído
+                    </div>
+                </div>
+                <p>Selecione celulas e marque-as em caso de acerto</p>
                 <div style={{ minWidth: '250px' }}>
-                    {selectedEvent ? (
+                    {selectedCell ? (
                         <div style={{ width: '100%' }}>
-                            <h2>Editar evento {selectedEvent.id}</h2>
+                            <h2>Editar celula {selectedCell.id}</h2>
                             <div className="d-flex justify-content-end">
                                 <div className="m-5" style={{ width: '100%' }}>
-                                    <button className='btn btn-success' onClick={()=>handleUpdate(bingoCard, selectedEvent, "win")}>
+                                    <button className='btn btn-success' onClick={()=>setCellWon(bingoCard, selectedCell)}>
                                         <i className="bi bi-check-circle-fill"></i>
                                         Marcar como ganho
-                                    </button>
-                                </div>
-                                <div className="m-5" style={{ width: '100%' }}>
-                                    <button className='btn btn-danger' onClick={()=>handleUpdate(bingoCard, selectedEvent, "lose")}>
-                                        <i className="bi bi-x-circle-fill"></i>
-                                        Marcar como perdido
                                     </button>
                                 </div>
                             </div>
                         </div>
                     ) : (
-                        <p>Selecione um evento para editar.</p>
+                        <p>Selecione uma celula para editar.</p>
                     )}
                 </div>
-
             </div>
         </div>
 

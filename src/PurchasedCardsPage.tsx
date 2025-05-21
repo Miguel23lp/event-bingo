@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { BingoCardData } from "./BingoCard.tsx";
-import BingoCardDisplay from "./BingoCardDisplay";
+import { BingoCardDisplay } from "./BingoCardDisplay.tsx";
 import { User } from "./App.tsx";
 
 function PurchasedCardsPage({ user }: { user: User | null }) {
@@ -8,8 +8,8 @@ function PurchasedCardsPage({ user }: { user: User | null }) {
     const [loading, setLoading] = useState<boolean>(true);
     const [expandedSections, setExpandedSections] = useState<{[key: string]: boolean}>({
         ongoingCards: true,
-        wonCards: true,
-        lostCards: true
+        wonCards: false,
+        lostCards: false,
     });
 
     useEffect(() => {
@@ -46,19 +46,10 @@ function PurchasedCardsPage({ user }: { user: User | null }) {
             });
     }, [user]);
 
-    // Function to check if a card is won (all events are "win")
-    const isCardWon = (card: BingoCardData) => card.events.every(event => event.result === "win");
-
-    // Function to check if a card is lost (at least one event is "lose")
-    const isCardLost = (card: BingoCardData) => card.events.some(event => event.result === "lose");
-
-    // Function to check if a card is ongoing (not won and not lost)
-    const isCardOngoing = (card: BingoCardData) => !isCardWon(card) && !isCardLost(card);
-
     // Filter cards by status
-    const wonCards = purchasedCards.filter(isCardWon);
-    const lostCards = purchasedCards.filter(isCardLost);
-    const ongoingCards = purchasedCards.filter(isCardOngoing);
+    const wonCards = purchasedCards.filter((card)=>card.result=="bingo"||card.result=="fullwin");
+    const lostCards = purchasedCards.filter((card)=>card.result=="lost");
+    const ongoingCards = purchasedCards.filter((card)=>card.result==null);
 
     const toggleSection = (sectionId: string) => {
         setExpandedSections(prev => ({
@@ -74,8 +65,8 @@ function PurchasedCardsPage({ user }: { user: User | null }) {
             <h3 className="text-center">Preço: {card.price}€</h3>
             <h3 className="text-center">Prémio: {card.bingoPrize}€</h3>
             <h3 className="text-center">Prémio máximo: {card.maxPrize}€</h3>
-            <h3 className="text-center">Eventos: {card.events.length}</h3>
-            <BingoCardDisplay bingoCard={card} />
+            <h3 className="text-center">Celulas: {card.cells.length}</h3>
+            <BingoCardDisplay cells={card.cells} nCols={card.nCols} nRows={card.nRows} />
         </div>
     );
 

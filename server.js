@@ -2,11 +2,34 @@ import express from 'express';
 import cors from 'cors';
 import { JSONFilePreset } from 'lowdb/node';
 import { WebSocketServer } from 'ws';
-import http, { STATUS_CODES } from 'http';
-import { exitCode } from 'process';
+import http from 'http';
 
 const app = express();
-const defaultData = { events: [] }
+const defaultData = {
+  "users": [
+    {
+      "id": 1,
+      "username": "adm",
+      "password": "1234",
+      "role": "admin",
+      "money": 0,
+      "purchases":[]
+    },
+    {
+      "id": 2,
+      "username": "joao",
+      "password": "1234",
+      "role": "user",
+      "money": 500.00,
+      "purchases": [
+      ]
+    }
+  ],
+  "cards": [
+
+  ]
+};
+
 const port = 3000;
 
 const server = http.createServer(app);
@@ -59,7 +82,27 @@ function updateUserMoney(user, newMoney) {
     user.money = newMoney;
 }
 
-// GET endpoint to authenticate a user
+function handlePrizes(card) {
+    if (card.result === "lost") return;
+    let amount = 0;
+    if (card.result === "bingo"){
+        amount = card.bingoPrize;
+    }
+    else if (card.result === "fullwin"){
+        amount = card.maxPrize;
+    }
+    else {
+        throw new Error("Resultado do jogo inválido");
+    }
+    
+    const users = db.data.users.filter(u => u.purchases.includes(card.id));
+    users.forEach(user => {
+        updateUserMoney(user, user.money + amount);
+    });
+    
+}
+
+// Post endpoint to authenticate a user
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
     const user = getUser(username, password);
@@ -78,7 +121,8 @@ app.get('/cards', (req, res) => {
 // GET endpoint to retrieve all available cards
 app.get('/cards/available', (req, res) => {
     const availableCards = db.data.cards.filter(card => 
-        card.events.every(event => event.result === null)
+        card.cells.every(cell => !cell.won) &&
+        new Date(card.date) > new Date()
     );
     res.json(availableCards);
 });
@@ -121,10 +165,10 @@ app.get('/cards/:id', (req, res) => {
 });
 
 // PUT endpoint to update a card (admin only)
-app.put('/cards/:id', async (req, res) => {
-    const { card, username, password } = req.body;
+app.put('/cards/:cardId/cellWon/:cellId', async (req, res) => {
+    const { username, password } = req.body;
     const user = getUser(username, password);
-
+    console.log(req.params.id);
     if (!user) {
         return res.status(401).json({ message: 'Credenciais invalidas!' });
     }
@@ -133,16 +177,23 @@ app.put('/cards/:id', async (req, res) => {
         return res.status(403).json({ message: 'Acesso negado!' });
     }
 
-    const cardId = parseInt(req.params.id);
-    const existingCard = db.data.cards.find(e => e.id === cardId);
+    const cardId = parseInt(req.params.cardId);
+    const card = db.data.cards.find(e => e.id === cardId);
 
-    if (!existingCard) {
+    if (!card) {
         return res.status(404).json({ message: 'Cartão não encontrado!' });
     }
 
-    Object.assign(existingCard, card);
+    const cellId = parseInt(req.params.cellId);
+    const cell = card.cells.find(c => c.id == cellId);
+    if (!cell) {
+        return res.status(404).json({ message: 'Celula não encontrada!' });
+    }
+    console.log(card);
+    cell.won = true;
+    console.log(card);
     await db.write();
-    res.json(existingCard);
+    res.json(card);
 });
 
 // POST endpoint for user to buy a card
@@ -152,6 +203,10 @@ app.post('/cards/:id/buy', async (req, res) => {
 
     if (!user) {
         return res.status(401).json({ message: 'Credenciais invalidas!' });
+    }
+
+    if (user.role === 'admin') {
+        return res.status(403).json({ message: 'Acesso negado!' });
     }
 
     const cardId = parseInt(req.params.id);
@@ -168,29 +223,17 @@ app.post('/cards/:id/buy', async (req, res) => {
     if (user.money < card.price) {
         return res.status(400).json({ message: 'Saldo insuficiente!' });
     }
+
+    if (card.cells.some(cell => cell.won) || card.date < new Date(Date.now())) {
+        return res.status(400).json({ message: 'Cartão já não esta disponivel para compra!' });
+    }
+
     updateUserMoney(user, user.money - card.price); // Deduct money from user account and stream update to WebSocket clients
     user.purchases.push(cardId); // Add card ID to user's purchases
     await db.write(); // Save changes to the database
 
     res.json({ message: 'Compra realizada com sucesso!', card });
 });
-/*
-app.get('/users', (req, res) => {
-    res.json(db.data.users.map(user => ({ id: user.id, username: user.username, role: user.role, money: user.money })));
-});
-*/
-/*
-app.get('/users/:id', (req, res) => {
-    const userId = parseInt(req.params.id);
-    const user = db.data.users.find(u => u.id === userId);
-
-    if (!user) {
-        return res.status(404).json({ message: 'Usuário não encontrado!' });
-    }
-
-    res.json({ id: user.id, username: user.username, role: user.role, money: user.money });
-});
-*/
 
 // POST endpoint to add money to a user's account (admin only)
 app.post('/users/:id/money', async (req, res) => {
@@ -212,6 +255,10 @@ app.post('/users/:id/money', async (req, res) => {
         return res.status(404).json({ message: 'Usuário não encontrado!' });
     }
 
+    if (targetUser.role === 'admin') {
+        return res.status(403).json({ message: 'Não é permitido adicionar dinheiro a um admin!' });
+    }
+
     updateUserMoney(targetUser, targetUser.money + amount);
     await db.write(); // Save changes to the database
 
@@ -230,6 +277,103 @@ app.post('/users/cards', (req, res) => {
     const purchasedCards = db.data.cards.filter(card => user.purchases.includes(card.id));
     res.json(purchasedCards);
 });
+
+// Put endpoint to mark a card as finished 
+app.put('/cards/:cardId/finish', async (req, res) => {
+    const { username, password } = req.body;
+    const user = getUser(username, password);
+
+    if (!user) {
+        return res.status(401).json({ message: 'Credenciais invalidas!' });
+    }
+
+    if (user.role !== 'admin') {
+        return res.status(403).json({ message: 'Acesso negado!' });
+    }
+    const cardId = parseInt(req.params.cardId);
+    const card = db.data.cards.find(e => e.id === cardId);
+
+    if (!card) {
+        return res.status(404).json({ message: 'Cartão não encontrado!' });
+    }
+
+    card.finished = true;
+    card.result = checkCardWin(card);
+    await db.write(); // Save changes to the database
+    handlePrizes(card);
+
+    res.json({ message: 'Cartão marcado como finalizado!', card: card });
+});
+
+// Put endpoint to mark a cell as won
+app.put('/cards/:cardId/cellWon/:cellId', async (req, res) => {
+    const { username, password } = req.body;
+    const user = getUser(username, password);
+
+    if (!user) {
+        return res.status(401).json({ message: 'Credenciais invalidas!' });
+    }
+
+    if (user.role !== 'admin') {
+        return res.status(403).json({ message: 'Acesso negado!' });
+    }
+    const cardId = parseInt(req.params.cardId);
+    const card = db.data.cards.find(e => e.id === cardId);
+    const cellId = parseInt(req.params.cellId);
+    const cell = card.cells.find(e => e.id === cellId);
+
+    if (!cell) {
+        return res.status(404).json({ message: 'Celula não encontrado!' });
+    }
+
+    cell.won = true;
+    await db.write(); // Save changes to the database
+    
+    res.json({ message: 'Celula marcada!', cell: cell });
+});
+
+const checkCardWin = (card) => {
+    const wonCells = card.cells.filter(cell => cell.won);
+    if (wonCells.length === card.cells.length) {
+        return "fullwin";
+    }
+
+    const freeIndex = Math.floor((card.nCols * card.nRows) / 2);
+    const cells = card.cells.toSpliced(freeIndex, 0, {won: true});
+    const indexAt = (row, col) => row * card.nCols + col;
+
+    // Column bingo
+    for (let col = 0; col < card.nCols; col++) {
+        let bingo = true;
+        for (let row = 0; row < card.nRows; row++) {
+            const cell = cells[indexAt(row, col)];
+            if (!cell.won) {
+                bingo = false;
+                break;
+            }
+        }
+        if (bingo) {
+            return "bingo";
+        }
+    }
+
+    // Row bingo
+    for (let row = 0; row < card.nRows; row++) {
+        let bingo = true;
+        for (let col = 0; col < card.nCols; col++) {
+            const cell = cells[indexAt(row, col)];
+            if (!cell.won) {
+                bingo = false;
+                break;
+            }
+        }
+        if (bingo) {
+            return "bingo";
+        }
+    }
+
+    return "lost";
+}
 
 // Start the server
 server.listen(port, () => {

@@ -1,88 +1,93 @@
 import { useState } from 'react';
-import { BingoCardData, BingoEventData } from './BingoCard.tsx';
+import { BingoCardData, BingoCellData } from './BingoCard.tsx';
 import BingoCardCreate from './BingoCardCreate.tsx'
 import CardEditor from './CardEditor.tsx';
 
-const testEvents: BingoEventData[] =
+const testCells: BingoCellData[] =
 	[
-		{ id: 1, title: "SL Benfica x Porto FC", description: "Futebol Liga Betclic", date: new Date("01/04/2025"), expectedResult: "SL Benfica", result: null },
-		{ id: 2, title: "Evento 2", description: "'Desporto' Liga 'Xxxx'", date: new Date("05/04/2025"), expectedResult: "Expected", result: null },
-		{ id: 3, title: "Evento 3", description: "'Desporto' Liga 'Xxxx'", date: new Date("01/04/2025"), expectedResult: "Expected", result: null },
-		{ id: 4, title: "Evento 4", description: "'Desporto' Liga 'Xxxx'", date: new Date("02/04/2025"), expectedResult: "Expected", result: null },
-		{ id: 5, title: "Evento 5", description: "'Desporto' Liga 'Xxxx'", date: new Date("03/04/2025"), expectedResult: "Expected", result: null },
-		{ id: 6, title: "Evento 6", description: "'Desporto' Liga 'Xxxx'", date: new Date("04/04/2025"), expectedResult: "Expected", result: null },
-		{ id: 7, title: "Evento 7", description: "'Desporto' Liga 'Xxxx'", date: new Date("06/04/2025"), expectedResult: "Expected", result: null },
-		{ id: 8, title: "Evento 8", description: "'Desporto' Liga 'Xxxx'", date: new Date("07/04/2025"), expectedResult: "Expected", result: null },
-		{ id: 9, title: "Evento 9", description: "'Desporto' Liga 'Xxxx'", date: new Date("08/04/2025"), expectedResult: "Expected", result: null },
-		{ id: 10, title: "Evento 10", description: "'Desporto' Liga 'Xxxx'", date: new Date("08/04/2025"), expectedResult: "Expected", result: null },
-		{ id: 11, title: "Evento 11", description: "'Desporto' Liga 'Xxxx'", date: new Date("09/04/2025"), expectedResult: "Expected", result: null },
-		{ id: 12, title: "Evento 12", description: "'Desporto' Liga 'Xxxx'", date: new Date("10/05/2025"), expectedResult: "Expected", result: null },
+		{ id: 1, title: "SL Benfica x Porto FC", won: false },
+		{ id: 2, title: "Celula 2", won: false},
+		{ id: 3, title: "Celula 3", won: false},
+		{ id: 4, title: "Celula 4", won: false},
+		{ id: 5, title: "Celula 5", won: false},
+		{ id: 6, title: "Celula 6", won: false},
+		{ id: 7, title: "Celula 7", won: false},
+		{ id: 8, title: "Celula 8", won: false},
+		{ id: 9, title: "Celula 9", won: false},
+		{ id: 10, title: "Celula 10", won: false},
+		{ id: 11, title: "Celula 11", won: false},
+		{ id: 12, title: "Celula 12", won: false},
 	];
 
 
 function CreateBingoCardPage() {
+	const [title, setTitle] = useState<string>("");
+	const [description, setDescription] = useState<string>("");
+	const [date, setDate] = useState<Date>(new Date(Date.now()));
 	const [nCols, setNCols] = useState<number>(5);
 	const [nRows, setNRows] = useState<number>(3);
-	const [price, setPrice] = useState<number>(0);
-	const [bingoPrize, setBingoPrize] = useState<number>(0);
-	const [maxPrize, setMaxPrize] = useState<number>(0);
+	const [price, setPrice] = useState<number>(1);
+	const [bingoPrize, setBingoPrize] = useState<number>(1);
+	const [maxPrize, setMaxPrize] = useState<number>(1);
 
-	const [events, setEvents] = useState<BingoEventData[]>(testEvents);
-	const [selectedEvent, setSelectedEvent] = useState<BingoEventData | null>(null);
+	const [cells, setCells] = useState<BingoCellData[]>(testCells);
+	const [selectedCell, setSelectedCell] = useState<BingoCellData | null>(null);
 
-	const isGridTooSmall = nRows * nCols <= events.length;
+	const isGridTooSmall = nRows * nCols <= cells.length;
 
-	const updateEvent = (event: BingoEventData, data: Partial<BingoEventData>) => {
-		setEvents((prevEvents) => {
-			const newEvents = [...prevEvents];
-			const index = newEvents.findIndex((e) => e.id === event.id);
+	const updateCell = (cell: BingoCellData, data: Partial<BingoCellData>) => {
+		setCells((prevCells) => {
+			const newCells = [...prevCells];
+			const index = newCells.findIndex((e) => e.id === cell.id);
 
 			if (index !== -1) {
-				newEvents[index] = { ...newEvents[index], ...data };
+				newCells[index] = { ...newCells[index], ...data };
 			}
 
-			if (selectedEvent && selectedEvent.id == newEvents[index].id) {
-				setSelectedEvent(newEvents[index]);
+			if (selectedCell && selectedCell.id == newCells[index].id) {
+				setSelectedCell(newCells[index]);
 			}
-			return newEvents;
+			return newCells;
 		});
 	}
 
-	const deleteEvent = (event: BingoEventData) => {
-		if (!selectedEvent) return;
-		setSelectedEvent(null);
-		setEvents((prevEvents) => {
-			const newEvents = prevEvents.filter(e => e != event);
-			return newEvents;
+	const deleteCell = (cell: BingoCellData) => {
+		if (!selectedCell) return;
+		setSelectedCell(null);
+		setCells((prevCells) => {
+			const newCells = prevCells.filter(e => e.id != cell.id);
+			return newCells;
 		});
 	}
 
 	const handleUploadCard = () => {
 		const newId = Number(Math.random().toString().slice(2));
 		let card: BingoCardData = {
-			id: newId, nCols: nCols, nRows: nRows, events: events,
-			creationDate: new Date(Date.now()), price: price,
-			bingoPrize: bingoPrize, maxPrize: maxPrize, result: null,
+			id: newId, nCols: nCols, nRows: nRows, cells: cells,
+			title: title, description: description,
+			date: date, creationDate: new Date(Date.now()),
+			price: price, bingoPrize: bingoPrize, maxPrize: maxPrize,
+			result: null, finished: false
 		};
 
 		// check if grid is too small
 		if (isGridTooSmall) {
-			alert("Grelha muito pequena para número de eventos!");
+			alert("Grelha muito pequena para número de celulas!");
 			return;
 		}
-		// check if number of events matches grid size
-		if (events.length != nCols * nRows - 1) {
-			alert("Número de eventos não corresponde ao tamanho da grelha!");
+		// check if number of cells matches grid size
+		if (cells.length != nCols * nRows - 1) {
+			alert("Número de celulas não corresponde ao tamanho da grelha!");
 			return;
 		}
-		if (events.length < 1) {
-			alert("O cartão tem de conter pelo menos 1 evento!");
+		if (cells.length < 1) {
+			alert("O cartão tem de conter pelo menos uma celula!");
 			return;
 		}
-		// check if events are unique
-		const uniqueEvents = new Set(events.map(event => event.id));
-		if (uniqueEvents.size != events.length) {
-			alert("Eventos não são únicos!");
+		// check if cells are unique
+		const uniqueCells = new Set(cells.map(cell => cell.id));
+		if (uniqueCells.size != cells.length) {
+			alert("Celulas não são únicos!");
 			return;
 		}
 		let user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -103,15 +108,23 @@ function CreateBingoCardPage() {
 		})
 		.then(() => {
 			alert("Cartão adicionado com sucesso!");
-			setEvents([]);
+			setCells([]);
 			setNCols(5);
 			setNRows(3);
-			setSelectedEvent(null);
+			setSelectedCell(null);
 			setPrice(0);
 			setBingoPrize(0);
 			setMaxPrize(0);
 		})
 		.catch((error) => alert(`Erro a adicionar cartão: ${error.message}`));
+	}
+
+
+
+	const getDateFormat = (date: Date): string => {
+		const minDigits = (s: number, digits: number) => (s.toString().length<digits)?"0".repeat(digits-s.toString().length).concat(s.toString()):s.toString();
+		
+		return minDigits(date.getUTCFullYear(),4) + "-" + minDigits(date.getUTCMonth()+1,2) + "-" + minDigits(date.getUTCDate(), 2) + " " + minDigits(date.getUTCHours(), 2) + ":" + minDigits(date.getUTCMinutes(), 2);
 	}
 
 	return (
@@ -121,58 +134,87 @@ function CreateBingoCardPage() {
 
 				{/* Bingo card left */}
 				<div style={{ flex: '1' }}>
-					<BingoCardCreate nCols={nCols} nRows={nRows} events={events} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent} setEvents={setEvents}></BingoCardCreate>
+					<BingoCardCreate nCols={nCols} nRows={nRows} cells={cells} selectedCell={selectedCell} setSelectedCell={setSelectedCell} setCells={setCells}></BingoCardCreate>
 				</div>
 
 				{/* Card settings right */}
-				<div>
+				<div style={{ maxWidth: "400px"}}>
 					<h2>Editor de cartão</h2>
-					<p>Arraste os eventos na grelha para os mover.</p>
+					<p>Arraste os quadrados na grelha para os mover.</p>
 
 					<div className="d-flex justify-content-end">
 
 						<div className="me-3">
+							<label className="form-label">Titulo:</label>
+							<input
+								className="form-control"
+								defaultValue={title}
+								onChange={(e) => {
+									setTitle(e.target.value);
+								}}
+							/>
+						</div>
+
+						<div className="me-3">
 							<label className="form-label">Preço:</label>
 							<input
-								className={"form-control"}
+								className={`form-control ${price<=0 && "is-invalid"}`}
 								type="number"
 								min="0"
-								value={price}
+								step=".01"
+								defaultValue={price}
 								onChange={(e) => {
-									let value = isNaN(e.target.valueAsNumber) ? 0 : e.target.valueAsNumber;
-									value = Math.max(value, 0);
-									setPrice(value);
+									setPrice(e.target.valueAsNumber);
 								}}
 							/>
 						</div>
 					</div>
 
+
+					<div className="me-3">
+						<label className="form-label">Descrição</label>
+						<textarea 
+							className="form-control"
+							onChange={(e) =>
+								setDescription(e.target.value)
+							}
+						/>
+					</div>
+
+					
+					<div className="me-3">
+						<label className="form-label">Data:</label>
+						<input
+							className={`form-control ${date?.getTime() < new Date().getTime() && "is-invalid"}`}
+							type="datetime-local"
+							min={getDateFormat(new Date())}
+							onChange={(e) => setDate(new Date(e.target.value))}
+						/>
+					</div>
 					<div className="d-flex justify-content-end">
 						<div className="me-3">
 							<label className="form-label">Prémio bingo:</label>
 							<input
-								className={"form-control"}
+								className="form-control"
 								type="number"
 								min="0"
-								value={bingoPrize}
+								step=".01"
+								defaultValue={bingoPrize}
 								onChange={(e) => {
-									let value = isNaN(e.target.valueAsNumber) ? 0 : e.target.valueAsNumber;
-									value = Math.max(value, 0);
-									setBingoPrize(value);
+									setBingoPrize(e.target.valueAsNumber);
 								}}
 							/>
 						</div>
 						<div className="me-3">
 							<label className="form-label">Prémio cartão completo:</label>
 							<input
-								className={"form-control"}
+								className="form-control"
 								type="number"
 								min="0"
-								value={maxPrize}
+								step=".01"
+								defaultValue={maxPrize}
 								onChange={(e) => {
-									let value = isNaN(e.target.valueAsNumber) ? 0 : e.target.valueAsNumber;
-									value = Math.max(value, 0);
-									setMaxPrize(value);
+									setMaxPrize(e.target.valueAsNumber);
 								}}
 							/>
 						</div>
@@ -182,70 +224,74 @@ function CreateBingoCardPage() {
 						<div className="me-3">
 							<label className="form-label">Colunas:</label>
 							<input
-								className={`form-control ${isGridTooSmall && "is-invalid"}`}
+								className={`form-control ${(isGridTooSmall||nCols%2!=1) && "is-invalid"}`}
 								type="number"
-								min="1"
 								step="2"
-								value={nCols}
-								onChange={(e) => {
-									let value = isNaN(e.target.valueAsNumber) ? 1 : e.target.valueAsNumber;
-									value = Math.max(value, 1);
-									value = value % 2 == 0 ? value + 1 : value;
-									setNCols(value);
-								}}
-							/>
-
-						</div>
-
-						<div className="me-3">
-							<label className="form-label">Linhas:</label>
-							<input
-								className={`form-control ${isGridTooSmall && "is-invalid"}`}
-								type="number"
 								min="1"
-								step="2"
-								value={nRows}
+								defaultValue={nCols}
 								onChange={(e) => {
 									if (isNaN(e.target.valueAsNumber)) {
 										e.target.valueAsNumber = 1;
 									}
 									const valor = Math.max(e.target.valueAsNumber, 1);
 									const impar = valor % 2 === 0 ? valor + 1 : valor;
+									e.target.valueAsNumber = impar;
+									setNCols(e.target.valueAsNumber);
+								}}
+							/>
+							{nCols%2!=1 && <div className="invalid-feedback d-block text-end">Numero de colunas deve ser impar!</div>}
+						</div>
+
+						<div className="me-3">
+							<label className="form-label">Linhas:</label>
+							<input
+								className={`form-control ${(isGridTooSmall||nRows%2!=1) && "is-invalid"}`}
+								type="number"
+								min="1"
+								step="2"
+								defaultValue={nRows}
+								onChange={(e) => {
+									if (isNaN(e.target.valueAsNumber)) {
+										e.target.valueAsNumber = 1;
+									}
+									const valor = Math.max(e.target.valueAsNumber, 1);
+									const impar = valor % 2 === 0 ? valor + 1 : valor;
+									e.target.valueAsNumber = impar;
 									setNRows(impar);
 								}
 								}
 							/>
-
+							{nRows%2!=1 && <div className="invalid-feedback d-block text-end">Numero de linha deve ser impar!</div>}
 						</div>
 					</div>
 					<div className="me-3">
 						{isGridTooSmall &&
-							<div className="invalid-feedback d-block text-end">Grelha muito pequena para número de eventos!</div>
+							<div className="invalid-feedback d-block text-end">Grelha muito pequena para número de celulas!</div>
 						}
 					</div>
 					<div className="d-flex m-3 justify-content-end">
-						<div className={`btn btn-primary ${events.length !== nCols * nRows - 1 || events.length < 1 ? "disabled" : ""} `}
+						<div className={`btn btn-primary ${((date?.getTime() <= new Date().getTime()) || (cells.length !== nCols * nRows - 1 && cells.length < 1)) && "disabled"} `}
 							onClick={handleUploadCard}
 						>
 							Adicionar Cartão
 						</div>
 					</div>
 					<div className="me-3">
-						<CardEditor selectedEvent={selectedEvent} updateEvent={updateEvent}></CardEditor>
+						<CardEditor selectedCell={selectedCell} updateCell={updateCell}></CardEditor>
 
 					</div>
 
-					{selectedEvent && (
-						// button to delete event
+					{selectedCell && (
+						// button to delete cell
 						<div style={{
 							display: 'flex',
 							alignItems: 'center',
 							justifyContent: 'flex-end',
 						}}
-							onClick={() => deleteEvent(selectedEvent)}
+							onClick={() => deleteCell(selectedCell)}
 						>
 							<button className="btn btn-danger me-3">
-								Apagar evento
+								Apagar celula
 							</button>
 						</div>
 

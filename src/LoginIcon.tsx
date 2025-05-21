@@ -1,6 +1,5 @@
 import { User } from "./App";
 
-
 function LoginIcon({ user, logout } : { user: User | null, logout: ()=>void }) {
     return user ? (
         <>

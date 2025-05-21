@@ -1,20 +1,21 @@
-export interface BingoEventData {
+export interface BingoCellData {
     id: number;
     title: string;
-    date: Date;
-    description: string;
-    expectedResult: string;
-    result: "win" | "lose" | null;
+    won: boolean;
 }
 
 export interface BingoCardData {
     id: number;
+    title: string;
+    description: string;
+    date: Date;
     nRows: number;
     nCols: number;
     creationDate: Date;
-    events: BingoEventData[];
+    cells: BingoCellData[];
     price: number;
     bingoPrize: number;
     maxPrize: number;
-    result: "win" | "lose" | null;
+    finished: boolean;
+    result: "fullwin" | "bingo" | "lost" | null;
 }

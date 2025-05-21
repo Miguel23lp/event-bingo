@@ -1,31 +1,31 @@
-import { BingoEventData } from "./BingoCard";
+import { BingoCellData } from "./BingoCard";
 
 interface CardEditorProps {
-    selectedEvent: BingoEventData | null;
-    updateEvent: (event: BingoEventData, data: Partial<BingoEventData>) => void
+    selectedCell: BingoCellData | null;
+    updateCell: (cell: BingoCellData, data: Partial<BingoCellData>) => void
 }
 
-function CardEditor({selectedEvent, updateEvent}: CardEditorProps) {
+function CardEditor({selectedCell: selectedCell, updateCell: updateCell}: CardEditorProps) {
 
     return(
         <>
             {/* Right side: Editor for selected card */}
             <div style={{ minWidth: '250px' }}>
-                
-                
-
-                {selectedEvent? (
-                <div style={{ width: '100%'}}>
-                    <h2>Editar evento {selectedEvent.id}</h2>
+                {selectedCell? (
+                <div className="w-100">
+                    <h2>
+                        Editar celula:
+                    </h2>
 
                     {/* Edit title */}
                     <div className="form-floating mb-3">
                         <input
                         className="form-control"
                         type="text"
-                        value={selectedEvent.title}
+                        value={selectedCell.title}
+                        maxLength={35}
                         onChange={(e) =>{
-                            updateEvent(selectedEvent, { title: e.target.value })
+                            updateCell(selectedCell, { title: e.target.value })
                             }
                         }
                         />
@@ -33,41 +33,9 @@ function CardEditor({selectedEvent, updateEvent}: CardEditorProps) {
                             Titulo:
                         </label>
                     </div>
-
-                    {/* Edit description */}
-                    <div className="form-floating mb-3">
-                        <input
-                        className="form-control"
-                        type="text"
-                        value={selectedEvent.description}
-                        onChange={(e) =>{
-                            updateEvent(selectedEvent, { description: e.target.value })
-                            }
-                        }
-                        />
-                        <label>
-                            Descrição:
-                        </label>
-                    </div>
-                    
-                    {/* Edit date */}
-                    <div className="form-floating mb-3">
-                        <input
-                        className="form-control"
-                        type="datetime-local"
-                        value={selectedEvent.date.toISOString().slice(0, 16)}
-                        onChange={(e) =>
-                            updateEvent(selectedEvent, { date: new Date(e.target.value) })
-                        }
-                        style={{ marginLeft: '5px' }}
-                        />
-                        <label>
-                            Data:
-                        </label>
-                    </div>
                 </div>
                 ) : (
-                <p>Selecione um evento para editar.</p>
+                <p>Selecione uma celula para editar.</p>
                 )}
             </div>
 
