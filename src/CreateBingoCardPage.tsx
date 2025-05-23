@@ -134,7 +134,7 @@ function CreateBingoCardPage() {
 
 				{/* Bingo card left */}
 				<div style={{ flex: '1' }}>
-					<BingoCardCreate nCols={nCols} nRows={nRows} cells={cells} selectedCell={selectedCell} setSelectedCell={setSelectedCell} setCells={setCells}></BingoCardCreate>
+					<BingoCardCreate nCols={nCols} nRows={nRows} cells={cells} title={title} selectedCell={selectedCell} setSelectedCell={setSelectedCell} setCells={setCells}></BingoCardCreate>
 				</div>
 
 				{/* Card settings right */}

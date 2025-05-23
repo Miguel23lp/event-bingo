@@ -101,6 +101,7 @@ function App() {
     const logout = () => {
         localStorage.removeItem('user');
         setCurrentUser(null);
+        location.reload();
     };
 
     return loading ? (

@@ -5,6 +5,7 @@ import { BingoCardDisplay } from "./BingoCardDisplay.tsx" ;
 interface BingoCardCreateProps {
     nCols: number;
     nRows: number;
+    title: string;
     cells: BingoCellData[];
     selectedCell: BingoCellData | null;
     setSelectedCell: (cell: BingoCellData) => void;
@@ -12,7 +13,7 @@ interface BingoCardCreateProps {
 }
 
 
-function BingoCardCreate({ nCols, nRows, cells: cells, selectedCell: selectedCell, setSelectedCell: setSelectedCell, setCells: setCells }: BingoCardCreateProps) {
+function BingoCardCreate({ nCols, nRows, title, cells: cells, selectedCell: selectedCell, setSelectedCell: setSelectedCell, setCells: setCells }: BingoCardCreateProps) {
     const reorderCells = (fromCell: BingoCellData, toCell: BingoCellData) => {
         const updatedCells = Array.from(cells);
         const fromIndex = updatedCells.indexOf(fromCell);
@@ -86,7 +87,7 @@ function BingoCardCreate({ nCols, nRows, cells: cells, selectedCell: selectedCel
     return (
         <>
             <section>
-                <BingoCardDisplay nCols={nCols} nRows={nRows} cells={cells}
+                <BingoCardDisplay nCols={nCols} nRows={nRows} title={title} cells={cells}
                     onAddCell={addCell} getCellProps={getCellProps} renderCell={renderCell} />
             </section>
         </>

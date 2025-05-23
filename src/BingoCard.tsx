@@ -19,3 +19,12 @@ export interface BingoCardData {
     finished: boolean;
     result: "fullwin" | "bingo" | "lost" | null;
 }
+
+export function jsonToBingoCard(json: string) {
+    return JSON.parse(json, (key, value)=>{
+        if (key.toLowerCase().includes("date")){
+            return new Date(value);
+        }
+        return value;
+    })
+}

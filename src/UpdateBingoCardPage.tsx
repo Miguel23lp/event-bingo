@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { BingoCardData, BingoCellData } from './BingoCard.tsx';
-// import UnifiedBingoCard from "./UnifiedBingoCard";
 import { BingoCardDisplay } from "./BingoCardDisplay" ;
 import { useNavigate } from 'react-router';
 
@@ -139,20 +138,21 @@ function UpdateBingoCardPage() {
             {/* Bingo card left */}
             <div style={{ flex: '1' }}>
                 <section>
-                    <BingoCardDisplay nCols={bingoCard.nCols} nRows={bingoCard.nRows} cells={bingoCard.cells}
+                    <BingoCardDisplay nCols={bingoCard.nCols} nRows={bingoCard.nRows} title={bingoCard.title} cells={bingoCard.cells}
                         getCellProps={getCellProps} renderCell={renderCell} />
                 </section>
+
+                <div className="d-flex justify-content-center">
+                    <div className="btn btn-danger" style={{width: "fit-content"}} onClick={()=>setCardFinished(bingoCard)}>
+                        <i className="bi bi-x-circle-fill"></i>
+                        Marcar evento como concluído
+                    </div>
+                </div>
             </div>
 
             {/* Card settings right */}
             <div>
                 <h2>Editor de evento</h2>
-                <div>
-                    <div className='btn btn-danger' onClick={()=>setCardFinished(bingoCard)}>
-                        <i className="bi bi-x-circle-fill"></i>
-                        Marcar evento como concluído
-                    </div>
-                </div>
                 <p>Selecione celulas e marque-as em caso de acerto</p>
                 <div style={{ minWidth: '250px' }}>
                     {selectedCell ? (

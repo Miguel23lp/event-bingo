@@ -11,7 +11,7 @@ function Home({ user, buyCard }: { user: User | null, buyCard: (cardId: number) 
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        fetch('http://localhost:3000/cards' + (user?.role!="admin"?"/available":""))
+        fetch('http://localhost:3000/cards' + (user?.role!="admin"?"/available":"/editable"))
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -41,16 +41,8 @@ function Home({ user, buyCard }: { user: User | null, buyCard: (cardId: number) 
         {bingoCards.map(card =>
             <div key={card.id} className="mb-5 p-4">
                 <h1 className="text-center">Cartão de Bingo</h1>
-                <h2 className="text-center">ID: {card.id}</h2>
-                <h2 className="text-center">Data de Criação: {card.creationDate.toLocaleString("pt-PT")}</h2>
-                <h2 className="text-center">Preço: {card.price}€</h2>
-                <h2 className="text-center">Prémio: {card.bingoPrize}€</h2>
-                <h2 className="text-center">Prémio máximo: {card.maxPrize}€</h2>
-                <h2 className="text-center">Celulas: {card.cells.length}</h2>
-                <h2 className="text-center">Celulas por linha: {card.nRows}</h2>
-                <h2 className="text-center">Celulas por coluna: {card.nCols}</h2>
 
-                <BingoCardDisplay cells={card.cells} nCols={card.nCols} nRows={card.nRows} />
+                <BingoCardDisplay cells={card.cells} nCols={card.nCols} title={card.title} nRows={card.nRows} />
                 <div className="d-flex justify-content-center">
                     {user?.role == "admin" &&
                         <button className="btn btn-warning" onClick={() => {
@@ -60,14 +52,16 @@ function Home({ user, buyCard }: { user: User | null, buyCard: (cardId: number) 
                             Editar cartão
                         </button>
                     }
-                    <button
-                        className="btn btn-success w-auto d-flex align-items-center gap-2"
-                        onClick={() => buyCard(card.id)}
-                    >
-                        <i className="bi bi-cart-plus"></i>
-                        <span>Comprar cartão</span>
-                        <span className="border-start ps-2">{card.price}€</span>
-                    </button>
+                    {user?.role == "user" &&
+                        <button
+                            className="btn btn-success w-auto d-flex align-items-center gap-2"
+                            onClick={() => buyCard(card.id)}
+                        >
+                            <i className="bi bi-cart-plus"></i>
+                            <span>Comprar cartão</span>
+                            <span className="border-start ps-2">{card.price}€</span>
+                        </button>
+                    }   
                 </div>
             </div>
         )}

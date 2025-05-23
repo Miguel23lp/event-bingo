@@ -42,7 +42,6 @@ wss.on('connection', (ws, req) => {
         try {
             const data = JSON.parse(message);
             
-            console.log('Received data:', data);
             if (data.type === 'register' && data.userId) {
                 clients.set(data.userId, ws);
                 ws.userId = data.userId;
@@ -53,7 +52,6 @@ wss.on('connection', (ws, req) => {
     });
 
     ws.on('close', () => {
-        console.log('Client disconnected');
         if (ws.userId) {
             clients.delete(ws.userId);
         }
@@ -127,6 +125,12 @@ app.get('/cards/available', (req, res) => {
     res.json(availableCards);
 });
 
+// GET endpoint to retrieve all editable cards
+app.get('/cards/editable', (req, res) => {
+    const editableCards = db.data.cards.filter(card => !card.finished);
+    res.json(editableCards);
+});
+
 // POST endpoint to create a new card (admin only)
 app.post('/cards', async (req, res) => {
     const { card, username, password } = req.body;
@@ -168,7 +172,6 @@ app.get('/cards/:id', (req, res) => {
 app.put('/cards/:cardId/cellWon/:cellId', async (req, res) => {
     const { username, password } = req.body;
     const user = getUser(username, password);
-    console.log(req.params.id);
     if (!user) {
         return res.status(401).json({ message: 'Credenciais invalidas!' });
     }
@@ -189,9 +192,8 @@ app.put('/cards/:cardId/cellWon/:cellId', async (req, res) => {
     if (!cell) {
         return res.status(404).json({ message: 'Celula não encontrada!' });
     }
-    console.log(card);
     cell.won = true;
-    console.log(card);
+
     await db.write();
     res.json(card);
 });

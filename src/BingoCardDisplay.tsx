@@ -4,6 +4,7 @@ import './BingoCard.scss';
 interface BingoCardDisplayProps {
     nCols: number;
     nRows: number;
+    title: string;
     cells: BingoCellData[];
     onAddCell?: () => void;
     getCellProps?: (ev: BingoCellData, index: number) => React.HTMLAttributes<HTMLDivElement>;
@@ -13,6 +14,7 @@ interface BingoCardDisplayProps {
 const BingoCardDisplay = ({
     nCols,
     nRows,
+    title,
     cells: cells,
     onAddCell: onAddCell,
     getCellProps,
@@ -35,17 +37,9 @@ const BingoCardDisplay = ({
         return classes + " ";
     }
 
-    const formatDate = (date: Date) => {
-        return new Date(date).toLocaleDateString('pt-PT', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric',
-        });
-    }
-
     return (
         <div className="bingo-container">
-            <h1 className="bingo-title">Cartão de Bingo</h1>
+            <h1 className="bingo-title">{title}</h1>
             <section className="bingo-grid" style={gridStyle}>
                 {Array.from(cells, (cell, index) => {
                     const extra = getCellProps?.(cell, index) ?? {};
@@ -85,7 +79,8 @@ const BingoCardDisplay = ({
                     <div className="bingo-cell bingo-cell--add" onClick={onAddCell}>
                         <i className="bi bi-plus-square-fill"></i>
                     </div>
-                    /* <div key="add" className="bingo-cell bingo-cell--add" onClick={onAddCell}>
+                    /* 
+                    <div key="add" className="bingo-cell bingo-cell--add" onClick={onAddCell}>
                         <span>Adicionar</span>
                         <img src={addIcon} alt="Add" draggable={false} />
                     </div> */
