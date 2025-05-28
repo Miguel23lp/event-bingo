@@ -7,13 +7,16 @@ interface BingoCardCreateProps {
     nRows: number;
     title: string;
     cells: BingoCellData[];
+    price: number;
+    bingoPrize: number;
+    maxPrize: number;
     selectedCell: BingoCellData | null;
     setSelectedCell: (cell: BingoCellData) => void;
     setCells: (cells: BingoCellData[]) => void;
 }
 
 
-function BingoCardCreate({ nCols, nRows, title, cells: cells, selectedCell: selectedCell, setSelectedCell: setSelectedCell, setCells: setCells }: BingoCardCreateProps) {
+function BingoCardCreate({ nCols, nRows, title, cells, price, bingoPrize, maxPrize, selectedCell, setSelectedCell, setCells }: BingoCardCreateProps) {
     const reorderCells = (fromCell: BingoCellData, toCell: BingoCellData) => {
         const updatedCells = Array.from(cells);
         const fromIndex = updatedCells.indexOf(fromCell);
@@ -87,7 +90,8 @@ function BingoCardCreate({ nCols, nRows, title, cells: cells, selectedCell: sele
     return (
         <>
             <section>
-                <BingoCardDisplay nCols={nCols} nRows={nRows} title={title} cells={cells}
+                <BingoCardDisplay nCols={nCols} nRows={nRows} title={title} cells={cells} 
+                    price={price} bingoPrize={bingoPrize} maxPrize={maxPrize}
                     onAddCell={addCell} getCellProps={getCellProps} renderCell={renderCell} />
             </section>
         </>

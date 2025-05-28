@@ -1,5 +1,6 @@
 
 .bingo-container {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,6 +34,41 @@
     letter-spacing: 4px;
     // text outline
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+
+.bingo-price {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+  pointer-events: none;
+  user-select: none;
+  z-index: 10;
+}
+
+.bingo-prizes {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  text-align: right;
+  background: transparent; /* no overlay */
+  font-weight: 700;
+  color: #2b2b2b;
+
+  div:first-child {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    color: #0a58ca;
+  }
+
+  div:not(:first-child) {
+    font-size: 0.8rem;
+  }
 }
 
 .bingo-cell {
@@ -200,7 +236,7 @@
         vertical-align: middle;
         line-height: 1.2;
         color: #ffffff;
-        font-family: Roboto, Helvetica, sans-serif;
+        font-family: 'Roboto', Helvetica, sans-serif;
         z-index: 2;
         /* Text outline */
         text-shadow:

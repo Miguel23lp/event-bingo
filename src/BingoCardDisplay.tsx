@@ -6,6 +6,9 @@ interface BingoCardDisplayProps {
     nRows: number;
     title: string;
     cells: BingoCellData[];
+    price?: number;
+    bingoPrize?: number;
+    maxPrize?: number;
     onAddCell?: () => void;
     getCellProps?: (ev: BingoCellData, index: number) => React.HTMLAttributes<HTMLDivElement>;
     renderCell?: (ev: BingoCellData, index: number) => React.ReactNode;
@@ -15,8 +18,11 @@ const BingoCardDisplay = ({
     nCols,
     nRows,
     title,
-    cells: cells,
-    onAddCell: onAddCell,
+    cells,
+    price,
+    bingoPrize,
+    maxPrize,
+    onAddCell,
     getCellProps,
     renderCell,
 }: BingoCardDisplayProps) => {
@@ -39,6 +45,15 @@ const BingoCardDisplay = ({
 
     return (
         <div className="bingo-container">
+            <div className="bingo-price">
+                € {price?.toFixed(2)}
+            </div>
+
+            <div className="bingo-prizes">
+                <div>🏆 Prémios:</div>
+                {bingoPrize !== undefined && <div>Bingo: € {bingoPrize.toFixed(2)}</div>}
+                {maxPrize !== undefined && <div>Máx: € {maxPrize.toFixed(2)}</div>}
+            </div>
             <h1 className="bingo-title">{title}</h1>
             <section className="bingo-grid" style={gridStyle}>
                 {Array.from(cells, (cell, index) => {

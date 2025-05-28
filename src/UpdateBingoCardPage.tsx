@@ -138,8 +138,9 @@ function UpdateBingoCardPage() {
             {/* Bingo card left */}
             <div style={{ flex: '1' }}>
                 <section>
-                    <BingoCardDisplay nCols={bingoCard.nCols} nRows={bingoCard.nRows} title={bingoCard.title} cells={bingoCard.cells}
-                        getCellProps={getCellProps} renderCell={renderCell} />
+                    <BingoCardDisplay nCols={bingoCard.nCols} nRows={bingoCard.nRows} title={bingoCard.title} 
+                        price={bingoCard.price} bingoPrize={bingoCard.bingoPrize} maxPrize={bingoCard.maxPrize} 
+                        cells={bingoCard.cells} getCellProps={getCellProps} renderCell={renderCell} />
                 </section>
 
                 <div className="d-flex justify-content-center">

@@ -60,13 +60,8 @@ function PurchasedCardsPage({ user }: { user: User | null }) {
 
     const renderCard = (card: BingoCardData) => (
         <div key={card.id} className="mb-5 card p-3">
-            <h2 className="text-center">Cartão de Bingo #{card.id}</h2>
-            <h3 className="text-center">Data de Criação: {card.creationDate.toLocaleString()}</h3>
-            <h3 className="text-center">Preço: {card.price}€</h3>
-            <h3 className="text-center">Prémio: {card.bingoPrize}€</h3>
-            <h3 className="text-center">Prémio máximo: {card.maxPrize}€</h3>
-            <h3 className="text-center">Celulas: {card.cells.length}</h3>
-            <BingoCardDisplay cells={card.cells} nCols={card.nCols} nRows={card.nRows} />
+            <BingoCardDisplay cells={card.cells} nCols={card.nCols} nRows={card.nRows} title={card.title} 
+                price={card.price} bingoPrize={card.bingoPrize} maxPrize={card.maxPrize} />
         </div>
     );
 

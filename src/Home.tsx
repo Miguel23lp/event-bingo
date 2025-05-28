@@ -2,11 +2,9 @@ import { useState, useEffect } from "react";
 import { BingoCardData } from "./BingoCard.tsx";
 import { BingoCardDisplay } from "./BingoCardDisplay.tsx";
 import { User } from "./App.tsx";
-import { useNavigate } from "react-router";
 
 
 function Home({ user, buyCard }: { user: User | null, buyCard: (cardId: number) => void }) {
-    const navigate = useNavigate();
     const [bingoCards, setBingoCards] = useState<BingoCardData[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -40,17 +38,15 @@ function Home({ user, buyCard }: { user: User | null, buyCard: (cardId: number) 
 
         {bingoCards.map(card =>
             <div key={card.id} className="mb-5 p-4">
-                <h1 className="text-center">Cartão de Bingo</h1>
 
-                <BingoCardDisplay cells={card.cells} nCols={card.nCols} title={card.title} nRows={card.nRows} />
+                <BingoCardDisplay cells={card.cells} nCols={card.nCols} nRows={card.nRows} title={card.title} 
+                    price={card.price} bingoPrize={card.bingoPrize} maxPrize={card.maxPrize}/>
                 <div className="d-flex justify-content-center">
                     {user?.role == "admin" &&
-                        <button className="btn btn-warning" onClick={() => {
-                            navigate(`/atualizar_cartao/${card.id}`);
-                        }}>
+                        <a className="btn btn-warning" href={`/atualizar_cartao/${card.id}`}>
                             <i className="bi bi-pencil-square me-2"></i>
                             Editar cartão
-                        </button>
+                        </a>
                     }
                     {user?.role == "user" &&
                         <button

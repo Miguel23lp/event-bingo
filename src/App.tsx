@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router";
+import { Routes, Route, useNavigate } from "react-router";
 import Header from "./Header.tsx";
 import Home from "./Home.tsx";
 import LoginPage from "./LoginPage.tsx";
