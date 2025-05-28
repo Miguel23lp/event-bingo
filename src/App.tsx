@@ -9,7 +9,7 @@ import UpdateBingoCardPage from "./UpdateBingoCardPage.tsx";
 import PurchasedCardsPage from "./PurchasedCardsPage.tsx";
 
 export interface User {
-    id: string;
+    id: number;
     username: string;
     password: string;
     role: 'user' | 'admin';
@@ -45,31 +45,6 @@ function App() {
             }
             return prevUser;
         });
-    };
-
-    const buyCard = async (cardId: number) => {
-        if (!currentUser) {
-            navigate("/Login");
-            return;
-        }
-        try {
-            const response = await fetch(`http://localhost:3000/cards/${cardId}/buy`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ username: currentUser.username, password: currentUser.password }),
-            });
-
-            const data = await response.json();
-            if (response.ok) {
-                alert(`Cartão comprado com sucesso! ID: ${cardId}`);
-            } else {
-                alert(data.message || response.statusText);
-            }
-        } catch (error) {
-            alert('Erro ao comprar cartão: ' + (error instanceof Error ? error.message : 'Erro desconhecido'));
-        }
     };
 
 
@@ -115,7 +90,7 @@ function App() {
                     </div>
                 )}
                 <Routes>
-                    <Route index element={<Home user={currentUser} buyCard={buyCard}/>} />
+                    <Route index element={<Home user={currentUser}/>} />
                     <Route path="/login" element={<LoginPage login={login} />} />
                     <Route path="/meus_cartoes" element={
                         <ProtectedRoute user={currentUser}>

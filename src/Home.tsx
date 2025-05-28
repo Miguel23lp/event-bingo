@@ -2,14 +2,58 @@ import { useState, useEffect } from "react";
 import { BingoCardData } from "./BingoCard.tsx";
 import { BingoCardDisplay } from "./BingoCardDisplay.tsx";
 import { User } from "./App.tsx";
+import { useNavigate } from "react-router";
 
 
-function Home({ user, buyCard }: { user: User | null, buyCard: (cardId: number) => void }) {
+function Home({ user }: { user: User | null }) {
     const [bingoCards, setBingoCards] = useState<BingoCardData[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const navigate = useNavigate();
+
+    const removeCard = (cardId: number) => {
+        setBingoCards(bingoCards.filter((card) => card.id != cardId));
+    }
+
+    const buyCard = async (cardId: number) => {
+        if (!user) {
+            navigate("/Login");
+            return;
+        }
+
+        try {
+            const response = await fetch(`http://localhost:3000/cards/${cardId}/buy`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username: user.username, password: user.password }),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                alert(`Cartão comprado com sucesso! ID: ${cardId}`);
+                removeCard(cardId);
+            } else {
+                alert(data.message || response.statusText);
+            }
+        } catch (error) {
+            alert('Erro ao comprar cartão: ' + (error instanceof Error ? error.message : 'Erro desconhecido'));
+        }
+    };
 
     useEffect(() => {
-        fetch('http://localhost:3000/cards' + (user?.role!="admin"?"/available":"/editable"))
+        let url= user?.role!="admin"? "/available":"/editable"
+        if (user?.role=="user"){
+            url += "/" + user!.id;
+        }
+
+        fetch('http://localhost:3000/cards' + url, {
+            method: user?.role=="user"? 'POST':'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: user?.role=="user"? JSON.stringify({ username: user?.username, password: user?.password }): null,
+        })
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -27,10 +71,13 @@ function Home({ user, buyCard }: { user: User | null, buyCard: (cardId: number) 
             });
     }, []);
 
-    if (loading) return (
-        <div className="text-center">
-            <div className="spinner-border" role="status" />
-        </div>);
+    if (loading) { 
+        return (
+            <div className="text-center">
+                <div className="spinner-border" role="status" />
+            </div>
+        );
+    }
 
     return (<>
         {bingoCards.length == 0 && !loading && <h1>Não existem cartões disponíveis</h1>}

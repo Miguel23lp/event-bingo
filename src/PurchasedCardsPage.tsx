@@ -60,8 +60,21 @@ function PurchasedCardsPage({ user }: { user: User | null }) {
 
     const renderCard = (card: BingoCardData) => (
         <div key={card.id} className="mb-5 card p-3">
-            <BingoCardDisplay cells={card.cells} nCols={card.nCols} nRows={card.nRows} title={card.title} 
-                price={card.price} bingoPrize={card.bingoPrize} maxPrize={card.maxPrize} />
+            <div className="d-flex">
+                <div style={{flex: "1", maxWidth:"100px"}}>
+                    <div>Preço: {card.price}</div>
+                    {card.result!=null && card.result!="lost"
+                        && <div>Prémio: {card.result=="bingo"?card.bingoPrize: card.maxPrize}</div> 
+                    }
+                </div>
+                <section style={{
+                    flex: "2",
+                }}>
+                    <BingoCardDisplay cells={card.cells} nCols={card.nCols} nRows={card.nRows} title={card.title} 
+                        price={card.price} bingoPrize={card.bingoPrize} maxPrize={card.maxPrize} />
+
+                </section>
+            </div>
         </div>
     );
 
@@ -83,9 +96,8 @@ function PurchasedCardsPage({ user }: { user: User | null }) {
                     <div className="card-body">
                         {cards.length === 0 ? (
                             <p className="text-center">Nenhum cartão nesta categoria</p>
-                        ) : (
-                            cards.map(renderCard)
-                        )}
+                        ) 
+                        : (cards.map(renderCard))}
                     </div>
                 </div>
             </div>

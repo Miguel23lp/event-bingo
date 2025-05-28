@@ -5,23 +5,23 @@ import CardEditor from './CardEditor.tsx';
 
 const testCells: BingoCellData[] =
 	[
-		{ id: 1, title: "SL Benfica x Porto FC", won: false },
-		{ id: 2, title: "Celula 2", won: false},
-		{ id: 3, title: "Celula 3", won: false},
-		{ id: 4, title: "Celula 4", won: false},
-		{ id: 5, title: "Celula 5", won: false},
-		{ id: 6, title: "Celula 6", won: false},
-		{ id: 7, title: "Celula 7", won: false},
-		{ id: 8, title: "Celula 8", won: false},
-		{ id: 9, title: "Celula 9", won: false},
-		{ id: 10, title: "Celula 10", won: false},
-		{ id: 11, title: "Celula 11", won: false},
-		{ id: 12, title: "Celula 12", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "SL Benfica ganha", won: false },
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula 2", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula 3", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula 4", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula 5", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula 6", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula 7", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula 8", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula 9", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula 10", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula 11", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula 12", won: false},
 	];
 
 
 function CreateBingoCardPage() {
-	const [title, setTitle] = useState<string>("");
+	const [title, setTitle] = useState<string>("Título");
 	const [description, setDescription] = useState<string>("");
 	const [date, setDate] = useState<Date>(new Date(Date.now()));
 	const [nCols, setNCols] = useState<number>(5);
@@ -147,7 +147,7 @@ function CreateBingoCardPage() {
 					<div className="d-flex justify-content-end">
 
 						<div className="me-3">
-							<label className="form-label">Titulo:</label>
+							<label className="form-label">Título:</label>
 							<input
 								className="form-control"
 								defaultValue={title}

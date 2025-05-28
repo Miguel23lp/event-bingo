@@ -13,9 +13,11 @@
       "username": "joao",
       "password": "1234",
       "role": "user",
-      "money": 540,
+      "money": 440,
       "purchases": [
-        3423166665163626
+        3423166665163626,
+        2607110510882167,
+        3308699468052889
       ]
     }
   ],
@@ -286,47 +288,47 @@
         {
           "id": 1,
           "title": "SL Benfica x Porto FC",
-          "won": false
+          "won": true
         },
         {
           "id": 2,
           "title": "Celula 2",
-          "won": false
+          "won": true
         },
         {
           "id": 3,
           "title": "Celula 3",
-          "won": false
+          "won": true
         },
         {
           "id": 4,
           "title": "Celula 4",
-          "won": false
+          "won": true
         },
         {
           "id": 5,
           "title": "Celula 5",
-          "won": false
+          "won": true
         },
         {
           "id": 6,
           "title": "Celula 6",
-          "won": false
+          "won": true
         },
         {
           "id": 7,
           "title": "Celula 7",
-          "won": false
+          "won": true
         },
         {
           "id": 8,
           "title": "Celula 8",
-          "won": false
+          "won": true
         },
         {
           "id": 9,
           "title": "Celula 9",
-          "won": false
+          "won": true
         },
         {
           "id": 10,
@@ -361,8 +363,94 @@
       "price": 1,
       "bingoPrize": 1,
       "maxPrize": 1,
-      "result": null,
-      "finished": false
+      "result": "bingo",
+      "finished": true
+    },
+    {
+      "id": 3308699468052889,
+      "nCols": 5,
+      "nRows": 3,
+      "cells": [
+        {
+          "id": 5245747978611708,
+          "title": "SL Benfica ganha",
+          "won": true
+        },
+        {
+          "id": 20959332211992176,
+          "title": "Celula 2",
+          "won": true
+        },
+        {
+          "id": 53314655224755420,
+          "title": "Celula 3",
+          "won": true
+        },
+        {
+          "id": 23118101241430370,
+          "title": "Celula 8",
+          "won": true
+        },
+        {
+          "id": 45996562287062330,
+          "title": "Celula 4",
+          "won": true
+        },
+        {
+          "id": 7185638917539472,
+          "title": "Celula 5",
+          "won": true
+        },
+        {
+          "id": 9752933064577308,
+          "title": "Celula 6",
+          "won": true
+        },
+        {
+          "id": 13039141113117214,
+          "title": "Celula 7",
+          "won": true
+        },
+        {
+          "id": 3625644774273462,
+          "title": "Celula 9",
+          "won": true
+        },
+        {
+          "id": 7521537129991736,
+          "title": "Celula 10",
+          "won": true
+        },
+        {
+          "id": 216242869864548,
+          "title": "Celula 11",
+          "won": true
+        },
+        {
+          "id": 4042286354477429,
+          "title": "Celula 12",
+          "won": true
+        },
+        {
+          "id": 9044307133460384,
+          "title": "Celula ",
+          "won": true
+        },
+        {
+          "id": 9818446019947442,
+          "title": "Celula ",
+          "won": true
+        }
+      ],
+      "title": "Título",
+      "description": "rich millionare",
+      "date": "2025-05-31T11:19:00.000Z",
+      "creationDate": "2025-05-28T11:19:21.103Z",
+      "price": 100,
+      "bingoPrize": 500,
+      "maxPrize": 2500,
+      "result": "fullwin",
+      "finished": true
     }
   ]
 }

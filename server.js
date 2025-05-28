@@ -125,6 +125,28 @@ app.get('/cards/available', (req, res) => {
     res.json(availableCards);
 });
 
+// POST endpoint to retrive all available cards for user
+app.post('/cards/available/:userId', (req, res) => {
+    const userId = parseInt(req.params.userId);
+    const { username, password } = req.body;
+    const user = getUser(username, password);
+    if (!user) {
+        return res.status(401).json({ message: 'Credenciais invalidas!' });
+    }
+
+    if (user.id !== userId) {
+        return res.status(403).json({ message: 'Acesso negado!' });
+    }
+
+    const availableCards =  db.data.cards.filter(card => 
+        card.cells.every(cell => !cell.won) &&
+        new Date(card.date) > new Date() &&
+        !user.purchases.includes(card.id)
+    );
+    res.json(availableCards);
+
+})
+
 // GET endpoint to retrieve all editable cards
 app.get('/cards/editable', (req, res) => {
     const editableCards = db.data.cards.filter(card => !card.finished);

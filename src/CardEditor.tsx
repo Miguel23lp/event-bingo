@@ -30,7 +30,7 @@ function CardEditor({selectedCell: selectedCell, updateCell: updateCell}: CardEd
                         }
                         />
                         <label>
-                            Titulo:
+                            Título:
                         </label>
                     </div>
                 </div>
