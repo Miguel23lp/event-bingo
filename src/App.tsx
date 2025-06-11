@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router";
+import { Routes, Route } from "react-router";
 import Header from "./Header.tsx";
 import Home from "./Home.tsx";
 import LoginPage from "./LoginPage.tsx";
@@ -21,7 +21,6 @@ export interface User {
 function App() {
     const [currentUser, setCurrentUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');

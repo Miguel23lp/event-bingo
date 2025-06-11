@@ -71,7 +71,7 @@ function PurchasedCardsPage({ user }: { user: User | null }) {
                     flex: "2",
                 }}>
                     <BingoCardDisplay cells={card.cells} nCols={card.nCols} nRows={card.nRows} title={card.title} 
-                        price={card.price} bingoPrize={card.bingoPrize} maxPrize={card.maxPrize} />
+                        price={card.price} bingoPrize={card.bingoPrize} maxPrize={card.maxPrize} date={card.date}/>
 
                 </section>
             </div>

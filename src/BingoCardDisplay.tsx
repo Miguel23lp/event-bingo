@@ -9,6 +9,7 @@ interface BingoCardDisplayProps {
     price?: number;
     bingoPrize?: number;
     maxPrize?: number;
+    date?: Date;
     onAddCell?: () => void;
     getCellProps?: (ev: BingoCellData, index: number) => React.HTMLAttributes<HTMLDivElement>;
     renderCell?: (ev: BingoCellData, index: number) => React.ReactNode;
@@ -22,6 +23,7 @@ const BingoCardDisplay = ({
     price,
     bingoPrize,
     maxPrize,
+    date,
     onAddCell,
     getCellProps,
     renderCell,
@@ -55,6 +57,7 @@ const BingoCardDisplay = ({
                 {maxPrize !== undefined && <div>Máx: € {maxPrize.toFixed(2)}</div>}
             </div>
             <h1 className="bingo-title">{title}</h1>
+            <p className="text-muted"> {date?.toLocaleString()}</p>
             <section className="bingo-grid" style={gridStyle}>
                 {Array.from(cells, (cell, index) => {
                     const extra = getCellProps?.(cell, index) ?? {};

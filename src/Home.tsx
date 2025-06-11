@@ -10,6 +10,15 @@ function Home({ user }: { user: User | null }) {
     const [loading, setLoading] = useState<boolean>(true);
     const navigate = useNavigate();
 
+    const parseCards = (data: any) : BingoCardData[] => {
+        data.forEach((card: BingoCardData) => {
+            card.date = new Date(card.date);
+            card.creationDate = new Date(card.creationDate);
+        });
+        
+        return data as BingoCardData[];
+    }
+
     const removeCard = (cardId: number) => {
         setBingoCards(bingoCards.filter((card) => card.id != cardId));
     }
@@ -56,6 +65,7 @@ function Home({ user }: { user: User | null }) {
         })
             .then(response => {
                 if (response.ok) {
+                    console.log(response);
                     return response.json();
                 } else {
                     return response.json().then(errData => {
@@ -63,7 +73,7 @@ function Home({ user }: { user: User | null }) {
                     });
                 }
             })
-            .then(data => setBingoCards(data))
+            .then(data => {setBingoCards(parseCards(data))})
             .then(() => setLoading(false))
             .catch(error => {
                 console.error('Error fetching available cards:', error);
@@ -87,7 +97,7 @@ function Home({ user }: { user: User | null }) {
             <div key={card.id} className="mb-5 p-4">
 
                 <BingoCardDisplay cells={card.cells} nCols={card.nCols} nRows={card.nRows} title={card.title} 
-                    price={card.price} bingoPrize={card.bingoPrize} maxPrize={card.maxPrize}/>
+                    price={card.price} bingoPrize={card.bingoPrize} maxPrize={card.maxPrize} date={card.date}/>
                 <div className="d-flex justify-content-center">
                     {user?.role == "admin" &&
                         <a className="btn btn-warning" href={`/atualizar_cartao/${card.id}`}>

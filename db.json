@@ -13,11 +13,13 @@
       "username": "joao",
       "password": "1234",
       "role": "user",
-      "money": 440,
+      "money": 2929,
       "purchases": [
         3423166665163626,
         2607110510882167,
-        3308699468052889
+        3308699468052889,
+        16572553733312324,
+        8288260951026549
       ]
     }
   ],
@@ -207,22 +209,22 @@
         {
           "id": 2,
           "title": "Celula 2",
-          "won": false
+          "won": true
         },
         {
           "id": 3,
           "title": "Celula 3",
-          "won": false
+          "won": true
         },
         {
           "id": 4,
           "title": "Celula 4",
-          "won": false
+          "won": true
         },
         {
           "id": 5,
           "title": "Celula 5",
-          "won": false
+          "won": true
         },
         {
           "id": 6,
@@ -451,6 +453,364 @@
       "maxPrize": 2500,
       "result": "fullwin",
       "finished": true
+    },
+    {
+      "id": 8288260951026549,
+      "nCols": 5,
+      "nRows": 5,
+      "cells": [
+        {
+          "id": 2474100902745644,
+          "title": "SL Benfica ganha",
+          "won": false
+        },
+        {
+          "id": 8883909411556365,
+          "title": "Celula 2",
+          "won": false
+        },
+        {
+          "id": 6595923252765983,
+          "title": "Celula 3",
+          "won": false
+        },
+        {
+          "id": 7136914716152369,
+          "title": "Celula 4",
+          "won": false
+        },
+        {
+          "id": 7967762749594387,
+          "title": "Celula 5",
+          "won": false
+        },
+        {
+          "id": 2208476391474099,
+          "title": "Celula 6",
+          "won": false
+        },
+        {
+          "id": 1180734547279576,
+          "title": "Celula 7",
+          "won": false
+        },
+        {
+          "id": 7260945585188749,
+          "title": "Celula 8",
+          "won": false
+        },
+        {
+          "id": 627125862666355,
+          "title": "Celula 9",
+          "won": false
+        },
+        {
+          "id": 2778301678880202,
+          "title": "Celula 10",
+          "won": false
+        },
+        {
+          "id": 4745382810644281,
+          "title": "Celula 11",
+          "won": false
+        },
+        {
+          "id": 1175053270717179,
+          "title": "Celula 12",
+          "won": false
+        },
+        {
+          "id": 7088463092682347,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 4761131790019124,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 8082637798478935,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 7260241577533721,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 5292993712769933,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 589385230438876,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 41220968631251380,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 2686416784466521,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 5636273310716879,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 5244238762181566,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 20722474298577764,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 84139876261494,
+          "title": "Celula ",
+          "won": false
+        }
+      ],
+      "title": "Jogo futebol",
+      "description": "aaaa",
+      "date": "2025-05-30T14:45:00.000Z",
+      "creationDate": "2025-05-28T13:36:52.100Z",
+      "price": 10,
+      "bingoPrize": 30,
+      "maxPrize": 150,
+      "result": null,
+      "finished": false
+    },
+    {
+      "id": 9224760267218800,
+      "nCols": 5,
+      "nRows": 5,
+      "cells": [
+        {
+          "id": 20876445911117504,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 9952320007643224,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 40955300788848300,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 38561248251202690,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 6029360965858972,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 3182514503531293,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 607312120661414,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 8077162601176586,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 2016937973960644,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 5651799951657932,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 5474014501947355,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 8371060838721394,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 34151685843902736,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 9156324170900364,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 35377103260345756,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 19986780841824190,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 9903401826685438,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 46839913412441310,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 8441768076524157,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 8077815031727684,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 9599395857361440,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 5427660576660278,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 22216168398796056,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 7797665980478774,
+          "title": "Celula ",
+          "won": false
+        }
+      ],
+      "title": "Jogo andebol",
+      "description": "aaaa",
+      "date": "2025-05-30T14:45:00.000Z",
+      "creationDate": "2025-05-28T13:40:27.063Z",
+      "price": 10,
+      "bingoPrize": 50,
+      "maxPrize": 1000,
+      "result": null,
+      "finished": false
+    },
+    {
+      "id": 16572553733312324,
+      "nCols": 5,
+      "nRows": 3,
+      "cells": [
+        {
+          "id": 9230638041278252,
+          "title": "SL Benfica ganha",
+          "won": true
+        },
+        {
+          "id": 9033240313563452,
+          "title": "Celula",
+          "won": true
+        },
+        {
+          "id": 8592364569107691,
+          "title": "Celula",
+          "won": true
+        },
+        {
+          "id": 7981663871949698,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 9083318706437804,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 5608372293933932,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 8825501831990155,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 20969321550648570,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 37393864758441660,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 13081258330302736,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 7612300795032749,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 3266195879517755,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 26860139775437376,
+          "title": "Celula ",
+          "won": true
+        },
+        {
+          "id": 9993471990081036,
+          "title": "Celula ",
+          "won": false
+        }
+      ],
+      "title": "teste",
+      "description": "aaaaaaaaaaa",
+      "date": "2025-06-07T13:50:00.000Z",
+      "creationDate": "2025-05-28T13:50:29.734Z",
+      "price": 1,
+      "bingoPrize": 5,
+      "maxPrize": 20,
+      "result": null,
+      "finished": false
     }
   ]
 }
