@@ -13,11 +13,12 @@
       "username": "joao",
       "password": "1234",
       "role": "user",
-      "money": 440,
+      "money": 420.96,
       "purchases": [
         3423166665163626,
         2607110510882167,
-        3308699468052889
+        3308699468052889,
+        6102399872987576
       ]
     }
   ],
@@ -451,6 +452,334 @@
       "maxPrize": 2500,
       "result": "fullwin",
       "finished": true
+    },
+    {
+      "id": 6102399872987576,
+      "nCols": 5,
+      "nRows": 5,
+      "cells": [
+        {
+          "id": 858958002632314,
+          "title": "SL Benfica ganha",
+          "won": true
+        },
+        {
+          "id": 22429892112057190,
+          "title": ">=5.5 golos",
+          "won": true
+        },
+        {
+          "id": 23134337072801590,
+          "title": "<5 cantos 1ªP",
+          "won": true
+        },
+        {
+          "id": 5464419767693651,
+          "title": ">=1 CV",
+          "won": true
+        },
+        {
+          "id": 5310074347845308,
+          "title": " >10 Faltas 1ªP",
+          "won": true
+        },
+        {
+          "id": 6065703143170997,
+          "title": "Golo Dí Maria",
+          "won": true
+        },
+        {
+          "id": 6648723737111362,
+          "title": "Arthur C. perde posse de bola >5",
+          "won": false
+        },
+        {
+          "id": 5530420229353272,
+          "title": "Otamendi não vê cartão",
+          "won": false
+        },
+        {
+          "id": 34468752127640624,
+          "title": "Pavlidis >1.5 golos",
+          "won": false
+        },
+        {
+          "id": 6752743094547617,
+          "title": ">3.5 remates ao alvo 2ªP",
+          "won": false
+        },
+        {
+          "id": 3075301052855428,
+          "title": "2 Golos 1ªP",
+          "won": true
+        },
+        {
+          "id": 5609189442359142,
+          "title": "Golo António S. 1ªP",
+          "won": false
+        },
+        {
+          "id": 1740618519399595,
+          "title": "Kerem A. >2.5 remates",
+          "won": false
+        },
+        {
+          "id": 9248036517102214,
+          "title": "<15 Faltas 2ªP",
+          "won": false
+        },
+        {
+          "id": 12445507940099020,
+          "title": ">1 Pénalti",
+          "won": true
+        },
+        {
+          "id": 8565621562965386,
+          "title": ">3 Cantos 2ªP",
+          "won": false
+        },
+        {
+          "id": 3657791135923434,
+          "title": "Golo Anulado FDJ",
+          "won": false
+        },
+        {
+          "id": 4136606375722198,
+          "title": "Golo Sofrido 2ªP",
+          "won": false
+        },
+        {
+          "id": 8660279409705325,
+          "title": "<=7.5 golos",
+          "won": false
+        },
+        {
+          "id": 5073818218410542,
+          "title": "<7 CA",
+          "won": true
+        },
+        {
+          "id": 23857550382059456,
+          "title": "Otamendi não é substituído",
+          "won": false
+        },
+        {
+          "id": 14695852623472838,
+          "title": "<=1.5 golos aos 20 minutos",
+          "won": false
+        },
+        {
+          "id": 4963209591548923,
+          "title": ">=2 CA na 1ªP",
+          "won": false
+        },
+        {
+          "id": 6038840515239594,
+          "title": " >0.5 Penáltis não concretizados TR",
+          "won": false
+        }
+      ],
+      "title": "S.L.Bingo",
+      "description": "Cartão de Bingo do SL Benfica",
+      "date": "2025-06-27T18:04:00.000Z",
+      "creationDate": "2025-06-12T18:04:14.278Z",
+      "price": 19.04,
+      "bingoPrize": 39,
+      "maxPrize": 1904,
+      "result": null,
+      "finished": false
+    },
+    {
+      "id": 2656624280163169,
+      "nCols": 3,
+      "nRows": 3,
+      "cells": [
+        {
+          "id": 8593686904330424,
+          "title": "Vitória",
+          "won": false
+        },
+        {
+          "id": 5706775090025358,
+          "title": ">0.5 golos",
+          "won": false
+        },
+        {
+          "id": 3018158695987776,
+          "title": "0 Penalties",
+          "won": false
+        },
+        {
+          "id": 8369177622161348,
+          "title": "<0.5 golos sofridos",
+          "won": false
+        },
+        {
+          "id": 8913375731445918,
+          "title": ">14.5 Cantos",
+          "won": false
+        },
+        {
+          "id": 2247657831264145,
+          "title": "<9.5 CA",
+          "won": false
+        },
+        {
+          "id": 13929390816406184,
+          "title": "<2.5 golos",
+          "won": false
+        },
+        {
+          "id": 5261803760901418,
+          "title": "0 CV",
+          "won": false
+        }
+      ],
+      "title": "Mínimo",
+      "description": "",
+      "date": "2025-06-27T11:00:00.000Z",
+      "creationDate": "2025-06-13T18:38:25.119Z",
+      "price": 5,
+      "bingoPrize": 3,
+      "maxPrize": 12,
+      "result": null,
+      "finished": false
+    },
+    {
+      "id": 7339793365589691,
+      "nCols": 5,
+      "nRows": 5,
+      "cells": [
+        {
+          "id": 6008884917276618,
+          "title": "SL Benfica ganha",
+          "won": false
+        },
+        {
+          "id": 3519359035287435,
+          "title": "Resultado Final : BVB 1 - 3 MCFC",
+          "won": false
+        },
+        {
+          "id": 38440533058688750,
+          "title": "Club Brugge Empata",
+          "won": false
+        },
+        {
+          "id": 823696961011209,
+          "title": "Gyokeres : Não Marca",
+          "won": false
+        },
+        {
+          "id": 1044934589697537,
+          "title": "Sporting Perde",
+          "won": false
+        },
+        {
+          "id": 22890793649282704,
+          "title": "Haaland Marca >1.5 golos",
+          "won": false
+        },
+        {
+          "id": 1418347377747906,
+          "title": "Real Madrid Ganha",
+          "won": false
+        },
+        {
+          "id": 7956281702367614,
+          "title": "Pavlidis Marca",
+          "won": false
+        },
+        {
+          "id": 54510335829868,
+          "title": "Barcelona Perde",
+          "won": false
+        },
+        {
+          "id": 1381080613910055,
+          "title": ">5.5 Penalties",
+          "won": false
+        },
+        {
+          "id": 10020955720376200,
+          "title": ">17.5 golos marcados esta jornada",
+          "won": false
+        },
+        {
+          "id": 7716437575694863,
+          "title": "Lamine Yamal Marca",
+          "won": false
+        },
+        {
+          "id": 9446367239561146,
+          "title": "Mbappé Marca",
+          "won": false
+        },
+        {
+          "id": 8557290953045993,
+          "title": ">4.5 CV",
+          "won": false
+        },
+        {
+          "id": 6408018538663482,
+          "title": "Gonçalo Inácio é expulso",
+          "won": false
+        },
+        {
+          "id": 519552585719357,
+          "title": "Borrusia Dortmund Perde",
+          "won": false
+        },
+        {
+          "id": 2659743303011517,
+          "title": "Vinicius Jr Marca",
+          "won": false
+        },
+        {
+          "id": 7927484567743597,
+          "title": "Bayern Munique Ganha",
+          "won": false
+        },
+        {
+          "id": 256203748026806,
+          "title": ">10.5 CA Real Madrid x Chelsea",
+          "won": false
+        },
+        {
+          "id": 9728376336704648,
+          "title": "Arsenal Perde",
+          "won": false
+        },
+        {
+          "id": 6624332566244011,
+          "title": "Osmane Dembelé Marca",
+          "won": false
+        },
+        {
+          "id": 4203080835025943,
+          "title": ">0.5 Penalty Defendido esta jornada",
+          "won": false
+        },
+        {
+          "id": 6040805991089113,
+          "title": "Resultado Final : PSG 4 - 1 Napoli",
+          "won": false
+        },
+        {
+          "id": 8065461214973761,
+          "title": "Liverpool Ganha",
+          "won": false
+        }
+      ],
+      "title": "UCL",
+      "description": "Porque em noites de Champions' League, tu também podes ser Campeão",
+      "date": "2025-12-20T20:00:00.000Z",
+      "creationDate": "2025-06-13T18:51:51.823Z",
+      "price": 20,
+      "bingoPrize": 50,
+      "maxPrize": 1000,
+      "result": null,
+      "finished": false
     }
   ]
 }
