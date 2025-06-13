@@ -13,11 +13,12 @@
       "username": "joao",
       "password": "1234",
       "role": "user",
-      "money": 440,
+      "money": 420.96,
       "purchases": [
         3423166665163626,
         2607110510882167,
-        3308699468052889
+        3308699468052889,
+        6102399872987576
       ]
     }
   ],
@@ -207,22 +208,22 @@
         {
           "id": 2,
           "title": "Celula 2",
-          "won": true
+          "won": false
         },
         {
           "id": 3,
           "title": "Celula 3",
-          "won": true
+          "won": false
         },
         {
           "id": 4,
           "title": "Celula 4",
-          "won": true
+          "won": false
         },
         {
           "id": 5,
           "title": "Celula 5",
-          "won": true
+          "won": false
         },
         {
           "id": 6,
@@ -451,6 +452,142 @@
       "maxPrize": 2500,
       "result": "fullwin",
       "finished": true
+    },
+    {
+      "id": 6102399872987576,
+      "nCols": 5,
+      "nRows": 5,
+      "cells": [
+        {
+          "id": 858958002632314,
+          "title": "SL Benfica ganha",
+          "won": true
+        },
+        {
+          "id": 22429892112057190,
+          "title": ">=5.5 golos",
+          "won": true
+        },
+        {
+          "id": 23134337072801590,
+          "title": "<5 cantos 1ªP",
+          "won": true
+        },
+        {
+          "id": 5464419767693651,
+          "title": ">=1 CV",
+          "won": true
+        },
+        {
+          "id": 5310074347845308,
+          "title": " >10 Faltas 1ªP",
+          "won": true
+        },
+        {
+          "id": 6065703143170997,
+          "title": "Golo Dí Maria",
+          "won": true
+        },
+        {
+          "id": 6648723737111362,
+          "title": "Arthur C. perde posse de bola >5",
+          "won": false
+        },
+        {
+          "id": 5530420229353272,
+          "title": "Otamendi não vê cartão",
+          "won": false
+        },
+        {
+          "id": 34468752127640624,
+          "title": "Pavlidis >1.5 golos",
+          "won": false
+        },
+        {
+          "id": 6752743094547617,
+          "title": ">3.5 remates ao alvo 2ªP",
+          "won": false
+        },
+        {
+          "id": 3075301052855428,
+          "title": "2 Golos 1ªP",
+          "won": true
+        },
+        {
+          "id": 5609189442359142,
+          "title": "Golo António S. 1ªP",
+          "won": false
+        },
+        {
+          "id": 1740618519399595,
+          "title": "Kerem A. >2.5 remates",
+          "won": false
+        },
+        {
+          "id": 9248036517102214,
+          "title": "<15 Faltas 2ªP",
+          "won": false
+        },
+        {
+          "id": 12445507940099020,
+          "title": ">1 Pénalti",
+          "won": true
+        },
+        {
+          "id": 8565621562965386,
+          "title": ">3 Cantos 2ªP",
+          "won": false
+        },
+        {
+          "id": 3657791135923434,
+          "title": "Golo Anulado FDJ",
+          "won": false
+        },
+        {
+          "id": 4136606375722198,
+          "title": "Golo Sofrido 2ªP",
+          "won": false
+        },
+        {
+          "id": 8660279409705325,
+          "title": "<=7.5 golos",
+          "won": false
+        },
+        {
+          "id": 5073818218410542,
+          "title": "<7 CA",
+          "won": true
+        },
+        {
+          "id": 23857550382059456,
+          "title": "Otamendi não é substituído",
+          "won": false
+        },
+        {
+          "id": 14695852623472838,
+          "title": "<=1.5 golos aos 20 minutos",
+          "won": false
+        },
+        {
+          "id": 4963209591548923,
+          "title": ">=2 CA na 1ªP",
+          "won": false
+        },
+        {
+          "id": 6038840515239594,
+          "title": " >0.5 Penáltis não concretizados TR",
+          "won": false
+        }
+      ],
+      "title": "S.L.Bingo",
+      "description": "Cartão de Bingo do SL Benfica",
+      "date": "2025-06-27T18:04:00.000Z",
+      "creationDate": "2025-06-12T18:04:14.278Z",
+      "price": 19.04,
+      "bingoPrize": 39,
+      "maxPrize": 1904,
+      "result": null,
+      "finished": false
     }
   ]
 }
