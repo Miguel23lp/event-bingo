@@ -20,6 +20,22 @@
         3308699468052889,
         6102399872987576
       ]
+    },
+    {
+      "id": 3,
+      "username": "miguel",
+      "password": "1234",
+      "role": "user",
+      "money": 76833,
+      "purchases": []
+    },
+    {
+      "id": 4,
+      "username": "mario",
+      "password": "1234",
+      "role": "user",
+      "money": 77164,
+      "purchases": []
     }
   ],
   "cards": [
