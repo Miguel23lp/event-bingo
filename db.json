@@ -142,106 +142,16 @@
           "won": true
         },
         {
-          "id": 20959332211992176,
-          "title": "Celula 2",
-          "won": true
-        },
-        {
-          "id": 53314655224755420,
-          "title": "Celula 3",
-          "won": true
-        },
-        {
-          "id": 23118101241430370,
-          "title": "Celula 8",
-          "won": true
-        },
-        {
-          "id": 45996562287062330,
-          "title": "Celula 4",
-          "won": true
-        },
-        {
-          "id": 7185638917539472,
-          "title": "Celula 5",
-          "won": true
-        },
-        {
-          "id": 9752933064577308,
-          "title": "Celula 6",
-          "won": true
-        },
-        {
-          "id": 13039141113117214,
-          "title": "Celula 7",
-          "won": true
-        },
-        {
-          "id": 3625644774273462,
-          "title": "Celula 9",
-          "won": true
-        },
-        {
-          "id": 7521537129991736,
-          "title": "Celula 10",
-          "won": true
-        },
-        {
-          "id": 216242869864548,
-          "title": "Celula 11",
-          "won": true
-        },
-        {
-          "id": 4042286354477429,
-          "title": "Celula 12",
-          "won": true
-        },
-        {
-          "id": 9044307133460384,
-          "title": "Celula ",
-          "won": true
-        },
-        {
-          "id": 9818446019947442,
-          "title": "Celula ",
-          "won": true
-        }
-      ],
-      "title": "Título",
-      "description": "rich millionare",
-      "date": "2025-05-31T11:19:00.000Z",
-      "creationDate": "2025-05-28T11:19:21.103Z",
-      "price": 100,
-      "bingoPrize": 500,
-      "maxPrize": 2500,
-      "result": "fullwin",
-      "finished": true
-    },
-    {
-      "id": 6102399872987576,
-      "nCols": 5,
-      "nRows": 5,
-      "cells": [
-        {
-          "id": 858958002632314,
-          "title": "SL Benfica ganha",
-          "won": true
           "id": 23857550382059456,
           "title": "Otamendi não é substituído",
           "won": false
         },
         {
-          "id": 22429892112057190,
-          "title": ">=5.5 golos",
-          "won": true
           "id": 14695852623472838,
           "title": "<=1.5 golos aos 20 minutos",
           "won": false
         },
         {
-          "id": 23134337072801590,
-          "title": "<5 cantos 1ªP",
-          "won": true
           "id": 4963209591548923,
           "title": ">=2 CA na 1ªP",
           "won": false
@@ -252,8 +162,8 @@
           "won": false
         }
       ],
-      "title": "SLB x FCP",
-      "description": "SL Benfica vs FC Porto\nFutebol - Liga Betclic",
+      "title": "S.L.Bingo",
+      "description": "Cartão de Bingo do SL Benfica",
       "date": "2025-06-27T18:04:00.000Z",
       "creationDate": "2025-06-12T18:04:14.278Z",
       "price": 19.04,
@@ -264,20 +174,15 @@
     },
     {
       "id": 4742186337688181,
-      "id": 4742186337688181,
       "nCols": 5,
       "nRows": 5,
       "cells": [
         {
           "id": 9607128575545220,
           "title": "Real Madrid não perde",
-          "id": 9607128575545220,
-          "title": "Real Madrid não perde",
           "won": false
         },
         {
-          "id": 7392656102929942,
-          "title": "Golo Mbappé",
           "id": 7392656102929942,
           "title": "Golo Mbappé",
           "won": false
@@ -285,13 +190,9 @@
         {
           "id": 9120941519066734,
           "title": "Golo Konaté",
-          "id": 9120941519066734,
-          "title": "Golo Konaté",
           "won": false
         },
         {
-          "id": 8470827997184887,
-          "title": "Golo Vinicius JR",
           "id": 8470827997184887,
           "title": "Golo Vinicius JR",
           "won": false
@@ -299,13 +200,9 @@
         {
           "id": 9305312040515300,
           "title": "Valverde não vê cartão",
-          "id": 9305312040515300,
-          "title": "Valverde não vê cartão",
           "won": false
         },
         {
-          "id": 31752796389966350,
-          "title": ">=15 cantos ",
           "id": 31752796389966350,
           "title": ">=15 cantos ",
           "won": false
@@ -313,13 +210,9 @@
         {
           "id": 22383803121652200,
           "title": ">=5 remates no alvo 1ªP",
-          "id": 22383803121652200,
-          "title": ">=5 remates no alvo 1ªP",
           "won": false
         },
         {
-          "id": 8617328054356266,
-          "title": ">1.5 remates ao alvo Rodrygo",
           "id": 8617328054356266,
           "title": ">1.5 remates ao alvo Rodrygo",
           "won": false
@@ -327,13 +220,9 @@
         {
           "id": 37857061868547420,
           "title": "Baidoo é expulso",
-          "id": 37857061868547420,
-          "title": "Baidoo é expulso",
           "won": false
         },
         {
-          "id": 6105469615360164,
-          "title": "Trent vê amarelo",
           "id": 6105469615360164,
           "title": "Trent vê amarelo",
           "won": false
@@ -341,13 +230,9 @@
         {
           "id": 4341997595056888,
           "title": "Salzburg a ganha 1ªP",
-          "id": 4341997595056888,
-          "title": "Salzburg a ganha 1ªP",
           "won": false
         },
         {
-          "id": 8081983614485373,
-          "title": "Modric não vê cartão amarelo",
           "id": 8081983614485373,
           "title": "Modric não vê cartão amarelo",
           "won": false
@@ -355,13 +240,9 @@
         {
           "id": 2334479542797978,
           "title": "Asencio é expulso",
-          "id": 2334479542797978,
-          "title": "Asencio é expulso",
           "won": false
         },
         {
-          "id": 7677737603444561,
-          "title": "Konaté 3 remates no alvo no jogo",
           "id": 7677737603444561,
           "title": "Konaté 3 remates no alvo no jogo",
           "won": false
@@ -369,13 +250,9 @@
         {
           "id": 488182129203909,
           "title": "<=7.5 golos ",
-          "id": 488182129203909,
-          "title": "<=7.5 golos ",
           "won": false
         },
         {
-          "id": 5067127019917974,
-          "title": ">1.5 Penalties marcados",
           "id": 5067127019917974,
           "title": ">1.5 Penalties marcados",
           "won": false
@@ -383,13 +260,9 @@
         {
           "id": 1957762014652673,
           "title": "Golo Bellingham",
-          "id": 1957762014652673,
-          "title": "Golo Bellingham",
           "won": false
         },
         {
-          "id": 7357332780681116,
-          "title": ">1 golo ao intervalo",
           "id": 7357332780681116,
           "title": ">1 golo ao intervalo",
           "won": false
@@ -397,13 +270,9 @@
         {
           "id": 7202537181616497,
           "title": ">0.5 remates ao alvo Sulzbacher",
-          "id": 7202537181616497,
-          "title": ">0.5 remates ao alvo Sulzbacher",
           "won": false
         },
         {
-          "id": 6042425877071078,
-          "title": "Terzic vê amarelo",
           "id": 6042425877071078,
           "title": "Terzic vê amarelo",
           "won": false
@@ -411,13 +280,9 @@
         {
           "id": 7061312478520376,
           "title": "Golo Dorgeles",
-          "id": 7061312478520376,
-          "title": "Golo Dorgeles",
           "won": false
         },
         {
-          "id": 34474986333806524,
-          "title": "<19.5 faltas na 1ªP",
           "id": 34474986333806524,
           "title": "<19.5 faltas na 1ªP",
           "won": false
@@ -425,32 +290,25 @@
         {
           "id": 6326389673346593,
           "title": ">4.5 defesas Courtois",
-          "id": 6326389673346593,
-          "title": ">4.5 defesas Courtois",
           "won": false
         },
         {
-          "id": 8790670748563847,
-          "title": "Golo Ratkov",
           "id": 8790670748563847,
           "title": "Golo Ratkov",
           "won": false
         }
       ],
-      "title": " R.Madrid X Salzburg",
+      "title": " R.Madrid-Salzburg",
       "description": "Copa do Mundo de Clubes",
       "date": "2025-06-27T01:00:00.000Z",
       "creationDate": "2025-06-13T22:21:45.706Z",
       "price": 20,
       "bingoPrize": 50,
       "maxPrize": 1500,
-      "maxPrize": 1500,
       "result": null,
       "finished": false
     },
     {
-      "id": 9217821179775214,
-      "nCols": 3,
       "id": 9217821179775214,
       "nCols": 3,
       "nRows": 3,
@@ -463,13 +321,9 @@
         {
           "id": 7072527684010612,
           "title": "Golo Cristiano Ronaldo",
-          "id": 7072527684010612,
-          "title": "Golo Cristiano Ronaldo",
           "won": false
         },
         {
-          "id": 5825319410268,
-          "title": ">4.5 cantos Portugal 1ªP",
           "id": 5825319410268,
           "title": ">4.5 cantos Portugal 1ªP",
           "won": false
@@ -477,13 +331,9 @@
         {
           "id": 9520444663201872,
           "title": "Gonçalo Inácio é expulso",
-          "id": 9520444663201872,
-          "title": "Gonçalo Inácio é expulso",
           "won": false
         },
         {
-          "id": 3895803713863224,
-          "title": "<1.5 Penalties no jogo",
           "id": 3895803713863224,
           "title": "<1.5 Penalties no jogo",
           "won": false
@@ -491,13 +341,9 @@
         {
           "id": 9204767326131194,
           "title": "<5.5 Remates ao Alvo França",
-          "id": 9204767326131194,
-          "title": "<5.5 Remates ao Alvo França",
           "won": false
         },
         {
-          "id": 9410455790199296,
-          "title": "João Neves não vê cartão",
           "id": 9410455790199296,
           "title": "João Neves não vê cartão",
           "won": false
