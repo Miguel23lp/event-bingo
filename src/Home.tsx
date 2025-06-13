@@ -8,7 +8,13 @@ import { useNavigate } from "react-router";
 function Home({ user }: { user: User | null }) {
     const [bingoCards, setBingoCards] = useState<BingoCardData[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [searchTerm, setSearchTerm] = useState<string>("");
     const navigate = useNavigate();
+
+    const filteredCards = bingoCards.filter(card =>
+        card.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        card.description.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     const removeCard = (cardId: number) => {
         setBingoCards(bingoCards.filter((card) => card.id != cardId));
@@ -81,34 +87,50 @@ function Home({ user }: { user: User | null }) {
     }
 
     return (<>
-        {bingoCards.length == 0 && !loading && <h1>Não existem cartões disponíveis</h1>}
-        {bingoCards.length > 0 && <h1>Cartões disponíveis</h1>}
-
-        {bingoCards.map(card =>
-            <div key={card.id} className="mb-5 p-4">
-
-                <BingoCardDisplay cells={card.cells} nCols={card.nCols} nRows={card.nRows} title={card.title} description={card.description}
-                    price={card.price} bingoPrize={card.bingoPrize} maxPrize={card.maxPrize} date={card.date}/>
-                <div className="d-flex justify-content-center">
-                    {user?.role == "admin" &&
-                        <a className="btn btn-warning" href={`/atualizar_cartao/${card.id}`}>
-                            <i className="bi bi-pencil-square me-2"></i>
-                            Editar cartão
-                        </a>
-                    }
-                    {user?.role == "user" &&
-                        <button
-                            className="btn btn-success w-auto d-flex align-items-center gap-2"
-                            onClick={() => buyCard(card.id)}
-                        >
-                            <i className="bi bi-cart-plus"></i>
-                            <span>Comprar cartão</span>
-                            <span className="border-start ps-2">{card.price}€</span>
-                        </button>
-                    }   
-                </div>
+        
+        <div className="container mt-4">
+            <div className="mb-4">
+                <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Procurar cartão..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
             </div>
-        )}
+            <h2 className="mb-4 text-center">{filteredCards.length == 0? 
+                "Não existem cartões disponíveis":
+                "Cartões disponíveis"}
+            </h2>
+
+
+
+            {filteredCards.map(card =>
+                <div key={card.id} className="mb-5 p-4">
+
+                    <BingoCardDisplay cells={card.cells} nCols={card.nCols} nRows={card.nRows} title={card.title} description={card.description}
+                        price={card.price} bingoPrize={card.bingoPrize} maxPrize={card.maxPrize} date={card.date}/>
+                    <div className="d-flex justify-content-center">
+                        {user?.role == "admin" &&
+                            <a className="btn btn-warning" href={`/atualizar_cartao/${card.id}`}>
+                                <i className="bi bi-pencil-square me-2"></i>
+                                Editar cartão
+                            </a>
+                        }
+                        {user?.role == "user" &&
+                            <button
+                                className="btn btn-success w-auto d-flex align-items-center gap-2"
+                                onClick={() => buyCard(card.id)}
+                            >
+                                <i className="bi bi-cart-plus"></i>
+                                <span>Comprar cartão</span>
+                                <span className="border-start ps-2">{card.price}€</span>
+                            </button>
+                        }   
+                    </div>
+                </div>
+            )}
+        </div>
 
     </>);
 }

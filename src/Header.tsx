@@ -16,6 +16,7 @@ export default function Header({ user, setUserMoney, logout }: { user: User | nu
                         <li className="nav-item"><Link className="nav-link" to="/">Início</Link></li>
                         {user?.role == "user" && <li className="nav-item"><Link className="nav-link" to="/meus_cartoes">Meus Cartões</Link></li>}
                         {user?.role == "admin" && <li className="nav-item"><Link className="nav-link" to="/criar_cartao">Criar cartão</Link></li>}
+                        {user?.role == "admin" && <li className="nav-item"><Link className="nav-link" to="/gerir_utilizadores">Gerir Utilizadores</Link></li>}
                         <LoginIcon user={user} logout={logout}></LoginIcon>
                         {user?.role == "user" && <li className="nav-item"><UserMoneyDisplay user={user!} setUserMoney={setUserMoney} /></li>}
                     </ul>

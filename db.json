@@ -13,12 +13,24 @@
       "username": "joao",
       "password": "1234",
       "role": "user",
-      "money": 2929,
+      "money": 2932,
       "purchases": [
         3423166665163626,
         2607110510882167,
         3308699468052889,
         16572553733312324,
+        8288260951026549,
+        6864995633200854
+      ]
+    },
+    {
+      "id": 3,
+      "username": "toto",
+      "password": "1234",
+      "role": "user",
+      "money": 0.21000000000000002,
+      "purchases": [
+        3423166665163626,
         8288260951026549
       ]
     }
@@ -811,6 +823,142 @@
       "maxPrize": 20,
       "result": null,
       "finished": false
+    },
+    {
+      "id": 6864995633200854,
+      "nCols": 5,
+      "nRows": 5,
+      "cells": [
+        {
+          "id": 9961371248991728,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 6508151174171113,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 7465727585642776,
+          "title": "SL Benfica ganha",
+          "won": true
+        },
+        {
+          "id": 22885007905416370,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 9714110325697788,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 6394339049077202,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 1615686091746893,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 24349051476737716,
+          "title": "Celula",
+          "won": true
+        },
+        {
+          "id": 8236462867501435,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 14729719210656578,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 5814371433922361,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 5138191080580912,
+          "title": "Celula",
+          "won": false
+        },
+        {
+          "id": 9545104320457284,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 12588222689816896,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 7942232038790775,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 7359657692792492,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 9657607674713812,
+          "title": "Celula ",
+          "won": true
+        },
+        {
+          "id": 7721552322610359,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 6232804866025974,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 839825814986898,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 9066800630782236,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 6955673158851143,
+          "title": "Celula ",
+          "won": true
+        },
+        {
+          "id": 17920666557038768,
+          "title": "Celula ",
+          "won": false
+        },
+        {
+          "id": 22181435265579296,
+          "title": "Celula ",
+          "won": false
+        }
+      ],
+      "title": "Cartão vertical",
+      "description": "Facil",
+      "date": "2025-06-25T17:30:00.000Z",
+      "creationDate": "2025-06-13T17:30:57.737Z",
+      "price": 1,
+      "bingoPrize": 4,
+      "maxPrize": 10,
+      "result": "bingo",
+      "finished": true
     }
   ]
 }

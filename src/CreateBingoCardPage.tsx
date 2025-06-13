@@ -123,7 +123,7 @@ function CreateBingoCardPage() {
 
 	return (
 		<>
-
+			<h1>Criar Cartão Bingo</h1>
 			<div style={{ display: 'flex', padding: '20px', gap: '20px' }}>
 
 				{/* Bingo card left */}

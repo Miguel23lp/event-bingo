@@ -7,6 +7,7 @@ import CreateBingoCardPage from "./CreateBingoCardPage.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
 import UpdateBingoCardPage from "./UpdateBingoCardPage.tsx";
 import PurchasedCardsPage from "./PurchasedCardsPage.tsx";
+import UserManagementPage from "./UserManagementPage.tsx";
 import { Tooltip } from 'bootstrap';
 
 export interface User {
@@ -99,17 +100,22 @@ function App() {
                     <Route index element={<Home user={currentUser}/>} />
                     <Route path="/login" element={<LoginPage login={login} />} />
                     <Route path="/meus_cartoes" element={
-                        <ProtectedRoute user={currentUser}>
+                        <ProtectedRoute user={currentUser} onlyUser>
                             <PurchasedCardsPage user={currentUser} />
                         </ProtectedRoute>
                     } />
                     <Route path="/criar_cartao" element={
-                        <ProtectedRoute user={currentUser} admin>
+                        <ProtectedRoute user={currentUser} onlyAdmin>
                             <CreateBingoCardPage />
                         </ProtectedRoute>
                     } />
+                    <Route path="/gerir_utilizadores" element={
+                        <ProtectedRoute user={currentUser} onlyAdmin>
+                            <UserManagementPage user={currentUser}/>
+                        </ProtectedRoute>
+                    } />
                     <Route path="/atualizar_cartao/:id" element={
-                        <ProtectedRoute user={currentUser} admin>
+                        <ProtectedRoute user={currentUser} onlyAdmin>
                             <UpdateBingoCardPage />
                         </ProtectedRoute>
                     } />
