@@ -13,7 +13,7 @@
       "username": "joao",
       "password": "1234",
       "role": "user",
-      "money": 420.96,
+      "money": 920.96,
       "purchases": [
         3423166665163626,
         2607110510882167,
@@ -34,7 +34,7 @@
       "username": "mario",
       "password": "1234",
       "role": "user",
-      "money": 77164,
+      "money": 79164,
       "purchases": []
     }
   ],
@@ -602,6 +602,198 @@
       "price": 19.04,
       "bingoPrize": 39,
       "maxPrize": 1904,
+      "result": null,
+      "finished": false
+    },
+    {
+      "id": 4742186337688181,
+      "nCols": 5,
+      "nRows": 5,
+      "cells": [
+        {
+          "id": 9607128575545220,
+          "title": "Real Madrid não perde",
+          "won": false
+        },
+        {
+          "id": 7392656102929942,
+          "title": "Golo Mbappé",
+          "won": false
+        },
+        {
+          "id": 9120941519066734,
+          "title": "Golo Konaté",
+          "won": false
+        },
+        {
+          "id": 8470827997184887,
+          "title": "Golo Vinicius JR",
+          "won": false
+        },
+        {
+          "id": 9305312040515300,
+          "title": "Valverde não vê cartão",
+          "won": false
+        },
+        {
+          "id": 31752796389966350,
+          "title": ">=15 cantos ",
+          "won": false
+        },
+        {
+          "id": 22383803121652200,
+          "title": ">=5 remates no alvo 1ªP",
+          "won": false
+        },
+        {
+          "id": 8617328054356266,
+          "title": ">1.5 remates ao alvo Rodrygo",
+          "won": false
+        },
+        {
+          "id": 37857061868547420,
+          "title": "Baidoo é expulso",
+          "won": false
+        },
+        {
+          "id": 6105469615360164,
+          "title": "Trent vê amarelo",
+          "won": false
+        },
+        {
+          "id": 4341997595056888,
+          "title": "Salzburg a ganha 1ªP",
+          "won": false
+        },
+        {
+          "id": 8081983614485373,
+          "title": "Modric não vê cartão amarelo",
+          "won": false
+        },
+        {
+          "id": 2334479542797978,
+          "title": "Asencio é expulso",
+          "won": false
+        },
+        {
+          "id": 7677737603444561,
+          "title": "Konaté 3 remates no alvo no jogo",
+          "won": false
+        },
+        {
+          "id": 488182129203909,
+          "title": "<=7.5 golos ",
+          "won": false
+        },
+        {
+          "id": 5067127019917974,
+          "title": ">1.5 Penalties marcados",
+          "won": false
+        },
+        {
+          "id": 1957762014652673,
+          "title": "Golo Bellingham",
+          "won": false
+        },
+        {
+          "id": 7357332780681116,
+          "title": ">1 golo ao intervalo",
+          "won": false
+        },
+        {
+          "id": 7202537181616497,
+          "title": ">0.5 remates ao alvo Sulzbacher",
+          "won": false
+        },
+        {
+          "id": 6042425877071078,
+          "title": "Terzic vê amarelo",
+          "won": false
+        },
+        {
+          "id": 7061312478520376,
+          "title": "Golo Dorgeles",
+          "won": false
+        },
+        {
+          "id": 34474986333806524,
+          "title": "<19.5 faltas na 1ªP",
+          "won": false
+        },
+        {
+          "id": 6326389673346593,
+          "title": ">4.5 defesas Courtois",
+          "won": false
+        },
+        {
+          "id": 8790670748563847,
+          "title": "Golo Ratkov",
+          "won": false
+        }
+      ],
+      "title": " R.Madrid-Salzburg",
+      "description": "Copa do Mundo de Clubes",
+      "date": "2025-06-27T01:00:00.000Z",
+      "creationDate": "2025-06-13T22:21:45.706Z",
+      "price": 20,
+      "bingoPrize": 50,
+      "maxPrize": 1500,
+      "result": null,
+      "finished": false
+    },
+    {
+      "id": 9217821179775214,
+      "nCols": 3,
+      "nRows": 3,
+      "cells": [
+        {
+          "id": 22614884278170956,
+          "title": "Portugal ganha",
+          "won": false
+        },
+        {
+          "id": 7072527684010612,
+          "title": "Golo Cristiano Ronaldo",
+          "won": false
+        },
+        {
+          "id": 5825319410268,
+          "title": ">4.5 cantos Portugal 1ªP",
+          "won": false
+        },
+        {
+          "id": 9520444663201872,
+          "title": "Gonçalo Inácio é expulso",
+          "won": false
+        },
+        {
+          "id": 3895803713863224,
+          "title": "<1.5 Penalties no jogo",
+          "won": false
+        },
+        {
+          "id": 9204767326131194,
+          "title": "<5.5 Remates ao Alvo França",
+          "won": false
+        },
+        {
+          "id": 9410455790199296,
+          "title": "João Neves não vê cartão",
+          "won": false
+        },
+        {
+          "id": 20662870242372656,
+          "title": "Golo Mbappé",
+          "won": false
+        }
+      ],
+      "title": "POR X FRA",
+      "description": "Copa do Mundo 2026",
+      "date": "2026-06-20T19:00:00.000Z",
+      "creationDate": "2025-06-13T22:26:04.662Z",
+      "price": 7,
+      "bingoPrize": 10,
+      "maxPrize": 50,
       "result": null,
       "finished": false
     }
