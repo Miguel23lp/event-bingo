@@ -20,11 +20,11 @@ export interface BingoCardData {
     result: "fullwin" | "bingo" | "lost" | null;
 }
 
-export function jsonToBingoCard(json: string) {
-    return JSON.parse(json, (key, value)=>{
-        if (key.toLowerCase().includes("date")){
-            return new Date(value);
-        }
-        return value;
-    })
+export function parseCards (data: any) : BingoCardData[] {
+    data.forEach((card: BingoCardData) => {
+        card.date = new Date(card.date);
+        card.creationDate = new Date(card.creationDate);
+    });
+    
+    return data as BingoCardData[];
 }

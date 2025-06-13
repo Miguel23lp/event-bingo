@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BingoCardData } from "./BingoCard.tsx";
+import { BingoCardData, parseCards } from "./BingoCard.tsx";
 import { BingoCardDisplay } from "./BingoCardDisplay.tsx";
 import { User } from "./App.tsx";
 
@@ -37,7 +37,7 @@ function PurchasedCardsPage({ user }: { user: User | null }) {
                 });
             }
         })
-            .then(data => setPurchasedCards(data))
+            .then(data => setPurchasedCards(parseCards(data)))
             .then(() => setLoading(false))
             .catch(error => {
                 console.error('Error fetching purchased cards:', error.message);
@@ -70,8 +70,8 @@ function PurchasedCardsPage({ user }: { user: User | null }) {
                 <section style={{
                     flex: "2",
                 }}>
-                    <BingoCardDisplay cells={card.cells} nCols={card.nCols} nRows={card.nRows} title={card.title} 
-                        price={card.price} bingoPrize={card.bingoPrize} maxPrize={card.maxPrize} />
+                    <BingoCardDisplay cells={card.cells} nCols={card.nCols} nRows={card.nRows} title={card.title} description={card.description}
+                        price={card.price} bingoPrize={card.bingoPrize} maxPrize={card.maxPrize} date={card.date}/>
 
                 </section>
             </div>

@@ -5,12 +5,12 @@ function LoginIcon({ user, logout } : { user: User | null, logout: ()=>void }) {
         <>
         <li className="nav-item">
 
-            <a className="nav-link">
+            <div className="nav-link gap-1">
                 <i style={{
                     color: user.role=="admin"?"gold":"black"
                 }}
                 className={"bi bi-person-circle"}></i> {user.username}
-            </a>
+            </div>
         </li>
         <li className="nav-item">
             <a style={{cursor:"pointer"}} className="nav-link link-danger" onClick={logout}>

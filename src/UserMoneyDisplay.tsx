@@ -30,7 +30,7 @@ function UserMoneyDisplay({ user, setUserMoney }: { user: User, setUserMoney: (m
     return (
         <div className="nav-item">
             <div className="nav-link">
-                <i className="bi bi-cash"></i> {user.money}€
+                <i className="bi bi-cash"></i> {user.money.toFixed(2)}€
             </div>
         </div>
     );

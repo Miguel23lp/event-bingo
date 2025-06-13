@@ -100,6 +100,14 @@ function handlePrizes(card) {
     
 }
 
+function sortCards(cards) {
+    return cards.sort((a, b) => {
+        if (a.creationDate < b.creationDate) return -1;
+        if (a.creationDate > b.creationDate) return 1;
+        return 0;
+    });
+}
+
 // Post endpoint to authenticate a user
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
@@ -111,9 +119,28 @@ app.post('/login', (req, res) => {
     return res.json(user);
 })
 
+// POST endpoint to retrieve all users
+app.post('/users', (req, res) => {
+    const { username, password } = req.body;
+    const user = getUser(username, password);
+    if (!user) {
+        return res.status(401).json({ message: 'Credenciais invalidas!' });
+    }
+    if (user.role !== 'admin') {
+        return res.status(403).json({ message: 'Acesso negado!' });
+    }
+    return res.json(db.data.users.map(user => {
+        return {
+            id: user.id,
+            username: user.username,
+            role: user.role,
+        };
+    }));
+});
+
 // GET endpoint to retrieve all cards
 app.get('/cards', (req, res) => {
-    res.json(db.data.cards);
+    res.json(sortCards(db.data.cards));
 });
 
 // GET endpoint to retrieve all available cards
@@ -122,7 +149,7 @@ app.get('/cards/available', (req, res) => {
         card.cells.every(cell => !cell.won) &&
         new Date(card.date) > new Date()
     );
-    res.json(availableCards);
+    res.json(sortCards(availableCards));
 });
 
 // POST endpoint to retrive all available cards for user
@@ -143,14 +170,45 @@ app.post('/cards/available/:userId', (req, res) => {
         new Date(card.date) > new Date() &&
         !user.purchases.includes(card.id)
     );
-    res.json(availableCards);
+    res.json(sortCards(availableCards));
 
 })
 
 // GET endpoint to retrieve all editable cards
 app.get('/cards/editable', (req, res) => {
     const editableCards = db.data.cards.filter(card => !card.finished);
-    res.json(editableCards);
+    res.json(sortCards(editableCards));
+});
+
+// POST endpoint to deposit money to a user's account (admin only)
+app.post('/users/:userId/deposit', async (req, res) => {
+    const { username, password, amount } = req.body;
+    const user = getUser(username, password);
+
+    if (!user) {
+        return res.status(401).json({ message: 'Credenciais invalidas!' });
+    }
+
+    if (user.role !== 'admin') {
+        return res.status(403).json({ message: 'Acesso negado!' });
+    }
+
+    const userId = parseInt(req.params.userId);
+    const targetUser = db.data.users.find(u => u.id === userId);
+
+    if (!targetUser) {
+        return res.status(404).json({ message: 'Usuário não encontrado!' });
+    }
+    if (targetUser.role === 'admin') {
+        return res.status(403).json({ message: 'Não é permitido adicionar dinheiro a um admin!' });
+    }
+    if (typeof amount !== 'number' || amount <= 0) {
+        return res.status(403).json({ message: 'Quantidade inválida!' });
+    }
+    updateUserMoney(targetUser, targetUser.money + amount);
+    await db.write(); // Save changes to the database
+
+    res.json({ message: 'Dinheiro adicionado com sucesso!', user: targetUser });
 });
 
 // POST endpoint to create a new card (admin only)

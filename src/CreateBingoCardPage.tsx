@@ -6,17 +6,17 @@ import CardEditor from './CardEditor.tsx';
 const testCells: BingoCellData[] =
 	[
 		{ id: Number(Math.random().toString().slice(2)), title: "SL Benfica ganha", won: false },
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula 2", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula 3", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula 4", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula 5", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula 6", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula 7", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula 8", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula 9", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula 10", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula 11", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula 12", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
+		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
 	];
 
 
@@ -62,7 +62,7 @@ function CreateBingoCardPage() {
 
 	const handleUploadCard = () => {
 		const newId = Number(Math.random().toString().slice(2));
-		let card: BingoCardData = {
+		const card: BingoCardData = {
 			id: newId, nCols: nCols, nRows: nRows, cells: cells,
 			title: title, description: description,
 			date: date, creationDate: new Date(Date.now()),
@@ -90,7 +90,7 @@ function CreateBingoCardPage() {
 			alert("Celulas não são únicos!");
 			return;
 		}
-		let user = JSON.parse(localStorage.getItem('user') || '{}');
+		const user = JSON.parse(localStorage.getItem('user') || '{}');
 		fetch("http://localhost:3000/cards", {
 			method: 'POST',
 			headers: {
@@ -108,13 +108,7 @@ function CreateBingoCardPage() {
 		})
 		.then(() => {
 			alert("Cartão adicionado com sucesso!");
-			setCells([]);
-			setNCols(5);
-			setNRows(3);
-			setSelectedCell(null);
-			setPrice(0);
-			setBingoPrize(0);
-			setMaxPrize(0);
+			location.reload();
 		})
 		.catch((error) => alert(`Erro a adicionar cartão: ${error.message}`));
 	}
@@ -129,14 +123,14 @@ function CreateBingoCardPage() {
 
 	return (
 		<>
-
+			<h1>Criar Cartão Bingo</h1>
 			<div style={{ display: 'flex', padding: '20px', gap: '20px' }}>
 
 				{/* Bingo card left */}
 				<div style={{ flex: '1' }}>
-					<BingoCardCreate nCols={nCols} nRows={nRows} cells={cells} title={title} 
-						price={price} bingoPrize={bingoPrize} maxPrize={maxPrize} selectedCell={selectedCell} 
-						setSelectedCell={setSelectedCell} setCells={setCells}/>
+					<BingoCardCreate nCols={nCols} nRows={nRows} cells={cells} title={title} description={description}
+						price={price} bingoPrize={bingoPrize} maxPrize={maxPrize} date={date}
+						selectedCell={selectedCell} setSelectedCell={setSelectedCell} setCells={setCells}/>
 				</div>
 
 				{/* Card settings right */}

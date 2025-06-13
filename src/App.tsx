@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router";
+import { Routes, Route } from "react-router";
 import Header from "./Header.tsx";
 import Home from "./Home.tsx";
 import LoginPage from "./LoginPage.tsx";
@@ -7,6 +7,8 @@ import CreateBingoCardPage from "./CreateBingoCardPage.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
 import UpdateBingoCardPage from "./UpdateBingoCardPage.tsx";
 import PurchasedCardsPage from "./PurchasedCardsPage.tsx";
+import UserManagementPage from "./UserManagementPage.tsx";
+import { Tooltip } from 'bootstrap';
 
 export interface User {
     id: number;
@@ -21,7 +23,6 @@ export interface User {
 function App() {
     const [currentUser, setCurrentUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
@@ -36,6 +37,12 @@ function App() {
         else {
             setLoading(false);
         }
+
+        // Initialize all tooltips
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new Tooltip(tooltipTriggerEl);
+        });
     }, []);
 
     const setUserMoney = (money: number) => {
@@ -93,17 +100,22 @@ function App() {
                     <Route index element={<Home user={currentUser}/>} />
                     <Route path="/login" element={<LoginPage login={login} />} />
                     <Route path="/meus_cartoes" element={
-                        <ProtectedRoute user={currentUser}>
+                        <ProtectedRoute user={currentUser} onlyUser>
                             <PurchasedCardsPage user={currentUser} />
                         </ProtectedRoute>
                     } />
                     <Route path="/criar_cartao" element={
-                        <ProtectedRoute user={currentUser} admin>
+                        <ProtectedRoute user={currentUser} onlyAdmin>
                             <CreateBingoCardPage />
                         </ProtectedRoute>
                     } />
+                    <Route path="/gerir_utilizadores" element={
+                        <ProtectedRoute user={currentUser} onlyAdmin>
+                            <UserManagementPage user={currentUser}/>
+                        </ProtectedRoute>
+                    } />
                     <Route path="/atualizar_cartao/:id" element={
-                        <ProtectedRoute user={currentUser} admin>
+                        <ProtectedRoute user={currentUser} onlyAdmin>
                             <UpdateBingoCardPage />
                         </ProtectedRoute>
                     } />

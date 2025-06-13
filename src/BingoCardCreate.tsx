@@ -6,17 +6,19 @@ interface BingoCardCreateProps {
     nCols: number;
     nRows: number;
     title: string;
+    description: string;
     cells: BingoCellData[];
     price: number;
     bingoPrize: number;
     maxPrize: number;
+    date: Date;
     selectedCell: BingoCellData | null;
     setSelectedCell: (cell: BingoCellData) => void;
     setCells: (cells: BingoCellData[]) => void;
 }
 
 
-function BingoCardCreate({ nCols, nRows, title, cells, price, bingoPrize, maxPrize, selectedCell, setSelectedCell, setCells }: BingoCardCreateProps) {
+function BingoCardCreate({ nCols, nRows, title, description, cells, price, bingoPrize, maxPrize, date, selectedCell, setSelectedCell, setCells }: BingoCardCreateProps) {
     const reorderCells = (fromCell: BingoCellData, toCell: BingoCellData) => {
         const updatedCells = Array.from(cells);
         const fromIndex = updatedCells.indexOf(fromCell);
@@ -73,7 +75,7 @@ function BingoCardCreate({ nCols, nRows, title, cells, price, bingoPrize, maxPri
         }
     }
 
-    const renderCell = (cell: BingoCellData, _: number) => {
+    const renderCell = (cell: BingoCellData) => {
         return (
             <>
                 {/* Drag handle */}
@@ -90,8 +92,8 @@ function BingoCardCreate({ nCols, nRows, title, cells, price, bingoPrize, maxPri
     return (
         <>
             <section>
-                <BingoCardDisplay nCols={nCols} nRows={nRows} title={title} cells={cells} 
-                    price={price} bingoPrize={bingoPrize} maxPrize={maxPrize}
+                <BingoCardDisplay nCols={nCols} nRows={nRows} title={title} description={description} cells={cells} 
+                    price={price} bingoPrize={bingoPrize} maxPrize={maxPrize} date={date}
                     onAddCell={addCell} getCellProps={getCellProps} renderCell={renderCell} />
             </section>
         </>
