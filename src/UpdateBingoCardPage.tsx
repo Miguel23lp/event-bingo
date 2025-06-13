@@ -158,7 +158,7 @@ function UpdateBingoCardPage() {
                 <div style={{ minWidth: '250px' }}>
                     {selectedCell ? (
                         <div style={{ width: '100%' }}>
-                            <h2>Editar celula {selectedCell.id}</h2>
+                            <h2>Editar celula</h2>
                             <div className="d-flex justify-content-end">
                                 <div className="m-5" style={{ width: '100%' }}>
                                     <button className='btn btn-success' onClick={()=>setCellWon(bingoCard, selectedCell)}>

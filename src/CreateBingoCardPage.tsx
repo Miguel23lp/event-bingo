@@ -6,17 +6,6 @@ import CardEditor from './CardEditor.tsx';
 const testCells: BingoCellData[] =
 	[
 		{ id: Number(Math.random().toString().slice(2)), title: "SL Benfica ganha", won: false },
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
-		{ id: Number(Math.random().toString().slice(2)), title: "Celula", won: false},
 	];
 
 

@@ -62,9 +62,9 @@ function PurchasedCardsPage({ user }: { user: User | null }) {
         <div key={card.id} className="mb-5 card p-3">
             <div className="d-flex">
                 <div style={{flex: "1", maxWidth:"100px"}}>
-                    <div>Preço: {card.price}</div>
+                    <div>Preço: {card.price.toFixed(2)+"€"}</div>
                     {card.result!=null && card.result!="lost"
-                        && <div>Prémio: {card.result=="bingo"?card.bingoPrize: card.maxPrize}</div> 
+                        && <div>{`Prémio: ${card.result=="bingo"?card.bingoPrize.toFixed(2): card.maxPrize.toFixed(2)}€`}</div> 
                     }
                 </div>
                 <section style={{

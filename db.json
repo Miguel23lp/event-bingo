@@ -13,952 +13,356 @@
       "username": "joao",
       "password": "1234",
       "role": "user",
-      "money": 2932,
+      "money": 920.96,
       "purchases": [
-        3423166665163626,
-        2607110510882167,
-        3308699468052889,
-        16572553733312324,
-        8288260951026549,
-        6864995633200854
+        6102399872987576
       ]
     },
     {
       "id": 3,
-      "username": "toto",
+      "username": "miguel",
       "password": "1234",
       "role": "user",
-      "money": 0.21000000000000002,
-      "purchases": [
-        3423166665163626,
-        8288260951026549
-      ]
+      "money": 76833,
+      "purchases": []
+    },
+    {
+      "id": 4,
+      "username": "mario",
+      "password": "1234",
+      "role": "user",
+      "money": 79164,
+      "purchases": []
     }
   ],
   "cards": [
     {
-      "id": 3423166665163626,
+      "id": 6102399872987576,
       "nCols": 5,
-      "nRows": 3,
+      "nRows": 5,
       "cells": [
         {
-          "id": 1,
-          "title": "Benfica Ganha",
+          "id": 858958002632314,
+          "title": "SL Benfica ganha",
           "won": true
         },
         {
-          "id": 2,
-          "title": "Celula 2",
+          "id": 22429892112057190,
+          "title": ">=5.5 golos",
           "won": true
         },
         {
-          "id": 3,
-          "title": "Celula 3",
+          "id": 23134337072801590,
+          "title": "<5 cantos 1ªP",
           "won": true
         },
         {
-          "id": 4,
-          "title": "Celula 4",
+          "id": 5464419767693651,
+          "title": ">=1 CV",
           "won": true
         },
         {
-          "id": 5,
-          "title": "Celula 5",
+          "id": 5310074347845308,
+          "title": " >10 Faltas 1ªP",
           "won": true
         },
         {
-          "id": 6,
-          "title": "Celula 6",
+          "id": 6065703143170997,
+          "title": "Golo Dí Maria",
           "won": true
         },
         {
-          "id": 7,
-          "title": "Celula 7",
+          "id": 6648723737111362,
+          "title": "Arthur C. perde posse de bola >5",
+          "won": false
+        },
+        {
+          "id": 5530420229353272,
+          "title": "Otamendi não vê cartão",
+          "won": false
+        },
+        {
+          "id": 34468752127640624,
+          "title": "Pavlidis >1.5 golos",
+          "won": false
+        },
+        {
+          "id": 6752743094547617,
+          "title": ">3.5 remates ao alvo 2ªP",
+          "won": false
+        },
+        {
+          "id": 3075301052855428,
+          "title": "2 Golos 1ªP",
           "won": true
         },
         {
-          "id": 8,
-          "title": "Celula 8",
+          "id": 5609189442359142,
+          "title": "Golo António S. 1ªP",
+          "won": false
+        },
+        {
+          "id": 1740618519399595,
+          "title": "Kerem A. >2.5 remates",
+          "won": false
+        },
+        {
+          "id": 9248036517102214,
+          "title": "<15 Faltas 2ªP",
+          "won": false
+        },
+        {
+          "id": 12445507940099020,
+          "title": ">1 Pénalti",
           "won": true
         },
         {
-          "id": 9,
-          "title": "Celula 9",
+          "id": 8565621562965386,
+          "title": ">3 Cantos 2ªP",
+          "won": false
+        },
+        {
+          "id": 3657791135923434,
+          "title": "Golo Anulado FDJ",
+          "won": false
+        },
+        {
+          "id": 4136606375722198,
+          "title": "Golo Sofrido 2ªP",
+          "won": false
+        },
+        {
+          "id": 8660279409705325,
+          "title": "<=7.5 golos",
+          "won": false
+        },
+        {
+          "id": 5073818218410542,
+          "title": "<7 CA",
           "won": true
         },
         {
-          "id": 10,
-          "title": "Celula 10",
-          "won": true
+          "id": 23857550382059456,
+          "title": "Otamendi não é substituído",
+          "won": false
         },
         {
-          "id": 11,
-          "title": "Celula 11",
-          "won": true
+          "id": 14695852623472838,
+          "title": "<=1.5 golos aos 20 minutos",
+          "won": false
         },
         {
-          "id": 12,
-          "title": "Celula 12",
-          "won": true
+          "id": 4963209591548923,
+          "title": ">=2 CA na 1ªP",
+          "won": false
         },
         {
-          "id": 10297764549688516,
-          "title": "+3.5 Golos",
-          "won": true
-        },
-        {
-          "id": 1180199333259837,
-          "title": "Marcador Artur Cabral",
-          "won": true
+          "id": 6038840515239594,
+          "title": " >0.5 Penáltis não concretizados TR",
+          "won": false
         }
       ],
-      "title": "Benfica X Porto",
-      "description": "Futebol\nLiga Betclic",
-      "date": "2025-05-31T21:45:00.000Z",
-      "creationDate": "2025-05-21T21:40:29.259Z",
-      "price": 10,
+      "title": "SLB x FCP",
+      "description": "SL Benfica vs FC Porto\nFutebol - Liga Betclic",
+      "date": "2025-06-27T18:04:00.000Z",
+      "creationDate": "2025-06-12T18:04:14.278Z",
+      "price": 19.04,
+      "bingoPrize": 39,
+      "maxPrize": 1904,
+      "result": null,
+      "finished": false
+    },
+    {
+      "id": 4742186337688181,
+      "nCols": 5,
+      "nRows": 5,
+      "cells": [
+        {
+          "id": 9607128575545220,
+          "title": "Real Madrid não perde",
+          "won": false
+        },
+        {
+          "id": 7392656102929942,
+          "title": "Golo Mbappé",
+          "won": false
+        },
+        {
+          "id": 9120941519066734,
+          "title": "Golo Konaté",
+          "won": false
+        },
+        {
+          "id": 8470827997184887,
+          "title": "Golo Vinicius JR",
+          "won": false
+        },
+        {
+          "id": 9305312040515300,
+          "title": "Valverde não vê cartão",
+          "won": false
+        },
+        {
+          "id": 31752796389966350,
+          "title": ">=15 cantos ",
+          "won": false
+        },
+        {
+          "id": 22383803121652200,
+          "title": ">=5 remates no alvo 1ªP",
+          "won": false
+        },
+        {
+          "id": 8617328054356266,
+          "title": ">1.5 remates ao alvo Rodrygo",
+          "won": false
+        },
+        {
+          "id": 37857061868547420,
+          "title": "Baidoo é expulso",
+          "won": false
+        },
+        {
+          "id": 6105469615360164,
+          "title": "Trent vê amarelo",
+          "won": false
+        },
+        {
+          "id": 4341997595056888,
+          "title": "Salzburg a ganha 1ªP",
+          "won": false
+        },
+        {
+          "id": 8081983614485373,
+          "title": "Modric não vê cartão amarelo",
+          "won": false
+        },
+        {
+          "id": 2334479542797978,
+          "title": "Asencio é expulso",
+          "won": false
+        },
+        {
+          "id": 7677737603444561,
+          "title": "Konaté 3 remates no alvo no jogo",
+          "won": false
+        },
+        {
+          "id": 488182129203909,
+          "title": "<=7.5 golos ",
+          "won": false
+        },
+        {
+          "id": 5067127019917974,
+          "title": ">1.5 Penalties marcados",
+          "won": false
+        },
+        {
+          "id": 1957762014652673,
+          "title": "Golo Bellingham",
+          "won": false
+        },
+        {
+          "id": 7357332780681116,
+          "title": ">1 golo ao intervalo",
+          "won": false
+        },
+        {
+          "id": 7202537181616497,
+          "title": ">0.5 remates ao alvo Sulzbacher",
+          "won": false
+        },
+        {
+          "id": 6042425877071078,
+          "title": "Terzic vê amarelo",
+          "won": false
+        },
+        {
+          "id": 7061312478520376,
+          "title": "Golo Dorgeles",
+          "won": false
+        },
+        {
+          "id": 34474986333806524,
+          "title": "<19.5 faltas na 1ªP",
+          "won": false
+        },
+        {
+          "id": 6326389673346593,
+          "title": ">4.5 defesas Courtois",
+          "won": false
+        },
+        {
+          "id": 8790670748563847,
+          "title": "Golo Ratkov",
+          "won": false
+        }
+      ],
+      "title": " R.Madrid X Salzburg",
+      "description": "Copa do Mundo de Clubes",
+      "date": "2025-06-27T01:00:00.000Z",
+      "creationDate": "2025-06-13T22:21:45.706Z",
+      "price": 20,
       "bingoPrize": 50,
-      "maxPrize": 300,
-      "result": "fullwin",
-      "finished": true
-    },
-    {
-      "id": 12694320877934872,
-      "nCols": 5,
-      "nRows": 3,
-      "cells": [
-        {
-          "id": 1,
-          "title": "SL Benfica x Porto FC",
-          "won": true
-        },
-        {
-          "id": 2,
-          "title": "Celula 2",
-          "won": true
-        },
-        {
-          "id": 3,
-          "title": "Celula 3",
-          "won": true
-        },
-        {
-          "id": 4,
-          "title": "Celula 4",
-          "won": true
-        },
-        {
-          "id": 5,
-          "title": "Celula 5",
-          "won": true
-        },
-        {
-          "id": 6,
-          "title": "Celula 6",
-          "won": true
-        },
-        {
-          "id": 7,
-          "title": "Celula 7",
-          "won": true
-        },
-        {
-          "id": 8,
-          "title": "Celula 8",
-          "won": true
-        },
-        {
-          "id": 9,
-          "title": "Celula 9",
-          "won": true
-        },
-        {
-          "id": 10,
-          "title": "Celula 10",
-          "won": true
-        },
-        {
-          "id": 11,
-          "title": "Celula 11",
-          "won": true
-        },
-        {
-          "id": 12,
-          "title": "Celula 12",
-          "won": true
-        },
-        {
-          "id": 28750341268371816,
-          "title": "Celula ",
-          "won": true
-        },
-        {
-          "id": 8911806528346011,
-          "title": "Celula ",
-          "won": true
-        }
-      ],
-      "title": "bengica",
-      "description": "",
-      "date": "2025-10-10T09:00:00.000Z",
-      "creationDate": "2025-05-23T14:57:50.295Z",
-      "price": 1,
-      "bingoPrize": 1,
-      "maxPrize": 1,
-      "result": "fullwin",
-      "finished": true
-    },
-    {
-      "id": 45291172463129840,
-      "nCols": 5,
-      "nRows": 3,
-      "cells": [
-        {
-          "id": 1,
-          "title": "SL Benfica x Porto FC",
-          "won": true
-        },
-        {
-          "id": 2,
-          "title": "Celula 2",
-          "won": true
-        },
-        {
-          "id": 3,
-          "title": "Celula 3",
-          "won": true
-        },
-        {
-          "id": 4,
-          "title": "Celula 4",
-          "won": true
-        },
-        {
-          "id": 5,
-          "title": "Celula 5",
-          "won": true
-        },
-        {
-          "id": 6,
-          "title": "Celula 6",
-          "won": false
-        },
-        {
-          "id": 7,
-          "title": "Celula 7",
-          "won": false
-        },
-        {
-          "id": 8,
-          "title": "Celula 8",
-          "won": false
-        },
-        {
-          "id": 9,
-          "title": "Celula 9",
-          "won": false
-        },
-        {
-          "id": 10,
-          "title": "Celula 10",
-          "won": false
-        },
-        {
-          "id": 11,
-          "title": "Celula 11",
-          "won": false
-        },
-        {
-          "id": 12,
-          "title": "Celula 12",
-          "won": false
-        },
-        {
-          "id": 38728163989195070,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 978343136035049,
-          "title": "Celula ",
-          "won": true
-        }
-      ],
-      "title": "a",
-      "description": "a",
-      "date": "2222-11-11T22:02:00.000Z",
-      "creationDate": "2025-05-23T15:36:08.778Z",
-      "price": 1,
-      "bingoPrize": 1,
-      "maxPrize": 1,
+      "maxPrize": 1500,
       "result": null,
       "finished": false
     },
     {
-      "id": 2607110510882167,
-      "nCols": 5,
+      "id": 9217821179775214,
+      "nCols": 3,
       "nRows": 3,
       "cells": [
         {
-          "id": 1,
-          "title": "SL Benfica x Porto FC",
-          "won": true
-        },
-        {
-          "id": 2,
-          "title": "Celula 2",
-          "won": true
-        },
-        {
-          "id": 3,
-          "title": "Celula 3",
-          "won": true
-        },
-        {
-          "id": 4,
-          "title": "Celula 4",
-          "won": true
-        },
-        {
-          "id": 5,
-          "title": "Celula 5",
-          "won": true
-        },
-        {
-          "id": 6,
-          "title": "Celula 6",
-          "won": true
-        },
-        {
-          "id": 7,
-          "title": "Celula 7",
-          "won": true
-        },
-        {
-          "id": 8,
-          "title": "Celula 8",
-          "won": true
-        },
-        {
-          "id": 9,
-          "title": "Celula 9",
-          "won": true
-        },
-        {
-          "id": 10,
-          "title": "Celula 10",
+          "id": 22614884278170956,
+          "title": "Portugal ganha",
           "won": false
         },
         {
-          "id": 11,
-          "title": "Celula 11",
+          "id": 7072527684010612,
+          "title": "Golo Cristiano Ronaldo",
           "won": false
         },
         {
-          "id": 12,
-          "title": "Celula 12",
+          "id": 5825319410268,
+          "title": ">4.5 cantos Portugal 1ªP",
           "won": false
         },
         {
-          "id": 8437956655935859,
-          "title": "Celula ",
+          "id": 9520444663201872,
+          "title": "Gonçalo Inácio é expulso",
           "won": false
         },
         {
-          "id": 334714190287023,
-          "title": "Celula ",
+          "id": 3895803713863224,
+          "title": "<1.5 Penalties no jogo",
+          "won": false
+        },
+        {
+          "id": 9204767326131194,
+          "title": "<5.5 Remates ao Alvo França",
+          "won": false
+        },
+        {
+          "id": 9410455790199296,
+          "title": "João Neves não vê cartão",
+          "won": false
+        },
+        {
+          "id": 20662870242372656,
+          "title": "Golo Mbappé",
           "won": false
         }
       ],
-      "title": "cartao fixe",
-      "description": "muiyo fixe ate",
-      "date": "2222-10-10T21:22:00.000Z",
-      "creationDate": "2025-05-23T15:49:24.651Z",
-      "price": 1,
-      "bingoPrize": 1,
-      "maxPrize": 1,
-      "result": "bingo",
-      "finished": true
-    },
-    {
-      "id": 3308699468052889,
-      "nCols": 5,
-      "nRows": 3,
-      "cells": [
-        {
-          "id": 5245747978611708,
-          "title": "SL Benfica ganha",
-          "won": true
-        },
-        {
-          "id": 20959332211992176,
-          "title": "Celula 2",
-          "won": true
-        },
-        {
-          "id": 53314655224755420,
-          "title": "Celula 3",
-          "won": true
-        },
-        {
-          "id": 23118101241430370,
-          "title": "Celula 8",
-          "won": true
-        },
-        {
-          "id": 45996562287062330,
-          "title": "Celula 4",
-          "won": true
-        },
-        {
-          "id": 7185638917539472,
-          "title": "Celula 5",
-          "won": true
-        },
-        {
-          "id": 9752933064577308,
-          "title": "Celula 6",
-          "won": true
-        },
-        {
-          "id": 13039141113117214,
-          "title": "Celula 7",
-          "won": true
-        },
-        {
-          "id": 3625644774273462,
-          "title": "Celula 9",
-          "won": true
-        },
-        {
-          "id": 7521537129991736,
-          "title": "Celula 10",
-          "won": true
-        },
-        {
-          "id": 216242869864548,
-          "title": "Celula 11",
-          "won": true
-        },
-        {
-          "id": 4042286354477429,
-          "title": "Celula 12",
-          "won": true
-        },
-        {
-          "id": 9044307133460384,
-          "title": "Celula ",
-          "won": true
-        },
-        {
-          "id": 9818446019947442,
-          "title": "Celula ",
-          "won": true
-        }
-      ],
-      "title": "Título",
-      "description": "rich millionare",
-      "date": "2025-05-31T11:19:00.000Z",
-      "creationDate": "2025-05-28T11:19:21.103Z",
-      "price": 100,
-      "bingoPrize": 500,
-      "maxPrize": 2500,
-      "result": "fullwin",
-      "finished": true
-    },
-    {
-      "id": 8288260951026549,
-      "nCols": 5,
-      "nRows": 5,
-      "cells": [
-        {
-          "id": 2474100902745644,
-          "title": "SL Benfica ganha",
-          "won": false
-        },
-        {
-          "id": 8883909411556365,
-          "title": "Celula 2",
-          "won": false
-        },
-        {
-          "id": 6595923252765983,
-          "title": "Celula 3",
-          "won": false
-        },
-        {
-          "id": 7136914716152369,
-          "title": "Celula 4",
-          "won": false
-        },
-        {
-          "id": 7967762749594387,
-          "title": "Celula 5",
-          "won": false
-        },
-        {
-          "id": 2208476391474099,
-          "title": "Celula 6",
-          "won": false
-        },
-        {
-          "id": 1180734547279576,
-          "title": "Celula 7",
-          "won": false
-        },
-        {
-          "id": 7260945585188749,
-          "title": "Celula 8",
-          "won": false
-        },
-        {
-          "id": 627125862666355,
-          "title": "Celula 9",
-          "won": false
-        },
-        {
-          "id": 2778301678880202,
-          "title": "Celula 10",
-          "won": false
-        },
-        {
-          "id": 4745382810644281,
-          "title": "Celula 11",
-          "won": false
-        },
-        {
-          "id": 1175053270717179,
-          "title": "Celula 12",
-          "won": false
-        },
-        {
-          "id": 7088463092682347,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 4761131790019124,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 8082637798478935,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 7260241577533721,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 5292993712769933,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 589385230438876,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 41220968631251380,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 2686416784466521,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 5636273310716879,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 5244238762181566,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 20722474298577764,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 84139876261494,
-          "title": "Celula ",
-          "won": false
-        }
-      ],
-      "title": "Jogo futebol",
-      "description": "aaaa",
-      "date": "2025-05-30T14:45:00.000Z",
-      "creationDate": "2025-05-28T13:36:52.100Z",
-      "price": 10,
-      "bingoPrize": 30,
-      "maxPrize": 150,
+      "title": "POR X FRA",
+      "description": "Copa do Mundo 2026",
+      "date": "2026-06-20T19:00:00.000Z",
+      "creationDate": "2025-06-13T22:26:04.662Z",
+      "price": 7,
+      "bingoPrize": 10,
+      "maxPrize": 50,
       "result": null,
       "finished": false
-    },
-    {
-      "id": 9224760267218800,
-      "nCols": 5,
-      "nRows": 5,
-      "cells": [
-        {
-          "id": 20876445911117504,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 9952320007643224,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 40955300788848300,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 38561248251202690,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 6029360965858972,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 3182514503531293,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 607312120661414,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 8077162601176586,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 2016937973960644,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 5651799951657932,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 5474014501947355,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 8371060838721394,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 34151685843902736,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 9156324170900364,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 35377103260345756,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 19986780841824190,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 9903401826685438,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 46839913412441310,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 8441768076524157,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 8077815031727684,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 9599395857361440,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 5427660576660278,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 22216168398796056,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 7797665980478774,
-          "title": "Celula ",
-          "won": false
-        }
-      ],
-      "title": "Jogo andebol",
-      "description": "aaaa",
-      "date": "2025-05-30T14:45:00.000Z",
-      "creationDate": "2025-05-28T13:40:27.063Z",
-      "price": 10,
-      "bingoPrize": 50,
-      "maxPrize": 1000,
-      "result": null,
-      "finished": false
-    },
-    {
-      "id": 16572553733312324,
-      "nCols": 5,
-      "nRows": 3,
-      "cells": [
-        {
-          "id": 9230638041278252,
-          "title": "SL Benfica ganha",
-          "won": true
-        },
-        {
-          "id": 9033240313563452,
-          "title": "Celula",
-          "won": true
-        },
-        {
-          "id": 8592364569107691,
-          "title": "Celula",
-          "won": true
-        },
-        {
-          "id": 7981663871949698,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 9083318706437804,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 5608372293933932,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 8825501831990155,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 20969321550648570,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 37393864758441660,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 13081258330302736,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 7612300795032749,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 3266195879517755,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 26860139775437376,
-          "title": "Celula ",
-          "won": true
-        },
-        {
-          "id": 9993471990081036,
-          "title": "Celula ",
-          "won": false
-        }
-      ],
-      "title": "teste",
-      "description": "aaaaaaaaaaa",
-      "date": "2025-06-07T13:50:00.000Z",
-      "creationDate": "2025-05-28T13:50:29.734Z",
-      "price": 1,
-      "bingoPrize": 5,
-      "maxPrize": 20,
-      "result": null,
-      "finished": false
-    },
-    {
-      "id": 6864995633200854,
-      "nCols": 5,
-      "nRows": 5,
-      "cells": [
-        {
-          "id": 9961371248991728,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 6508151174171113,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 7465727585642776,
-          "title": "SL Benfica ganha",
-          "won": true
-        },
-        {
-          "id": 22885007905416370,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 9714110325697788,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 6394339049077202,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 1615686091746893,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 24349051476737716,
-          "title": "Celula",
-          "won": true
-        },
-        {
-          "id": 8236462867501435,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 14729719210656578,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 5814371433922361,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 5138191080580912,
-          "title": "Celula",
-          "won": false
-        },
-        {
-          "id": 9545104320457284,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 12588222689816896,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 7942232038790775,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 7359657692792492,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 9657607674713812,
-          "title": "Celula ",
-          "won": true
-        },
-        {
-          "id": 7721552322610359,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 6232804866025974,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 839825814986898,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 9066800630782236,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 6955673158851143,
-          "title": "Celula ",
-          "won": true
-        },
-        {
-          "id": 17920666557038768,
-          "title": "Celula ",
-          "won": false
-        },
-        {
-          "id": 22181435265579296,
-          "title": "Celula ",
-          "won": false
-        }
-      ],
-      "title": "Cartão vertical",
-      "description": "Facil",
-      "date": "2025-06-25T17:30:00.000Z",
-      "creationDate": "2025-06-13T17:30:57.737Z",
-      "price": 1,
-      "bingoPrize": 4,
-      "maxPrize": 10,
-      "result": "bingo",
-      "finished": true
     }
   ]
 }
