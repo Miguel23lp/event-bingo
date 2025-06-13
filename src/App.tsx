@@ -7,6 +7,7 @@ import CreateBingoCardPage from "./CreateBingoCardPage.tsx";
 import ProtectedRoute from "./ProtectedRoute.tsx";
 import UpdateBingoCardPage from "./UpdateBingoCardPage.tsx";
 import PurchasedCardsPage from "./PurchasedCardsPage.tsx";
+import { Tooltip } from 'bootstrap';
 
 export interface User {
     id: number;
@@ -35,6 +36,12 @@ function App() {
         else {
             setLoading(false);
         }
+
+        // Initialize all tooltips
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new Tooltip(tooltipTriggerEl);
+        });
     }, []);
 
     const setUserMoney = (money: number) => {

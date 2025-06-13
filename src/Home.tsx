@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BingoCardData } from "./BingoCard.tsx";
+import { BingoCardData, parseCards } from "./BingoCard.tsx";
 import { BingoCardDisplay } from "./BingoCardDisplay.tsx";
 import { User } from "./App.tsx";
 import { useNavigate } from "react-router";
@@ -9,15 +9,6 @@ function Home({ user }: { user: User | null }) {
     const [bingoCards, setBingoCards] = useState<BingoCardData[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const navigate = useNavigate();
-
-    const parseCards = (data: any) : BingoCardData[] => {
-        data.forEach((card: BingoCardData) => {
-            card.date = new Date(card.date);
-            card.creationDate = new Date(card.creationDate);
-        });
-        
-        return data as BingoCardData[];
-    }
 
     const removeCard = (cardId: number) => {
         setBingoCards(bingoCards.filter((card) => card.id != cardId));
@@ -96,7 +87,7 @@ function Home({ user }: { user: User | null }) {
         {bingoCards.map(card =>
             <div key={card.id} className="mb-5 p-4">
 
-                <BingoCardDisplay cells={card.cells} nCols={card.nCols} nRows={card.nRows} title={card.title} 
+                <BingoCardDisplay cells={card.cells} nCols={card.nCols} nRows={card.nRows} title={card.title} description={card.description}
                     price={card.price} bingoPrize={card.bingoPrize} maxPrize={card.maxPrize} date={card.date}/>
                 <div className="d-flex justify-content-center">
                     {user?.role == "admin" &&

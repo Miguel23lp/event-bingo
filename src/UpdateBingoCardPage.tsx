@@ -138,7 +138,7 @@ function UpdateBingoCardPage() {
             {/* Bingo card left */}
             <div style={{ flex: '1' }}>
                 <section>
-                    <BingoCardDisplay nCols={bingoCard.nCols} nRows={bingoCard.nRows} title={bingoCard.title} 
+                    <BingoCardDisplay nCols={bingoCard.nCols} nRows={bingoCard.nRows} title={bingoCard.title} description={bingoCard.description}
                         price={bingoCard.price} bingoPrize={bingoCard.bingoPrize} maxPrize={bingoCard.maxPrize} date={bingoCard.date}
                         cells={bingoCard.cells} getCellProps={getCellProps} renderCell={renderCell} />
                 </section>
