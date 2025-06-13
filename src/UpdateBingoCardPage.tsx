@@ -10,7 +10,7 @@ function UpdateBingoCardPage() {
     const [selectedCell, setSelectedCell] = useState<BingoCellData | null>(null);
     const navigate = useNavigate();
 
-    const getCellProps = (cell: BingoCellData, _: number): React.HtmlHTMLAttributes<HTMLDivElement> => {
+    const getCellProps = (cell: BingoCellData): React.HtmlHTMLAttributes<HTMLDivElement> => {
         return {
             className: [
                 !cell.won && 'bingo-cell--selectable',
@@ -22,7 +22,7 @@ function UpdateBingoCardPage() {
             },
         }
     }
-    const renderCell = (cell: BingoCellData, _: number) => {
+    const renderCell = (cell: BingoCellData) => {
         {/* Overlay when selected */ }
         if (selectedCell?.id === cell.id) {
             return (

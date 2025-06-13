@@ -62,7 +62,7 @@ function CreateBingoCardPage() {
 
 	const handleUploadCard = () => {
 		const newId = Number(Math.random().toString().slice(2));
-		let card: BingoCardData = {
+		const card: BingoCardData = {
 			id: newId, nCols: nCols, nRows: nRows, cells: cells,
 			title: title, description: description,
 			date: date, creationDate: new Date(Date.now()),
@@ -90,7 +90,7 @@ function CreateBingoCardPage() {
 			alert("Celulas não são únicos!");
 			return;
 		}
-		let user = JSON.parse(localStorage.getItem('user') || '{}');
+		const user = JSON.parse(localStorage.getItem('user') || '{}');
 		fetch("http://localhost:3000/cards", {
 			method: 'POST',
 			headers: {

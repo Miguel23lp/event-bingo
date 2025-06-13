@@ -75,7 +75,7 @@ function BingoCardCreate({ nCols, nRows, title, description, cells, price, bingo
         }
     }
 
-    const renderCell = (cell: BingoCellData, _: number) => {
+    const renderCell = (cell: BingoCellData) => {
         return (
             <>
                 {/* Drag handle */}

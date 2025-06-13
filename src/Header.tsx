@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { User } from "./App";
 import LoginIcon from "./LoginIcon";
 import UserMoneyDisplay from "./UserMoneyDisplay";
@@ -6,15 +7,15 @@ export default function Header({ user, setUserMoney, logout }: { user: User | nu
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top border-bottom">
             <div className="container">
-                <a className="navbar-brand" href="/">€vent Bingo</a>
+                <Link className="navbar-brand" to="/">€vent Bingo</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
-                        <li className="nav-item"><a className="nav-link" href="/">Início</a></li>
-                        {user?.role == "user" && <li className="nav-item"><a className="nav-link" href="/meus_cartoes">Meus Cartões</a></li>}
-                        {user?.role == "admin" && <li className="nav-item"><a className="nav-link" href="/criar_cartao">Criar cartão</a></li>}
+                        <li className="nav-item"><Link className="nav-link" to="/">Início</Link></li>
+                        {user?.role == "user" && <li className="nav-item"><Link className="nav-link" to="/meus_cartoes">Meus Cartões</Link></li>}
+                        {user?.role == "admin" && <li className="nav-item"><Link className="nav-link" to="/criar_cartao">Criar cartão</Link></li>}
                         <LoginIcon user={user} logout={logout}></LoginIcon>
                         {user?.role == "user" && <li className="nav-item"><UserMoneyDisplay user={user!} setUserMoney={setUserMoney} /></li>}
                     </ul>
