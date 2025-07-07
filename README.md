@@ -103,12 +103,6 @@ Funcionalidade base:
 
 ---
 
-## 📸 Exemplos Visuais
-
-> ⚠️ [Incluir capturas de ecrã aqui]  
-> Por exemplo: editor do cartão, página de compra, vista do utilizador
-
----
 
 ## 📦 Repositório
 
